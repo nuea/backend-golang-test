@@ -8,6 +8,8 @@ package di
 
 import (
 	"github.com/google/wire"
+	"github.com/nuea/backend-golang-test/cmd/grpc/internal/handler"
+	"github.com/nuea/backend-golang-test/cmd/grpc/internal/handler/user"
 	"github.com/nuea/backend-golang-test/cmd/grpc/internal/server"
 	"github.com/nuea/backend-golang-test/internal/config"
 	"github.com/nuea/backend-golang-test/internal/di"
@@ -17,7 +19,14 @@ import (
 
 func InitContainer() (*Container, func(), error) {
 	appConfig := config.ProvideCofig()
-	grpcServer := server.ProvideGRPCServer(appConfig)
+	userServiceServer, err := user.ProvideUserGRPCService()
+	if err != nil {
+		return nil, nil, err
+	}
+	grpcServices := &handler.GrpcServices{
+		UserServiceServer: userServiceServer,
+	}
+	grpcServer := server.ProvideGRPCServer(appConfig, grpcServices)
 	container := &Container{
 		server: grpcServer,
 	}
@@ -27,4 +36,4 @@ func InitContainer() (*Container, func(), error) {
 
 // di.go:
 
-var MainSet = wire.NewSet(di.InternalSet, ProviderSet, wire.Struct(new(Container), "*"))
+var MainSet = wire.NewSet(di.InternalSet, ProviderSet, handler.HandlerSet, wire.Struct(new(Container), "*"))

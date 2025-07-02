@@ -5,12 +5,14 @@ package di
 
 import (
 	"github.com/google/wire"
+	"github.com/nuea/backend-golang-test/cmd/grpc/internal/handler"
 	internalDI "github.com/nuea/backend-golang-test/internal/di"
 )
 
 var MainSet = wire.NewSet(
 	internalDI.InternalSet,
 	ProviderSet,
+	handler.HandlerSet,
 
 	wire.Struct(new(Container), "*"),
 )

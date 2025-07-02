@@ -21,8 +21,12 @@ http: ## run http server
 grpc: ## run grpc server
 	GO111MODULE=on ENV=local go run cmd/grpc/main.go
 
-proto: ## generate proto files
-	protoc --proto_path=proto --go_out=. --go-grpc_out=. proto/go_template/*/v1/*.proto
-
 help: ## show this help
 	@${HELP_CMD}
+
+proto-libs: ## proto - install libs last version
+	go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+	go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+	go mod tidy
+
+	

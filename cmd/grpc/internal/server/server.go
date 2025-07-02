@@ -9,6 +9,7 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/nuea/backend-golang-test/cmd/grpc/internal/handler"
 	"github.com/nuea/backend-golang-test/internal/config"
 	"github.com/oklog/run"
 	"google.golang.org/grpc"
@@ -46,7 +47,7 @@ func (s *GRPCServer) Serve() {
 	}
 }
 
-func ProvideGRPCServer(cfg *config.AppConfig) *GRPCServer {
+func ProvideGRPCServer(cfg *config.AppConfig, h *handler.GrpcServices) *GRPCServer {
 	opt := make([]grpc.ServerOption, 0)
 	opt = append(opt, grpc.Creds(insecure.NewCredentials()))
 	opt = append(opt, grpc.KeepaliveParams(keepalive.ServerParameters{
@@ -59,6 +60,7 @@ func ProvideGRPCServer(cfg *config.AppConfig) *GRPCServer {
 		srv: grpc.NewServer(opt...),
 	}
 
+	handler.RegisterGrpcServices(s.srv, h)
 	reflection.Register(s.srv)
 
 	return s
