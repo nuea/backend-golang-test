@@ -12,6 +12,7 @@ import (
 )
 
 type SystemConfig struct {
+	HTTPPort    string `envconfig:"APP_HTTP_PORT" default:"8080"`
 	GRPCPort    string `envconfig:"APP_GRPC_PORT" default:"8980"`
 	ServiceName string `envconfig:"SERVICE_NAME" default:"backend-golang-test"`
 }
@@ -26,14 +27,21 @@ type MongoDBConfig struct {
 	MinPoolSize       uint64        `envconfig:"MONGODB_MIN_CONNECTION_POOL_SIZE" default:"10"`
 }
 
+type BackendGolangTestGRPCConfig struct {
+	GRPCTarget     string        `envconfig:"BACKEND_GOLANG_TEST_GRPC_TARGET" default:"localhost:8980"`
+	RequestTimeout time.Duration `envconfig:"BACKEND_GOLANG_TEST_REQUEST_TIMEOUT" default:"10s"`
+}
+
 type AppConfig struct {
-	System  SystemConfig
-	MongoDB MongoDBConfig
+	System        SystemConfig
+	MongoDB       MongoDBConfig
+	BackendGoTest BackendGolangTestGRPCConfig
 }
 
 func (cfg *AppConfig) load() {
 	envconfig.MustProcess("", &cfg.System)
 	envconfig.MustProcess("", &cfg.MongoDB)
+	envconfig.MustProcess("", &cfg.BackendGoTest)
 }
 
 func ProvideCofig() *AppConfig {

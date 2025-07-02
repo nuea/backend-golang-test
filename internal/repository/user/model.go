@@ -32,7 +32,9 @@ type UserFilter struct {
 }
 
 func (f *UserFilter) Filter() bson.D {
-	filter := bson.D{}
+	filter := bson.D{
+		{Key: "deleted_at", Value: nil},
+	}
 	if f.ID != primitive.NilObjectID {
 		filter = append(filter, bson.E{Key: "_id", Value: f.ID})
 	}

@@ -14,6 +14,8 @@ import (
 	"github.com/oklog/run"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+	"google.golang.org/grpc/health"
+	healthgrpc "google.golang.org/grpc/health/grpc_health_v1"
 	"google.golang.org/grpc/keepalive"
 	"google.golang.org/grpc/reflection"
 )
@@ -61,6 +63,7 @@ func ProvideGRPCServer(cfg *config.AppConfig, h *handler.GrpcServices) *GRPCServ
 	}
 
 	handler.RegisterGrpcServices(s.srv, h)
+	healthgrpc.RegisterHealthServer(s.srv, health.NewServer())
 	reflection.Register(s.srv)
 
 	return s
