@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"time"
 
 	"github.com/joho/godotenv"
 	"github.com/kelseyhightower/envconfig"
@@ -15,12 +16,24 @@ type SystemConfig struct {
 	ServiceName string `envconfig:"SERVICE_NAME" default:"backend-golang-test"`
 }
 
+type MongoDBConfig struct {
+	Host              string        `envconfig:"MONGODB_HOST"`
+	User              string        `envconfig:"MONGODB_USER"`
+	Password          string        `envconfig:"MONGODB_PASSWORD"`
+	DatabaseName      string        `envconfig:"MONGODB_DATABASE_NAME" default:"-"`
+	HeartbeatInterval time.Duration `envconfig:"MONGODB_HEARTBEAT_INTERVAL" default:"10s"`
+	MaxPoolSize       uint64        `envconfig:"MONGODB_MAX_CONNECTION_POOL_SIZE" default:"20"`
+	MinPoolSize       uint64        `envconfig:"MONGODB_MIN_CONNECTION_POOL_SIZE" default:"10"`
+}
+
 type AppConfig struct {
-	System SystemConfig
+	System  SystemConfig
+	MongoDB MongoDBConfig
 }
 
 func (cfg *AppConfig) load() {
 	envconfig.MustProcess("", &cfg.System)
+	envconfig.MustProcess("", &cfg.MongoDB)
 }
 
 func ProvideCofig() *AppConfig {

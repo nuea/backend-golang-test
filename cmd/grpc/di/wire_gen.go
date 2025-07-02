@@ -9,18 +9,34 @@ package di
 import (
 	"github.com/google/wire"
 	"github.com/nuea/backend-golang-test/cmd/grpc/internal/handler"
-	"github.com/nuea/backend-golang-test/cmd/grpc/internal/handler/user"
+	user2 "github.com/nuea/backend-golang-test/cmd/grpc/internal/handler/user"
 	"github.com/nuea/backend-golang-test/cmd/grpc/internal/server"
+	"github.com/nuea/backend-golang-test/internal/client"
+	"github.com/nuea/backend-golang-test/internal/client/mongodb"
 	"github.com/nuea/backend-golang-test/internal/config"
 	"github.com/nuea/backend-golang-test/internal/di"
+	"github.com/nuea/backend-golang-test/internal/repository"
+	"github.com/nuea/backend-golang-test/internal/repository/user"
 )
 
 // Injectors from di.go:
 
 func InitContainer() (*Container, func(), error) {
 	appConfig := config.ProvideCofig()
-	userServiceServer, err := user.ProvideUserGRPCService()
+	mongoDB, cleanup, err := mongodb.ProvideMongoDBClient(appConfig)
 	if err != nil {
+		return nil, nil, err
+	}
+	clients := &client.Clients{
+		MongoDB: mongoDB,
+	}
+	userRepository := user.ProvideUserRepository(clients)
+	repositoryRepository := &repository.Repository{
+		UserRepository: userRepository,
+	}
+	userServiceServer, err := user2.ProvideUserGRPCService(repositoryRepository)
+	if err != nil {
+		cleanup()
 		return nil, nil, err
 	}
 	grpcServices := &handler.GrpcServices{
@@ -31,6 +47,7 @@ func InitContainer() (*Container, func(), error) {
 		server: grpcServer,
 	}
 	return container, func() {
+		cleanup()
 	}, nil
 }
 
