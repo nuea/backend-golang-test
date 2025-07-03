@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: rootadmin
+      MONGO_INITDB_ROOT_PASSWORD: rootadmin
+      MONGO_INITDB_DATABASE: backend-golang-test
+    restart: always
+  
+  go-grpc:
+    build: .
+    image: backend-golang-test:latest
+    container_name: go-grpc
+    ports:
+      - "8980:8980"
+    depends_on:
+      - mongodb
+    command: ["/opt/grpc"]
+    environment:
+      MONGODB_HOST: mongodb://mongodb:27017
+      MONGODB_DATABASE_NAME: backend-golang-test
+      MONGODB_USER: rootadmin
+      MONGODB_PASSWORD: rootadmin
+
+  go-http:
+    image: backend-golang-test:latest
+    container_name: go-http
+    ports:
+      - "8080:8080"
+    depends_on:
+      - go-grpc
+    command: ["/opt/http"]
+    environment:
+      BACKEND_GOLANG_TEST_GRPC_TARGET: go-grpc:8980
+      BACKEND_GOLANG_TEST_TIMEOUT: 10s
+      AUTH_SECRET_KEY: AAOJ2ZTJVS0IR7Fx4KW8D02n6pCxCz9p
+      AUTH_ACCESS_TOKEN_EXPIRE_TTL: 1h
+
+volumes:
+  mongodb_data:

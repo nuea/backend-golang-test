@@ -2,6 +2,7 @@ package auth
 
 import (
 	"context"
+	"time"
 
 	"github.com/nuea/backend-golang-test/internal/repository"
 	"github.com/nuea/backend-golang-test/internal/repository/user"
@@ -21,6 +22,29 @@ func ProvideAuthGRPCService(repo *repository.Repository) (userv1.AuthServiceServ
 		userrepo: repo.UserRepository,
 	}, nil
 }
+
+type Error struct {
+	Code      string    `json:"code"`
+	Message   string    `json:"message"`
+	Timestamp time.Time `json:"timestamp"`
+}
+
+// func NewError(code, msg string) *Error {
+// 	c := caller(2)
+// 	cs := callers(2)
+// 	err := &Error{
+// 		Code:      code,
+// 		AppName:   appName,
+// 		Caller:    c,
+// 		Callers:   cs,
+// 		Detail:    c,
+// 		Timestamp: time.Now().UTC(),
+// 	}
+// 	for _, optionFunc := range fn {
+// 		err = optionFunc(err)
+// 	}
+// 	return err
+// }
 
 func (g *grpcService) Login(ctx context.Context, req *userv1.LoginRequest) (*userv1.LoginResponse, error) {
 	email, err := types.NewEmail(req.Email)

@@ -14,7 +14,6 @@ import (
 	"github.com/nuea/backend-golang-test/cmd/http/internal/server"
 	"github.com/nuea/backend-golang-test/internal/client"
 	"github.com/nuea/backend-golang-test/internal/client/backendgolangtest"
-	"github.com/nuea/backend-golang-test/internal/client/mongodb"
 	"github.com/nuea/backend-golang-test/internal/config"
 	"github.com/nuea/backend-golang-test/internal/di"
 	"github.com/nuea/backend-golang-test/internal/middleware"
@@ -27,10 +26,6 @@ import (
 
 func InitContainer() (*Container, func(), error) {
 	appConfig := config.ProvideCofig()
-	mongoDB, cleanup, err := mongodb.ProvideMongoDBClient(appConfig)
-	if err != nil {
-		return nil, nil, err
-	}
 	apiClient := backendgolangtest.ProvideBackendGolangTestServiceGRPC(appConfig)
 	userServiceClient := backendgolangtest.ProvideUserServiceClient(apiClient)
 	authServiceClient := backendgolangtest.ProvideAuthServiceClient(apiClient)
@@ -38,16 +33,15 @@ func InitContainer() (*Container, func(), error) {
 		UserServiceClient: userServiceClient,
 		AuthServiceClient: authServiceClient,
 	}
-	clients := &client.Clients{
-		MongoDB:                      mongoDB,
+	grpcClients := &client.GRPCClients{
 		BackendGolangTestGRPCService: backendGolangTestGRPCService,
 	}
-	authService := auth.ProvideAuthenticationService(appConfig, clients)
+	authService := auth.ProvideAuthenticationService(appConfig, grpcClients)
 	serviceService := &service.Service{
 		AuthService: authService,
 	}
 	authHandler := auth2.ProvideUserHandler(serviceService)
-	userHandler := user.ProvideUserHandler(clients)
+	userHandler := user.ProvideUserHandler(grpcClients)
 	handlers := &handler.Handlers{
 		AuthHandler: authHandler,
 		UserHandler: userHandler,
@@ -56,12 +50,11 @@ func InitContainer() (*Container, func(), error) {
 	middlewareMiddleware := &middleware.Middleware{
 		Auth: authMiddleware,
 	}
-	httpServer := server.ProvideHTTPServer(appConfig, handlers, clients, middlewareMiddleware)
+	httpServer := server.ProvideHTTPServer(appConfig, handlers, middlewareMiddleware)
 	container := &Container{
 		server: httpServer,
 	}
 	return container, func() {
-		cleanup()
 	}, nil
 }
 

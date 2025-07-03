@@ -24,7 +24,7 @@ type authService struct {
 	authclient userv1.AuthServiceClient
 }
 
-func ProvideAuthenticationService(cfg *config.AppConfig, c *client.Clients) AuthService {
+func ProvideAuthenticationService(cfg *config.AppConfig, c *client.GRPCClients) AuthService {
 	return &authService{
 		cfg:        &cfg.Auth,
 		authclient: c.BackendGolangTestGRPCService.AuthServiceClient,

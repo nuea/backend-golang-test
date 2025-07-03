@@ -2,6 +2,7 @@ HELP_CMD = grep -E '^[a-zA-Z_-]+:.*?\#\# .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS
 
 build: tidy generate ## build for use on image
 	@cd cmd/http && go build -o ../../.bin/http .
+	@cd cmd/grpc && go build -o ../../.bin/grpc .
 
 tidy: ## download dependencies 
 	go mod tidy

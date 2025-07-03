@@ -12,17 +12,15 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/nuea/backend-golang-test/cmd/http/internal/handler"
-	"github.com/nuea/backend-golang-test/internal/client"
 	"github.com/nuea/backend-golang-test/internal/config"
 	"github.com/nuea/backend-golang-test/internal/middleware"
 	"github.com/oklog/run"
 )
 
 type HTTPServer struct {
-	cfg    *config.AppConfig
-	gin    *gin.Engine
-	srv    *http.Server
-	client *client.Clients
+	cfg *config.AppConfig
+	gin *gin.Engine
+	srv *http.Server
 }
 
 type ResponseBodyWriter struct {
@@ -80,12 +78,11 @@ func (s *HTTPServer) load(h *handler.Handlers, m *middleware.Middleware) {
 	registerRouter(s.gin, h, m)
 }
 
-func ProvideHTTPServer(cfg *config.AppConfig, h *handler.Handlers, c *client.Clients, m *middleware.Middleware) *HTTPServer {
+func ProvideHTTPServer(cfg *config.AppConfig, h *handler.Handlers, m *middleware.Middleware) *HTTPServer {
 	sv := &HTTPServer{
-		cfg:    cfg,
-		gin:    gin.New(),
-		srv:    &http.Server{},
-		client: c,
+		cfg: cfg,
+		gin: gin.New(),
+		srv: &http.Server{},
 	}
 	sv.gin.Use(WithRequestLoggerServer())
 	sv.gin.Use(WithResponseLoggerServer())

@@ -6,9 +6,12 @@ import (
 	"github.com/nuea/backend-golang-test/internal/client/mongodb"
 )
 
+type GRPCClients struct {
+	*begot.BackendGolangTestGRPCService
+}
+
 type Clients struct {
 	MongoDB *mongodb.MongoDB
-	*begot.BackendGolangTestGRPCService
 }
 
 var ClientSet = wire.NewSet(
@@ -18,5 +21,6 @@ var ClientSet = wire.NewSet(
 	begot.ProvideAuthServiceClient,
 
 	wire.Struct(new(begot.BackendGolangTestGRPCService), "*"),
+	wire.Struct(new(GRPCClients), "*"),
 	wire.Struct(new(Clients), "*"),
 )

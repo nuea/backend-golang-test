@@ -13,7 +13,6 @@ import (
 	user2 "github.com/nuea/backend-golang-test/cmd/grpc/internal/handler/user"
 	"github.com/nuea/backend-golang-test/cmd/grpc/internal/server"
 	"github.com/nuea/backend-golang-test/internal/client"
-	"github.com/nuea/backend-golang-test/internal/client/backendgolangtest"
 	"github.com/nuea/backend-golang-test/internal/client/mongodb"
 	"github.com/nuea/backend-golang-test/internal/config"
 	"github.com/nuea/backend-golang-test/internal/di"
@@ -29,16 +28,8 @@ func InitContainer() (*Container, func(), error) {
 	if err != nil {
 		return nil, nil, err
 	}
-	apiClient := backendgolangtest.ProvideBackendGolangTestServiceGRPC(appConfig)
-	userServiceClient := backendgolangtest.ProvideUserServiceClient(apiClient)
-	authServiceClient := backendgolangtest.ProvideAuthServiceClient(apiClient)
-	backendGolangTestGRPCService := &backendgolangtest.BackendGolangTestGRPCService{
-		UserServiceClient: userServiceClient,
-		AuthServiceClient: authServiceClient,
-	}
 	clients := &client.Clients{
-		MongoDB:                      mongoDB,
-		BackendGolangTestGRPCService: backendGolangTestGRPCService,
+		MongoDB: mongoDB,
 	}
 	userRepository := user.ProvideUserRepository(clients)
 	repositoryRepository := &repository.Repository{

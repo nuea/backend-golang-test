@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/kurzgesagtz/xgo/xlog"
 	"github.com/nuea/backend-golang-test/internal/service"
 	"github.com/nuea/backend-golang-test/internal/service/auth"
 	"github.com/nuea/backend-golang-test/internal/util"
@@ -43,6 +44,7 @@ func (h *Handler) Login(ctx *gin.Context) {
 
 	ac, err := h.authsv.Login(ctx, gReq)
 	if err != nil {
+		xlog.PrettyPrint(err)
 		ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
 			"error": err.Error(),
 		})

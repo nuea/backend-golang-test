@@ -13,7 +13,7 @@ type Handler struct {
 	begotc userv1.UserServiceClient
 }
 
-func ProvideUserHandler(c *client.Clients) *Handler {
+func ProvideUserHandler(c *client.GRPCClients) *Handler {
 	return &Handler{
 		begotc: c.BackendGolangTestGRPCService.UserServiceClient,
 	}
