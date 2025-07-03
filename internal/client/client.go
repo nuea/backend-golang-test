@@ -14,7 +14,8 @@ type Clients struct {
 var ClientSet = wire.NewSet(
 	mongodb.ProvideMongoDBClient,
 	begot.ProvideBackendGolangTestServiceGRPC,
-	begot.ProvideBackendGolangTestServiceClient,
+	begot.ProvideUserServiceClient,
+	begot.ProvideAuthServiceClient,
 
 	wire.Struct(new(begot.BackendGolangTestGRPCService), "*"),
 	wire.Struct(new(Clients), "*"),

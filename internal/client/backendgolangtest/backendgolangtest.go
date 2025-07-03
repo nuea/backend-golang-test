@@ -14,6 +14,7 @@ import (
 
 type BackendGolangTestGRPCService struct {
 	userv1.UserServiceClient
+	userv1.AuthServiceClient
 }
 
 type APIClient struct {
@@ -58,6 +59,10 @@ func ProvideBackendGolangTestServiceGRPC(cfg *config.AppConfig) *APIClient {
 	}
 }
 
-func ProvideBackendGolangTestServiceClient(client *APIClient) userv1.UserServiceClient {
+func ProvideUserServiceClient(client *APIClient) userv1.UserServiceClient {
 	return userv1.NewUserServiceClient(client.conn)
+}
+
+func ProvideAuthServiceClient(client *APIClient) userv1.AuthServiceClient {
+	return userv1.NewAuthServiceClient(client.conn)
 }

@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/nuea/backend-golang-test/internal/client"
+	"github.com/nuea/backend-golang-test/internal/types"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -15,6 +16,7 @@ import (
 type UserRepository interface {
 	InsertOne(ctx context.Context, user *User) error
 	FindByID(ctx context.Context, id string) (user *User, err error)
+	FindByEmail(ctx context.Context, email types.Email) (user *User, err error)
 	Find(ctx context.Context, filter *UserFilter) (users []*User, err error)
 	ReplaceOne(ctx context.Context, id string, user *User) error
 }
@@ -55,6 +57,17 @@ func (r *repository) FindByID(ctx context.Context, id string) (user *User, err e
 	}
 
 	err = r.collection.FindOne(ctx, bson.M{"_id": objid}).Decode(&user)
+	if err != nil {
+		if errors.Is(err, mongo.ErrNoDocuments) {
+			return nil, errors.New("user not found")
+		}
+		return nil, err
+	}
+	return user, err
+}
+
+func (r *repository) FindByEmail(ctx context.Context, email types.Email) (user *User, err error) {
+	err = r.collection.FindOne(ctx, bson.M{"email": email}).Decode(&user)
 	if err != nil {
 		if errors.Is(err, mongo.ErrNoDocuments) {
 			return nil, errors.New("user not found")

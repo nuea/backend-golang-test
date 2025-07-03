@@ -17,6 +17,11 @@ type SystemConfig struct {
 	ServiceName string `envconfig:"SERVICE_NAME" default:"backend-golang-test"`
 }
 
+type AuthConfig struct {
+	SecretKey            string        `envconfig:"AUTH_SECRET_KEY"`
+	AccessTokenExpireTTL time.Duration `envconfig:"AUTH_ACCESS_TOKEN_EXPIRE_TTL" default:"5m"`
+}
+
 type MongoDBConfig struct {
 	Host              string        `envconfig:"MONGODB_HOST"`
 	User              string        `envconfig:"MONGODB_USER"`
@@ -36,10 +41,12 @@ type AppConfig struct {
 	System        SystemConfig
 	MongoDB       MongoDBConfig
 	BackendGoTest BackendGolangTestGRPCConfig
+	Auth          AuthConfig
 }
 
 func (cfg *AppConfig) load() {
 	envconfig.MustProcess("", &cfg.System)
+	envconfig.MustProcess("", &cfg.Auth)
 	envconfig.MustProcess("", &cfg.MongoDB)
 	envconfig.MustProcess("", &cfg.BackendGoTest)
 }

@@ -9,6 +9,7 @@ package di
 import (
 	"github.com/google/wire"
 	"github.com/nuea/backend-golang-test/cmd/http/internal/handler"
+	auth2 "github.com/nuea/backend-golang-test/cmd/http/internal/handler/auth"
 	"github.com/nuea/backend-golang-test/cmd/http/internal/handler/user"
 	"github.com/nuea/backend-golang-test/cmd/http/internal/server"
 	"github.com/nuea/backend-golang-test/internal/client"
@@ -16,6 +17,10 @@ import (
 	"github.com/nuea/backend-golang-test/internal/client/mongodb"
 	"github.com/nuea/backend-golang-test/internal/config"
 	"github.com/nuea/backend-golang-test/internal/di"
+	"github.com/nuea/backend-golang-test/internal/middleware"
+	auth3 "github.com/nuea/backend-golang-test/internal/middleware/auth"
+	"github.com/nuea/backend-golang-test/internal/service"
+	"github.com/nuea/backend-golang-test/internal/service/auth"
 )
 
 // Injectors from di.go:
@@ -27,19 +32,31 @@ func InitContainer() (*Container, func(), error) {
 		return nil, nil, err
 	}
 	apiClient := backendgolangtest.ProvideBackendGolangTestServiceGRPC(appConfig)
-	userServiceClient := backendgolangtest.ProvideBackendGolangTestServiceClient(apiClient)
+	userServiceClient := backendgolangtest.ProvideUserServiceClient(apiClient)
+	authServiceClient := backendgolangtest.ProvideAuthServiceClient(apiClient)
 	backendGolangTestGRPCService := &backendgolangtest.BackendGolangTestGRPCService{
 		UserServiceClient: userServiceClient,
+		AuthServiceClient: authServiceClient,
 	}
 	clients := &client.Clients{
 		MongoDB:                      mongoDB,
 		BackendGolangTestGRPCService: backendGolangTestGRPCService,
 	}
+	authService := auth.ProvideAuthenticationService(appConfig, clients)
+	serviceService := &service.Service{
+		AuthService: authService,
+	}
+	authHandler := auth2.ProvideUserHandler(serviceService)
 	userHandler := user.ProvideUserHandler(clients)
 	handlers := &handler.Handlers{
+		AuthHandler: authHandler,
 		UserHandler: userHandler,
 	}
-	httpServer := server.ProvideHTTPServer(appConfig, handlers, clients)
+	authMiddleware := auth3.ProvideAuthMiddleware(serviceService)
+	middlewareMiddleware := &middleware.Middleware{
+		Auth: authMiddleware,
+	}
+	httpServer := server.ProvideHTTPServer(appConfig, handlers, clients, middlewareMiddleware)
 	container := &Container{
 		server: httpServer,
 	}

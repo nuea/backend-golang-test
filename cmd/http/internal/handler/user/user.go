@@ -46,7 +46,7 @@ func (h *Handler) Register(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, RegisterResponse{
+	ctx.JSON(http.StatusOK, &RegisterResponse{
 		Message: "Register success",
 	})
 }
@@ -80,7 +80,7 @@ func (h *Handler) GetUsers(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, GetUsersResponse{
+	ctx.JSON(http.StatusOK, &GetUsersResponse{
 		Data: datas,
 	})
 }
@@ -112,7 +112,7 @@ func (h *Handler) GetUser(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, GetUserResponse{
+	ctx.JSON(http.StatusOK, &GetUserResponse{
 		User: *user,
 	})
 }
@@ -145,7 +145,7 @@ func (h *Handler) UpdateUser(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, &DeleteUserResponse{
+	ctx.JSON(http.StatusOK, &UpdateUserResponse{
 		Message: "Update success",
 	})
 }

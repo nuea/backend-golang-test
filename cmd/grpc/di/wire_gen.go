@@ -9,6 +9,7 @@ package di
 import (
 	"github.com/google/wire"
 	"github.com/nuea/backend-golang-test/cmd/grpc/internal/handler"
+	"github.com/nuea/backend-golang-test/cmd/grpc/internal/handler/auth"
 	user2 "github.com/nuea/backend-golang-test/cmd/grpc/internal/handler/user"
 	"github.com/nuea/backend-golang-test/cmd/grpc/internal/server"
 	"github.com/nuea/backend-golang-test/internal/client"
@@ -29,9 +30,11 @@ func InitContainer() (*Container, func(), error) {
 		return nil, nil, err
 	}
 	apiClient := backendgolangtest.ProvideBackendGolangTestServiceGRPC(appConfig)
-	userServiceClient := backendgolangtest.ProvideBackendGolangTestServiceClient(apiClient)
+	userServiceClient := backendgolangtest.ProvideUserServiceClient(apiClient)
+	authServiceClient := backendgolangtest.ProvideAuthServiceClient(apiClient)
 	backendGolangTestGRPCService := &backendgolangtest.BackendGolangTestGRPCService{
 		UserServiceClient: userServiceClient,
+		AuthServiceClient: authServiceClient,
 	}
 	clients := &client.Clients{
 		MongoDB:                      mongoDB,
@@ -46,8 +49,14 @@ func InitContainer() (*Container, func(), error) {
 		cleanup()
 		return nil, nil, err
 	}
+	authServiceServer, err := auth.ProvideAuthGRPCService(repositoryRepository)
+	if err != nil {
+		cleanup()
+		return nil, nil, err
+	}
 	grpcServices := &handler.GrpcServices{
 		UserServiceServer: userServiceServer,
+		AuthServiceServer: authServiceServer,
 	}
 	grpcServer := server.ProvideGRPCServer(appConfig, grpcServices)
 	container := &Container{

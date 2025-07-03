@@ -12,27 +12,28 @@ import (
 	"github.com/nuea/backend-golang-test/cmd/http/internal/handler"
 	"github.com/nuea/backend-golang-test/internal/client"
 	"github.com/nuea/backend-golang-test/internal/config"
+	"github.com/nuea/backend-golang-test/internal/middleware"
 	"github.com/oklog/run"
 )
 
 type HTTPServer struct {
 	cfg    *config.AppConfig
-	Gin    *gin.Engine
-	Srv    *http.Server
+	gin    *gin.Engine
+	srv    *http.Server
 	client *client.Clients
 }
 
 func (s *HTTPServer) Serve() {
 	g := &run.Group{}
 	g.Add(func() error {
-		s.Srv = &http.Server{
+		s.srv = &http.Server{
 			Addr:    fmt.Sprintf(":%s", s.cfg.System.HTTPPort),
-			Handler: s.Gin.Handler(),
+			Handler: s.gin.Handler(),
 		}
-		log.Println("HTTP Server - started at ip address", s.Srv.Addr)
-		return s.Srv.ListenAndServe()
+		log.Println("HTTP Server - started at ip address", s.srv.Addr)
+		return s.srv.ListenAndServe()
 	}, func(error) {
-		if err := s.Srv.Shutdown(context.Background()); err != nil {
+		if err := s.srv.Shutdown(context.Background()); err != nil {
 			log.Println("Failed to close HTTP server")
 		}
 	})
@@ -45,22 +46,22 @@ func (s *HTTPServer) Serve() {
 	}
 }
 
-func (s *HTTPServer) load(h *handler.Handlers) {
-	registerRouter(s.Gin, h)
+func (s *HTTPServer) load(h *handler.Handlers, m *middleware.Middleware) {
+	registerRouter(s.gin, h, m)
 }
 
-func ProvideHTTPServer(cfg *config.AppConfig, h *handler.Handlers, c *client.Clients) *HTTPServer {
+func ProvideHTTPServer(cfg *config.AppConfig, h *handler.Handlers, c *client.Clients, m *middleware.Middleware) *HTTPServer {
 	sv := &HTTPServer{
 		cfg:    cfg,
-		Gin:    gin.New(),
-		Srv:    &http.Server{},
+		gin:    gin.New(),
+		srv:    &http.Server{},
 		client: c,
 	}
 
-	sv.load(h)
+	sv.load(h, m)
 
-	sv.Gin.Use(gin.Logger())
-	sv.Gin.Use(gin.Recovery())
+	sv.gin.Use(gin.Logger())
+	sv.gin.Use(gin.Recovery())
 
 	return sv
 }
