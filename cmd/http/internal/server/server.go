@@ -1,7 +1,9 @@
 package server
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -21,6 +23,11 @@ type HTTPServer struct {
 	gin    *gin.Engine
 	srv    *http.Server
 	client *client.Clients
+}
+
+type ResponseBodyWriter struct {
+	gin.ResponseWriter
+	body *bytes.Buffer
 }
 
 func (s *HTTPServer) Serve() {
@@ -46,6 +53,29 @@ func (s *HTTPServer) Serve() {
 	}
 }
 
+func WithRequestLoggerServer() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		log.Println("HTTP request -", "method:", c.Request.Method, ", path:", c.Request.URL.Path)
+		c.Next()
+	}
+}
+
+func WithResponseLoggerServer() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		wrapWriter := &ResponseBodyWriter{body: bytes.NewBufferString(""), ResponseWriter: c.Writer}
+		c.Writer = wrapWriter
+		c.Next()
+		if errs := c.Errors.Last(); errs == nil {
+			var body interface{}
+			if err := json.Unmarshal(wrapWriter.body.Bytes(), &body); err != nil {
+				log.Println("HTTP response -", "method:", c.Request.Method, ", path:", c.Request.URL.Path, ", http_status:", c.Writer.Status())
+			} else {
+				log.Println("HTTP response - ", "method", c.Request.Method, ", path", c.Request.URL.Path, ", http_status: ", c.Writer.Status(), ", response_body", body)
+			}
+		}
+	}
+}
+
 func (s *HTTPServer) load(h *handler.Handlers, m *middleware.Middleware) {
 	registerRouter(s.gin, h, m)
 }
@@ -57,11 +87,11 @@ func ProvideHTTPServer(cfg *config.AppConfig, h *handler.Handlers, c *client.Cli
 		srv:    &http.Server{},
 		client: c,
 	}
+	sv.gin.Use(WithRequestLoggerServer())
+	sv.gin.Use(WithResponseLoggerServer())
+	sv.gin.Use(gin.Recovery())
 
 	sv.load(h, m)
-
-	sv.gin.Use(gin.Logger())
-	sv.gin.Use(gin.Recovery())
 
 	return sv
 }

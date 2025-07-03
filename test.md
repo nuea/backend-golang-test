@@ -1,7 +1,8 @@
 # Backend Golang Coding Test
 ## Requirements
 
-### 1. User Model 
+
+[X] ### 1. User Model 
 Each user should have:
 - `ID` (auto-generated)
 - `Name` (string)
@@ -11,7 +12,7 @@ Each user should have:
 
 ---
 
-### 2. Authentication
+[X] ### 2. Authentication
 
 #### Functions
 - Register a new user.
@@ -24,7 +25,7 @@ Each user should have:
 
 ---
 
-### 3. User Functions
+[X] ### 3. User Functions
 
 - Create a new user.
 - Fetch user by ID.
@@ -34,13 +35,13 @@ Each user should have:
 
 ---
 
-### 4. MongoDB Integration
+[X] ### 4. MongoDB Integration
 - Use the official Go MongoDB driver.
 - Store and retrieve users from MongoDB.
 
 ---
 
-### 5. Middleware
+[X]### 5. Middleware
 - Logging middleware that logs HTTP method, path, and execution time.
 
 ---

@@ -11,6 +11,8 @@ import (
 
 	"github.com/nuea/backend-golang-test/cmd/grpc/internal/handler"
 	"github.com/nuea/backend-golang-test/internal/config"
+	"github.com/nuea/backend-golang-test/internal/repository"
+	"github.com/nuea/backend-golang-test/internal/repository/user"
 	"github.com/oklog/run"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -21,8 +23,9 @@ import (
 )
 
 type GRPCServer struct {
-	cfg *config.AppConfig
-	srv *grpc.Server
+	cfg      *config.AppConfig
+	srv      *grpc.Server
+	userrepo user.UserRepository
 }
 
 func (s *GRPCServer) Serve() {
@@ -42,6 +45,29 @@ func (s *GRPCServer) Serve() {
 		s.srv.Stop()
 	})
 
+	ctx, cancel := context.WithCancel(context.Background())
+	g.Add(func() error {
+		ticker := time.NewTicker(10 * time.Second)
+		defer ticker.Stop()
+
+		for {
+			select {
+			case <-ticker.C:
+				{
+					count, err := s.userrepo.Count(context.Background())
+					if err != nil {
+						log.Printf("Error counting users: %v", err)
+					}
+					log.Printf("Number of users in database: %d user", count)
+				}
+			case <-ctx.Done():
+				return nil
+			}
+		}
+	}, func(err error) {
+		cancel()
+	})
+
 	g.Add(run.SignalHandler(context.Background(), syscall.SIGINT, syscall.SIGTERM))
 	if err := g.Run(); err != nil {
 		log.Println("GRPC Server - failed")
@@ -49,7 +75,7 @@ func (s *GRPCServer) Serve() {
 	}
 }
 
-func ProvideGRPCServer(cfg *config.AppConfig, h *handler.GrpcServices) *GRPCServer {
+func ProvideGRPCServer(cfg *config.AppConfig, h *handler.GrpcServices, r *repository.Repository) *GRPCServer {
 	opt := make([]grpc.ServerOption, 0)
 	opt = append(opt, grpc.Creds(insecure.NewCredentials()))
 	opt = append(opt, grpc.KeepaliveParams(keepalive.ServerParameters{
@@ -58,8 +84,9 @@ func ProvideGRPCServer(cfg *config.AppConfig, h *handler.GrpcServices) *GRPCServ
 	}))
 
 	s := &GRPCServer{
-		cfg: cfg,
-		srv: grpc.NewServer(opt...),
+		cfg:      cfg,
+		srv:      grpc.NewServer(opt...),
+		userrepo: r.UserRepository,
 	}
 
 	handler.RegisterGrpcServices(s.srv, h)

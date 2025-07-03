@@ -19,6 +19,7 @@ type UserRepository interface {
 	FindByEmail(ctx context.Context, email types.Email) (user *User, err error)
 	Find(ctx context.Context, filter *UserFilter) (users []*User, err error)
 	ReplaceOne(ctx context.Context, id string, user *User) error
+	Count(ctx context.Context) (int64, error)
 }
 
 type repository struct {
@@ -102,4 +103,8 @@ func (r *repository) ReplaceOne(ctx context.Context, id string, user *User) erro
 		return err
 	}
 	return nil
+}
+
+func (r *repository) Count(ctx context.Context) (int64, error) {
+	return r.collection.CountDocuments(ctx, bson.M{"deleted_at": nil})
 }

@@ -58,7 +58,7 @@ func InitContainer() (*Container, func(), error) {
 		UserServiceServer: userServiceServer,
 		AuthServiceServer: authServiceServer,
 	}
-	grpcServer := server.ProvideGRPCServer(appConfig, grpcServices)
+	grpcServer := server.ProvideGRPCServer(appConfig, grpcServices, repositoryRepository)
 	container := &Container{
 		server: grpcServer,
 	}
