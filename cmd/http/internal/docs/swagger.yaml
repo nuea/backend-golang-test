@@ -1,0 +1,245 @@
+basePath: /
+definitions:
+  auth.LoginRequest:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  auth.LoginResponse:
+    properties:
+      access_token:
+        type: string
+    type: object
+  github_com_nuea_backend-golang-test_cmd_http_internal_handler_user.User:
+    properties:
+      created_at:
+        type: string
+      created_by:
+        type: string
+      deleted_at:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  user.CreateRequest:
+    properties:
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    - name
+    - password
+    type: object
+  user.CreateResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  user.DeleteUserResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  user.GetUserResponse:
+    properties:
+      created_at:
+        type: string
+      created_by:
+        type: string
+      deleted_at:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  user.GetUsersResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/github_com_nuea_backend-golang-test_cmd_http_internal_handler_user.User'
+        type: array
+    type: object
+  user.UpdateUserRequest:
+    properties:
+      emai:
+        type: string
+      name:
+        type: string
+    type: object
+  user.UpdateUserResponse:
+    properties:
+      message:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: API for http gateway
+  title: Admin Gateway
+  version: "1.0"
+paths:
+  /admin/v1/login:
+    post:
+      consumes:
+      - application/json
+      operationId: Login
+      parameters:
+      - description: req
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/auth.LoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/auth.LoginResponse'
+      tags:
+      - Auth
+  /admin/v1/users:
+    get:
+      consumes:
+      - application/json
+      operationId: GetUsers
+      parameters:
+      - in: formData
+        name: email
+        type: string
+      - in: formData
+        name: name
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.GetUsersResponse'
+      security:
+      - BearerAuth: []
+      tags:
+      - User
+  /admin/v1/users/{id}:
+    delete:
+      consumes:
+      - application/json
+      operationId: DeleteUser
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.DeleteUserResponse'
+      security:
+      - BearerAuth: []
+      tags:
+      - User
+    get:
+      consumes:
+      - application/json
+      operationId: GetUser
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.GetUserResponse'
+      security:
+      - BearerAuth: []
+      tags:
+      - User
+    patch:
+      consumes:
+      - application/json
+      operationId: UpdateUser
+      parameters:
+      - description: req
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/user.UpdateUserRequest'
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.UpdateUserResponse'
+      security:
+      - BearerAuth: []
+      tags:
+      - User
+  /api/v1/users:
+    post:
+      consumes:
+      - application/json
+      operationId: CreateUser
+      parameters:
+      - description: req
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/user.CreateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.CreateResponse'
+      tags:
+      - User
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+  DeviceID:
+    in: header
+    name: X-Device-Id
+    type: apiKey
+swagger: "2.0"

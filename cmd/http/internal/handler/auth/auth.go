@@ -21,6 +21,13 @@ func ProvideUserHandler(sv *service.Service) *Handler {
 	}
 }
 
+// @id Login
+// @accept  json
+// @produce  json
+// @tags Auth
+// @param req body LoginRequest true "req"
+// @success 200 {object} LoginResponse
+// @router /admin/v1/login [POST]
 func (h *Handler) Login(ctx *gin.Context) {
 	var req *LoginRequest
 	if err := ctx.ShouldBindBodyWithJSON(&req); err != nil {
