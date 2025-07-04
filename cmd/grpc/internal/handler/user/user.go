@@ -56,7 +56,6 @@ func (g *grpcService) CreateUser(ctx context.Context, req *userv1.CreateUserRequ
 }
 
 func (g *grpcService) GetUser(ctx context.Context, req *userv1.GetUserRequest) (*userv1.GetUserResponse, error) {
-
 	user, err := g.userrepo.FindByID(ctx, req.Id)
 	if err != nil {
 		return nil, err

@@ -98,8 +98,7 @@ func (r *repository) ReplaceOne(ctx context.Context, id string, user *User) erro
 		return err
 	}
 
-	_, err = r.collection.ReplaceOne(ctx, bson.M{"_id": objid}, user)
-	if err != nil {
+	if _, err = r.collection.ReplaceOne(ctx, bson.M{"_id": objid}, user); err != nil {
 		return err
 	}
 	return nil

@@ -10,13 +10,17 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/readpref"
 )
 
-type MongoDB struct {
+type MongoDB interface {
+	GetCollection(name string) *mongo.Collection
+}
+
+type mongoDB struct {
 	client  *mongo.Client
 	mongodb *mongo.Database
 	cfg     *config.MongoDBConfig
 }
 
-func (m *MongoDB) GetCollection(name string) *mongo.Collection {
+func (m *mongoDB) GetCollection(name string) *mongo.Collection {
 	if m.mongodb == nil {
 		return nil
 	}
@@ -30,7 +34,7 @@ func (m *MongoDB) GetCollection(name string) *mongo.Collection {
 	return m.mongodb.Collection(name)
 }
 
-func ProvideMongoDBClient(cfg *config.AppConfig) (*MongoDB, func(), error) {
+func ProvideMongoDBClient(cfg *config.AppConfig) (MongoDB, func(), error) {
 	opt := options.Client().ApplyURI(cfg.MongoDB.Host).
 		SetAuth(options.Credential{
 			Username: cfg.MongoDB.User,
@@ -52,7 +56,7 @@ func ProvideMongoDBClient(cfg *config.AppConfig) (*MongoDB, func(), error) {
 
 	log.Println("Start connecting to MongoDB:", cfg.MongoDB.DatabaseName)
 
-	return &MongoDB{
+	return &mongoDB{
 			cfg:     &cfg.MongoDB,
 			client:  client,
 			mongodb: mongodb,

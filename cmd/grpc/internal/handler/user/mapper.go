@@ -7,6 +7,10 @@ import (
 )
 
 func mapGRPCUser(user *user.User) (*userv1.User, error) {
+	if user == nil {
+		return nil, nil
+	}
+
 	response := &userv1.User{
 		Id:        user.ID.Hex(),
 		Name:      user.Name,

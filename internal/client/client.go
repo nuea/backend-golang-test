@@ -11,7 +11,7 @@ type GRPCClients struct {
 }
 
 type Clients struct {
-	MongoDB *mongodb.MongoDB
+	MongoDB mongodb.MongoDB
 }
 
 var ClientSet = wire.NewSet(

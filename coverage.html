@@ -1,0 +1,3007 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>di: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">github.com/nuea/backend-golang-test/cmd/grpc/di/container.go (0.0%)</option>
+				
+				<option value="file1">github.com/nuea/backend-golang-test/cmd/grpc/di/wire_gen.go (0.0%)</option>
+				
+				<option value="file2">github.com/nuea/backend-golang-test/cmd/grpc/internal/handler/auth/auth.go (100.0%)</option>
+				
+				<option value="file3">github.com/nuea/backend-golang-test/cmd/grpc/internal/handler/handler.go (0.0%)</option>
+				
+				<option value="file4">github.com/nuea/backend-golang-test/cmd/grpc/internal/handler/user/mapper.go (66.7%)</option>
+				
+				<option value="file5">github.com/nuea/backend-golang-test/cmd/grpc/internal/handler/user/user.go (96.8%)</option>
+				
+				<option value="file6">github.com/nuea/backend-golang-test/cmd/grpc/internal/server/server.go (0.0%)</option>
+				
+				<option value="file7">github.com/nuea/backend-golang-test/cmd/grpc/main.go (0.0%)</option>
+				
+				<option value="file8">github.com/nuea/backend-golang-test/cmd/http/di/container.go (0.0%)</option>
+				
+				<option value="file9">github.com/nuea/backend-golang-test/cmd/http/di/wire_gen.go (0.0%)</option>
+				
+				<option value="file10">github.com/nuea/backend-golang-test/cmd/http/internal/handler/auth/auth.go (0.0%)</option>
+				
+				<option value="file11">github.com/nuea/backend-golang-test/cmd/http/internal/handler/user/mapper.go (0.0%)</option>
+				
+				<option value="file12">github.com/nuea/backend-golang-test/cmd/http/internal/handler/user/user.go (0.0%)</option>
+				
+				<option value="file13">github.com/nuea/backend-golang-test/cmd/http/internal/server/router.go (0.0%)</option>
+				
+				<option value="file14">github.com/nuea/backend-golang-test/cmd/http/internal/server/server.go (0.0%)</option>
+				
+				<option value="file15">github.com/nuea/backend-golang-test/cmd/http/main.go (0.0%)</option>
+				
+				<option value="file16">github.com/nuea/backend-golang-test/internal/client/backendgolangtest/backendgolangtest.go (0.0%)</option>
+				
+				<option value="file17">github.com/nuea/backend-golang-test/internal/client/mongodb/mongodb.go (0.0%)</option>
+				
+				<option value="file18">github.com/nuea/backend-golang-test/internal/config/config.go (0.0%)</option>
+				
+				<option value="file19">github.com/nuea/backend-golang-test/internal/middleware/auth/auth.go (0.0%)</option>
+				
+				<option value="file20">github.com/nuea/backend-golang-test/internal/repository/user/model.go (66.7%)</option>
+				
+				<option value="file21">github.com/nuea/backend-golang-test/internal/repository/user/user.go (100.0%)</option>
+				
+				<option value="file22">github.com/nuea/backend-golang-test/internal/service/auth/auth.go (0.0%)</option>
+				
+				<option value="file23">github.com/nuea/backend-golang-test/internal/types/types.go (0.0%)</option>
+				
+				<option value="file24">github.com/nuea/backend-golang-test/internal/util/util.go (0.0%)</option>
+				
+				<option value="file25">github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1/auth.pb.go (0.0%)</option>
+				
+				<option value="file26">github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1/auth_grpc.pb.go (0.0%)</option>
+				
+				<option value="file27">github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1/user.pb.go (0.0%)</option>
+				
+				<option value="file28">github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1/user_grpc.pb.go (0.0%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">not covered</span>
+				<span class="cov8">covered</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">package di
+
+import "github.com/nuea/backend-golang-test/cmd/grpc/internal/server"
+
+type Container struct {
+        server *server.GRPCServer
+}
+
+func (c *Container) Run() <span class="cov0" title="0">{
+        c.server.Serve()
+}</span>
+</pre>
+		
+		<pre class="file" id="file1" style="display: none">// Code generated by Wire. DO NOT EDIT.
+
+//go:generate go run -mod=mod github.com/google/wire/cmd/wire
+//go:build !wireinject
+// +build !wireinject
+
+package di
+
+import (
+        "github.com/google/wire"
+        "github.com/nuea/backend-golang-test/cmd/grpc/internal/handler"
+        "github.com/nuea/backend-golang-test/cmd/grpc/internal/handler/auth"
+        user2 "github.com/nuea/backend-golang-test/cmd/grpc/internal/handler/user"
+        "github.com/nuea/backend-golang-test/cmd/grpc/internal/server"
+        "github.com/nuea/backend-golang-test/internal/client"
+        "github.com/nuea/backend-golang-test/internal/client/mongodb"
+        "github.com/nuea/backend-golang-test/internal/config"
+        "github.com/nuea/backend-golang-test/internal/di"
+        "github.com/nuea/backend-golang-test/internal/repository"
+        "github.com/nuea/backend-golang-test/internal/repository/user"
+)
+
+// Injectors from di.go:
+
+func InitContainer() (*Container, func(), error) <span class="cov0" title="0">{
+        appConfig := config.ProvideCofig()
+        mongoDB, cleanup, err := mongodb.ProvideMongoDBClient(appConfig)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, nil, err
+        }</span>
+        <span class="cov0" title="0">clients := &amp;client.Clients{
+                MongoDB: mongoDB,
+        }
+        userRepository := user.ProvideUserRepository(clients)
+        repositoryRepository := &amp;repository.Repository{
+                UserRepository: userRepository,
+        }
+        userServiceServer, err := user2.ProvideUserGRPCService(repositoryRepository)
+        if err != nil </span><span class="cov0" title="0">{
+                cleanup()
+                return nil, nil, err
+        }</span>
+        <span class="cov0" title="0">authServiceServer, err := auth.ProvideAuthGRPCService(repositoryRepository)
+        if err != nil </span><span class="cov0" title="0">{
+                cleanup()
+                return nil, nil, err
+        }</span>
+        <span class="cov0" title="0">grpcServices := &amp;handler.GrpcServices{
+                UserServiceServer: userServiceServer,
+                AuthServiceServer: authServiceServer,
+        }
+        grpcServer := server.ProvideGRPCServer(appConfig, grpcServices, repositoryRepository)
+        container := &amp;Container{
+                server: grpcServer,
+        }
+        return container, func() </span><span class="cov0" title="0">{
+                cleanup()
+        }</span>, nil
+}
+
+// di.go:
+
+var MainSet = wire.NewSet(di.InternalSet, ProviderSet, handler.HandlerSet, wire.Struct(new(Container), "*"))
+</pre>
+		
+		<pre class="file" id="file2" style="display: none">package auth
+
+import (
+        "context"
+
+        "github.com/nuea/backend-golang-test/internal/repository"
+        "github.com/nuea/backend-golang-test/internal/repository/user"
+        "github.com/nuea/backend-golang-test/internal/types"
+        userv1 "github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1"
+        "google.golang.org/grpc/codes"
+        "google.golang.org/grpc/status"
+)
+
+type grpcService struct {
+        userv1.UnimplementedAuthServiceServer
+        userrepo user.UserRepository
+}
+
+func ProvideAuthGRPCService(repo *repository.Repository) (userv1.AuthServiceServer, error) <span class="cov8" title="1">{
+        return &amp;grpcService{
+                userrepo: repo.UserRepository,
+        }, nil
+}</span>
+
+func (g *grpcService) Login(ctx context.Context, req *userv1.LoginRequest) (*userv1.LoginResponse, error) <span class="cov8" title="1">{
+        email, err := types.NewEmail(req.Email)
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, status.Error(codes.InvalidArgument, err.Error())
+        }</span>
+
+        <span class="cov8" title="1">user, err := g.userrepo.FindByEmail(ctx, email)
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">if !types.NewHashString(user.Password).Equal(req.Password) </span><span class="cov8" title="1">{
+                return nil, status.Error(codes.InvalidArgument, "Password is invalid.")
+        }</span>
+
+        <span class="cov8" title="1">return &amp;userv1.LoginResponse{
+                UserId: user.ID.Hex(),
+        }, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file3" style="display: none">package handler
+
+import (
+        "github.com/google/wire"
+        "github.com/nuea/backend-golang-test/cmd/grpc/internal/handler/auth"
+        "github.com/nuea/backend-golang-test/cmd/grpc/internal/handler/user"
+        userv1 "github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1"
+        "google.golang.org/grpc"
+)
+
+type GrpcServices struct {
+        userv1.UserServiceServer
+        userv1.AuthServiceServer
+}
+
+func RegisterGrpcServices(sv *grpc.Server, h *GrpcServices) <span class="cov0" title="0">{
+        userv1.RegisterUserServiceServer(sv, h)
+        userv1.RegisterAuthServiceServer(sv, h)
+}</span>
+
+var HandlerSet = wire.NewSet(
+        user.ProvideUserGRPCService,
+        auth.ProvideAuthGRPCService,
+
+        wire.Struct(new(GrpcServices), "*"),
+)
+</pre>
+		
+		<pre class="file" id="file4" style="display: none">package user
+
+import (
+        "github.com/nuea/backend-golang-test/internal/repository/user"
+        userv1 "github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1"
+        "google.golang.org/protobuf/types/known/timestamppb"
+)
+
+func mapGRPCUser(user *user.User) (*userv1.User, error) <span class="cov8" title="1">{
+        if user == nil </span><span class="cov0" title="0">{
+                return nil, nil
+        }</span>
+
+        <span class="cov8" title="1">response := &amp;userv1.User{
+                Id:        user.ID.Hex(),
+                Name:      user.Name,
+                Email:     string(user.Email),
+                CreatedBy: user.CreatedBy,
+                CreatedAt: timestamppb.New(user.CreatedAt),
+                UpdatedAt: timestamppb.New(user.UpdatedAt),
+        }
+
+        if user.DeletedAt != nil </span><span class="cov0" title="0">{
+                response.DeletedAt = timestamppb.New(*user.DeletedAt)
+        }</span>
+
+        <span class="cov8" title="1">return response, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file5" style="display: none">package user
+
+import (
+        "context"
+        "time"
+
+        "github.com/gotidy/ptr"
+        "github.com/nuea/backend-golang-test/internal/repository"
+        "github.com/nuea/backend-golang-test/internal/repository/user"
+        "github.com/nuea/backend-golang-test/internal/types"
+        "github.com/nuea/backend-golang-test/internal/util"
+        userv1 "github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1"
+        "google.golang.org/grpc/codes"
+        "google.golang.org/grpc/status"
+)
+
+type grpcService struct {
+        userv1.UnimplementedUserServiceServer
+        userrepo user.UserRepository
+}
+
+func ProvideUserGRPCService(repo *repository.Repository) (userv1.UserServiceServer, error) <span class="cov8" title="1">{
+        return &amp;grpcService{
+                userrepo: repo.UserRepository,
+        }, nil
+}</span>
+
+func (g *grpcService) CreateUser(ctx context.Context, req *userv1.CreateUserRequest) (*userv1.CreateUserResponse, error) <span class="cov8" title="1">{
+        var email types.Email
+        var err error
+        if req.Email != "" </span><span class="cov8" title="1">{
+                email, err = types.NewEmail(req.Email)
+                if err != nil </span><span class="cov8" title="1">{
+                        return nil, status.Error(codes.InvalidArgument, err.Error())
+                }</span>
+        }
+
+        <span class="cov8" title="1">newuser := user.NewUser()
+        newuser.Name = req.Name
+        newuser.Email = email
+
+        newuser.Password, err = types.NewHashString(req.Password).Hash()
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, status.Error(codes.InvalidArgument, err.Error())
+        }</span>
+
+        <span class="cov8" title="1">if req.CreatedBy != nil </span><span class="cov8" title="1">{
+                newuser.CreatedBy = req.CreatedBy
+        }</span>
+        <span class="cov8" title="1">newuser.CreatedBy = req.CreatedBy
+
+        if err := g.userrepo.InsertOne(ctx, newuser); err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+        <span class="cov8" title="1">return &amp;userv1.CreateUserResponse{}, nil</span>
+}
+
+func (g *grpcService) GetUser(ctx context.Context, req *userv1.GetUserRequest) (*userv1.GetUserResponse, error) <span class="cov8" title="1">{
+        user, err := g.userrepo.FindByID(ctx, req.Id)
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">data, err := mapGRPCUser(user)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov8" title="1">return &amp;userv1.GetUserResponse{User: data}, nil</span>
+}
+
+func (g *grpcService) GetUsers(ctx context.Context, req *userv1.GetUsersRequest) (*userv1.GetUsersResponse, error) <span class="cov8" title="1">{
+        f := &amp;user.UserFilter{}
+        if req.Name != nil </span><span class="cov8" title="1">{
+                f.Name = *req.Name
+        }</span>
+        <span class="cov8" title="1">if req.Email != nil </span><span class="cov8" title="1">{
+                email, err := types.NewEmail(*req.Email)
+                if err != nil </span><span class="cov8" title="1">{
+                        return nil, status.Error(codes.InvalidArgument, err.Error())
+                }</span>
+                <span class="cov8" title="1">f.Email = email</span>
+        }
+        <span class="cov8" title="1">users, err := g.userrepo.Find(ctx, f)
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+        <span class="cov8" title="1">datas, err := util.MapToSlice(mapGRPCUser, users)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov8" title="1">return &amp;userv1.GetUsersResponse{
+                Data: datas,
+        }, nil</span>
+}
+
+func (g *grpcService) UpdateUser(ctx context.Context, req *userv1.UpdateUserRequest) (*userv1.UpdateUserResponse, error) <span class="cov8" title="1">{
+        user, err := g.userrepo.FindByID(ctx, req.Id)
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">if req.Name != nil </span><span class="cov8" title="1">{
+                user.Name = *req.Name
+        }</span>
+
+        <span class="cov8" title="1">if req.Email != nil </span><span class="cov8" title="1">{
+                email, err := types.NewEmail(*req.Email)
+                if err != nil </span><span class="cov8" title="1">{
+                        return nil, status.Error(codes.InvalidArgument, err.Error())
+                }</span>
+                <span class="cov8" title="1">user.Email = email</span>
+        }
+        <span class="cov8" title="1">user.UpdatedAt = time.Now().UTC()
+
+        if err := g.userrepo.ReplaceOne(ctx, req.Id, user); err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">return &amp;userv1.UpdateUserResponse{}, nil</span>
+}
+
+func (g *grpcService) DeleteUser(ctx context.Context, req *userv1.DeleteUserRequest) (*userv1.DeleteUserResponse, error) <span class="cov8" title="1">{
+        user, err := g.userrepo.FindByID(ctx, req.Id)
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">user.UpdatedAt = time.Now().UTC()
+        user.DeletedAt = ptr.Time(time.Now().UTC())
+
+        if err := g.userrepo.ReplaceOne(ctx, req.Id, user); err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">return &amp;userv1.DeleteUserResponse{}, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file6" style="display: none">package server
+
+import (
+        "context"
+        "fmt"
+        "log"
+        "net"
+        "os"
+        "syscall"
+        "time"
+
+        "github.com/nuea/backend-golang-test/cmd/grpc/internal/handler"
+        "github.com/nuea/backend-golang-test/internal/config"
+        "github.com/nuea/backend-golang-test/internal/repository"
+        "github.com/nuea/backend-golang-test/internal/repository/user"
+        "github.com/oklog/run"
+        "google.golang.org/grpc"
+        "google.golang.org/grpc/credentials/insecure"
+        "google.golang.org/grpc/health"
+        healthgrpc "google.golang.org/grpc/health/grpc_health_v1"
+        "google.golang.org/grpc/keepalive"
+        "google.golang.org/grpc/reflection"
+)
+
+type GRPCServer struct {
+        cfg      *config.AppConfig
+        srv      *grpc.Server
+        userrepo user.UserRepository
+}
+
+func (s *GRPCServer) Serve() <span class="cov0" title="0">{
+        g := &amp;run.Group{}
+        g.Add(func() error </span><span class="cov0" title="0">{
+                ipaddr := fmt.Sprintf(":%s", s.cfg.System.GRPCPort)
+                lis, err := net.Listen("tcp", ipaddr)
+                if err != nil </span><span class="cov0" title="0">{
+                        panic(err)</span>
+                }
+
+                <span class="cov0" title="0">log.Println("GRPC Server - started at ip address", ipaddr)
+                s.srv.Serve(lis)
+                return nil</span>
+        }, func(err error) <span class="cov0" title="0">{
+                s.srv.GracefulStop()
+                s.srv.Stop()
+        }</span>)
+
+        <span class="cov0" title="0">ctx, cancel := context.WithCancel(context.Background())
+        g.Add(func() error </span><span class="cov0" title="0">{
+                ticker := time.NewTicker(10 * time.Second)
+                defer ticker.Stop()
+
+                for </span><span class="cov0" title="0">{
+                        select </span>{
+                        case &lt;-ticker.C:<span class="cov0" title="0">
+                                </span><span class="cov0" title="0">{
+                                        count, err := s.userrepo.Count(context.Background())
+                                        if err != nil </span><span class="cov0" title="0">{
+                                                log.Printf("Error counting users: %v", err)
+                                        }</span>
+                                        <span class="cov0" title="0">log.Printf("Number of users in database: %d user", count)</span>
+                                }
+                        case &lt;-ctx.Done():<span class="cov0" title="0">
+                                return nil</span>
+                        }
+                }
+        }, func(err error) <span class="cov0" title="0">{
+                cancel()
+        }</span>)
+
+        <span class="cov0" title="0">g.Add(run.SignalHandler(context.Background(), syscall.SIGINT, syscall.SIGTERM))
+        if err := g.Run(); err != nil </span><span class="cov0" title="0">{
+                log.Println("GRPC Server - failed")
+                os.Exit(1)
+        }</span>
+}
+
+func ProvideGRPCServer(cfg *config.AppConfig, h *handler.GrpcServices, r *repository.Repository) *GRPCServer <span class="cov0" title="0">{
+        opt := make([]grpc.ServerOption, 0)
+        opt = append(opt, grpc.Creds(insecure.NewCredentials()))
+        opt = append(opt, grpc.KeepaliveParams(keepalive.ServerParameters{
+                Time:    2 * time.Hour,
+                Timeout: 20 * time.Second,
+        }))
+
+        s := &amp;GRPCServer{
+                cfg:      cfg,
+                srv:      grpc.NewServer(opt...),
+                userrepo: r.UserRepository,
+        }
+
+        handler.RegisterGrpcServices(s.srv, h)
+        healthgrpc.RegisterHealthServer(s.srv, health.NewServer())
+        reflection.Register(s.srv)
+
+        return s
+}</span>
+</pre>
+		
+		<pre class="file" id="file7" style="display: none">package main
+
+import (
+        "log"
+
+        "github.com/nuea/backend-golang-test/cmd/grpc/di"
+)
+
+func main() <span class="cov0" title="0">{
+        ctn, stop, err := di.InitContainer()
+        if err != nil </span><span class="cov0" title="0">{
+                log.Panicf("Unable to start service. Error: %s", err)
+        }</span>
+        <span class="cov0" title="0">defer stop()
+        ctn.Run()</span>
+}
+</pre>
+		
+		<pre class="file" id="file8" style="display: none">package di
+
+import (
+        "github.com/nuea/backend-golang-test/cmd/http/internal/server"
+)
+
+type Container struct {
+        server *server.HTTPServer
+}
+
+func (c *Container) Run() <span class="cov0" title="0">{
+        c.server.Serve()
+}</span>
+</pre>
+		
+		<pre class="file" id="file9" style="display: none">// Code generated by Wire. DO NOT EDIT.
+
+//go:generate go run -mod=mod github.com/google/wire/cmd/wire
+//go:build !wireinject
+// +build !wireinject
+
+package di
+
+import (
+        "github.com/google/wire"
+        "github.com/nuea/backend-golang-test/cmd/http/internal/handler"
+        auth2 "github.com/nuea/backend-golang-test/cmd/http/internal/handler/auth"
+        "github.com/nuea/backend-golang-test/cmd/http/internal/handler/user"
+        "github.com/nuea/backend-golang-test/cmd/http/internal/server"
+        "github.com/nuea/backend-golang-test/internal/client"
+        "github.com/nuea/backend-golang-test/internal/client/backendgolangtest"
+        "github.com/nuea/backend-golang-test/internal/config"
+        "github.com/nuea/backend-golang-test/internal/di"
+        "github.com/nuea/backend-golang-test/internal/middleware"
+        auth3 "github.com/nuea/backend-golang-test/internal/middleware/auth"
+        "github.com/nuea/backend-golang-test/internal/service"
+        "github.com/nuea/backend-golang-test/internal/service/auth"
+)
+
+// Injectors from di.go:
+
+func InitContainer() (*Container, func(), error) <span class="cov0" title="0">{
+        appConfig := config.ProvideCofig()
+        apiClient := backendgolangtest.ProvideBackendGolangTestServiceGRPC(appConfig)
+        userServiceClient := backendgolangtest.ProvideUserServiceClient(apiClient)
+        authServiceClient := backendgolangtest.ProvideAuthServiceClient(apiClient)
+        backendGolangTestGRPCService := &amp;backendgolangtest.BackendGolangTestGRPCService{
+                UserServiceClient: userServiceClient,
+                AuthServiceClient: authServiceClient,
+        }
+        grpcClients := &amp;client.GRPCClients{
+                BackendGolangTestGRPCService: backendGolangTestGRPCService,
+        }
+        authService := auth.ProvideAuthenticationService(appConfig, grpcClients)
+        serviceService := &amp;service.Service{
+                AuthService: authService,
+        }
+        authHandler := auth2.ProvideUserHandler(serviceService)
+        userHandler := user.ProvideUserHandler(grpcClients)
+        handlers := &amp;handler.Handlers{
+                AuthHandler: authHandler,
+                UserHandler: userHandler,
+        }
+        authMiddleware := auth3.ProvideAuthMiddleware(serviceService)
+        middlewareMiddleware := &amp;middleware.Middleware{
+                Auth: authMiddleware,
+        }
+        httpServer := server.ProvideHTTPServer(appConfig, handlers, middlewareMiddleware)
+        container := &amp;Container{
+                server: httpServer,
+        }
+        return container, func() </span>{<span class="cov0" title="0">
+        }</span>, nil
+}
+
+// di.go:
+
+var MainSet = wire.NewSet(di.InternalSet, ProviderSet, handler.HandlerSet, wire.Struct(new(Container), "*"))
+</pre>
+		
+		<pre class="file" id="file10" style="display: none">package auth
+
+import (
+        "net/http"
+
+        "github.com/gin-gonic/gin"
+        "github.com/kurzgesagtz/xgo/xlog"
+        "github.com/nuea/backend-golang-test/internal/service"
+        "github.com/nuea/backend-golang-test/internal/service/auth"
+        "github.com/nuea/backend-golang-test/internal/util"
+        userv1 "github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1"
+)
+
+type Handler struct {
+        authsv auth.AuthService
+}
+
+func ProvideUserHandler(sv *service.Service) *Handler <span class="cov0" title="0">{
+        return &amp;Handler{
+                authsv: sv.AuthService,
+        }
+}</span>
+
+func (h *Handler) Login(ctx *gin.Context) <span class="cov0" title="0">{
+        var req *LoginRequest
+        if err := ctx.ShouldBindBodyWithJSON(&amp;req); err != nil </span><span class="cov0" title="0">{
+                ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+                        "error": err.Error(),
+                })
+                return
+        }</span>
+
+        <span class="cov0" title="0">if err := util.ValidateStruct(req); err != nil </span><span class="cov0" title="0">{
+                ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+                        "error": err.Error(),
+                })
+                return
+        }</span>
+
+        <span class="cov0" title="0">gReq := &amp;userv1.LoginRequest{
+                Email:    req.Email,
+                Password: req.Password,
+        }
+
+        ac, err := h.authsv.Login(ctx, gReq)
+        if err != nil </span><span class="cov0" title="0">{
+                xlog.PrettyPrint(err)
+                ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
+                        "error": err.Error(),
+                })
+                return
+        }</span>
+
+        <span class="cov0" title="0">ctx.JSON(http.StatusOK, &amp;LoginResponse{
+                AccessToken: ac,
+        })</span>
+}
+</pre>
+		
+		<pre class="file" id="file11" style="display: none">package user
+
+import (
+        "github.com/gotidy/ptr"
+        userv1 "github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1"
+)
+
+func mapToUser(user *userv1.User) (*User, error) <span class="cov0" title="0">{
+        response := &amp;User{
+                ID:        user.Id,
+                Name:      user.Name,
+                Email:     user.Email,
+                CreatedBy: user.CreatedBy,
+                CreatedAt: user.CreatedAt.AsTime(),
+                UpdatedAt: user.UpdatedAt.AsTime(),
+        }
+
+        if user.DeletedAt != nil </span><span class="cov0" title="0">{
+                response.DeletedAt = ptr.Of(user.DeletedAt.AsTime())
+        }</span>
+
+        <span class="cov0" title="0">return response, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file12" style="display: none">package user
+
+import (
+        "net/http"
+
+        "github.com/gin-gonic/gin"
+        "github.com/nuea/backend-golang-test/internal/client"
+        "github.com/nuea/backend-golang-test/internal/util"
+        userv1 "github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1"
+)
+
+type Handler struct {
+        begotc userv1.UserServiceClient
+}
+
+func ProvideUserHandler(c *client.GRPCClients) *Handler <span class="cov0" title="0">{
+        return &amp;Handler{
+                begotc: c.BackendGolangTestGRPCService.UserServiceClient,
+        }
+}</span>
+
+func (h *Handler) Register(ctx *gin.Context) <span class="cov0" title="0">{
+        var req *RegisterRequest
+        if err := ctx.ShouldBindBodyWithJSON(&amp;req); err != nil </span><span class="cov0" title="0">{
+                ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+                        "error": err.Error(),
+                })
+                return
+        }</span>
+
+        <span class="cov0" title="0">if err := util.ValidateStruct(req); err != nil </span><span class="cov0" title="0">{
+                ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+                        "error": err.Error(),
+                })
+                return
+        }</span>
+
+        <span class="cov0" title="0">if _, err := h.begotc.CreateUser(ctx, &amp;userv1.CreateUserRequest{
+                Name:     req.Name,
+                Email:    req.Email,
+                Password: req.Password,
+        }); err != nil </span><span class="cov0" title="0">{
+                ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
+                        "error": err.Error(),
+                })
+                return
+        }</span>
+
+        <span class="cov0" title="0">ctx.JSON(http.StatusOK, &amp;RegisterResponse{
+                Message: "Register success",
+        })</span>
+}
+
+func (h *Handler) GetUsers(ctx *gin.Context) <span class="cov0" title="0">{
+        var req GetUsersRequest
+
+        if err := ctx.ShouldBind(&amp;req); err != nil </span><span class="cov0" title="0">{
+                ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+                        "error": err.Error(),
+                })
+                return
+        }</span>
+
+        <span class="cov0" title="0">users, err := h.begotc.GetUsers(ctx, &amp;userv1.GetUsersRequest{
+                Name:  req.Name,
+                Email: req.Email,
+        })
+        if err != nil </span><span class="cov0" title="0">{
+                ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
+                        "error": err.Error(),
+                })
+                return
+        }</span>
+
+        <span class="cov0" title="0">datas, err := util.MapToSlice(mapToUser, users.Data)
+        if err != nil </span><span class="cov0" title="0">{
+                ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
+                        "error": err.Error(),
+                })
+                return
+        }</span>
+
+        <span class="cov0" title="0">ctx.JSON(http.StatusOK, &amp;GetUsersResponse{
+                Data: datas,
+        })</span>
+}
+
+func (h *Handler) GetUser(ctx *gin.Context) <span class="cov0" title="0">{
+        id := ctx.Param("id")
+        if id == "" </span><span class="cov0" title="0">{
+                ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+                        "error": "path parameter is missing.",
+                })
+                return
+        }</span>
+
+        <span class="cov0" title="0">gRes, err := h.begotc.GetUser(ctx, &amp;userv1.GetUserRequest{
+                Id: id,
+        })
+        if err != nil </span><span class="cov0" title="0">{
+                ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
+                        "error": err.Error(),
+                })
+                return
+        }</span>
+
+        <span class="cov0" title="0">user, err := mapToUser(gRes.User)
+        if err != nil </span><span class="cov0" title="0">{
+                ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
+                        "error": err.Error(),
+                })
+                return
+        }</span>
+
+        <span class="cov0" title="0">ctx.JSON(http.StatusOK, &amp;GetUserResponse{
+                User: *user,
+        })</span>
+}
+
+func (h *Handler) UpdateUser(ctx *gin.Context) <span class="cov0" title="0">{
+        id := ctx.Param("id")
+        if id == "" </span><span class="cov0" title="0">{
+                ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+                        "error": "path parameter is missing.",
+                })
+                return
+        }</span>
+
+        <span class="cov0" title="0">var req *UpdateUserRequest
+        if err := ctx.ShouldBindBodyWithJSON(&amp;req); err != nil </span><span class="cov0" title="0">{
+                ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+                        "error": err.Error(),
+                })
+                return
+        }</span>
+
+        <span class="cov0" title="0">if _, err := h.begotc.UpdateUser(ctx, &amp;userv1.UpdateUserRequest{
+                Id:    id,
+                Name:  req.Name,
+                Email: req.Email,
+        }); err != nil </span><span class="cov0" title="0">{
+                ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
+                        "error": err.Error(),
+                })
+                return
+        }</span>
+
+        <span class="cov0" title="0">ctx.JSON(http.StatusOK, &amp;UpdateUserResponse{
+                Message: "Update success",
+        })</span>
+}
+
+func (h *Handler) DeleteUser(ctx *gin.Context) <span class="cov0" title="0">{
+        id := ctx.Param("id")
+        if id == "" </span><span class="cov0" title="0">{
+                ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+                        "error": "path parameter is missing.",
+                })
+                return
+        }</span>
+
+        <span class="cov0" title="0">if _, err := h.begotc.DeleteUser(ctx, &amp;userv1.DeleteUserRequest{
+                Id: id,
+        }); err != nil </span><span class="cov0" title="0">{
+                ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
+                        "error": err.Error(),
+                })
+                return
+        }</span>
+
+        <span class="cov0" title="0">ctx.JSON(http.StatusOK, &amp;DeleteUserResponse{
+                Message: "Delete success",
+        })</span>
+}
+</pre>
+		
+		<pre class="file" id="file13" style="display: none">package server
+
+import (
+        "github.com/gin-gonic/gin"
+        "github.com/nuea/backend-golang-test/cmd/http/internal/handler"
+        "github.com/nuea/backend-golang-test/internal/middleware"
+)
+
+func registerRouter(gin *gin.Engine, h *handler.Handlers, m *middleware.Middleware) <span class="cov0" title="0">{
+        router := *gin.Group("/api/v1")
+        </span><span class="cov0" title="0">{
+                router.POST("/login", h.AuthHandler.Login)
+                router.POST("/register", h.UserHandler.Register)
+
+                router.Use(m.Auth.Middleware())
+                router.GET("/users", h.UserHandler.GetUsers)
+                router.GET("/users/:id", h.UserHandler.GetUser)
+                router.PATCH("/users/:id", h.UserHandler.UpdateUser)
+                router.DELETE("/users/:id", h.UserHandler.DeleteUser)
+        }</span>
+}
+</pre>
+		
+		<pre class="file" id="file14" style="display: none">package server
+
+import (
+        "bytes"
+        "context"
+        "encoding/json"
+        "fmt"
+        "log"
+        "net/http"
+        "os"
+        "syscall"
+
+        "github.com/gin-gonic/gin"
+        "github.com/nuea/backend-golang-test/cmd/http/internal/handler"
+        "github.com/nuea/backend-golang-test/internal/config"
+        "github.com/nuea/backend-golang-test/internal/middleware"
+        "github.com/oklog/run"
+)
+
+type HTTPServer struct {
+        cfg *config.AppConfig
+        gin *gin.Engine
+        srv *http.Server
+}
+
+type ResponseBodyWriter struct {
+        gin.ResponseWriter
+        body *bytes.Buffer
+}
+
+func (s *HTTPServer) Serve() <span class="cov0" title="0">{
+        g := &amp;run.Group{}
+        g.Add(func() error </span><span class="cov0" title="0">{
+                s.srv = &amp;http.Server{
+                        Addr:    fmt.Sprintf(":%s", s.cfg.System.HTTPPort),
+                        Handler: s.gin.Handler(),
+                }
+                log.Println("HTTP Server - started at ip address", s.srv.Addr)
+                return s.srv.ListenAndServe()
+        }</span>, func(error) <span class="cov0" title="0">{
+                if err := s.srv.Shutdown(context.Background()); err != nil </span><span class="cov0" title="0">{
+                        log.Println("Failed to close HTTP server")
+                }</span>
+        })
+
+        <span class="cov0" title="0">g.Add(run.SignalHandler(context.Background(), syscall.SIGINT, syscall.SIGTERM))
+
+        if err := g.Run(); err != nil </span><span class="cov0" title="0">{
+                log.Println("HTTP Server - failed")
+                os.Exit(1)
+        }</span>
+}
+
+func WithRequestLoggerServer() gin.HandlerFunc <span class="cov0" title="0">{
+        return func(c *gin.Context) </span><span class="cov0" title="0">{
+                log.Println("HTTP request -", "method:", c.Request.Method, ", path:", c.Request.URL.Path)
+                c.Next()
+        }</span>
+}
+
+func WithResponseLoggerServer() gin.HandlerFunc <span class="cov0" title="0">{
+        return func(c *gin.Context) </span><span class="cov0" title="0">{
+                wrapWriter := &amp;ResponseBodyWriter{body: bytes.NewBufferString(""), ResponseWriter: c.Writer}
+                c.Writer = wrapWriter
+                c.Next()
+                if errs := c.Errors.Last(); errs == nil </span><span class="cov0" title="0">{
+                        var body interface{}
+                        if err := json.Unmarshal(wrapWriter.body.Bytes(), &amp;body); err != nil </span><span class="cov0" title="0">{
+                                log.Println("HTTP response -", "method:", c.Request.Method, ", path:", c.Request.URL.Path, ", http_status:", c.Writer.Status())
+                        }</span> else<span class="cov0" title="0"> {
+                                log.Println("HTTP response - ", "method", c.Request.Method, ", path", c.Request.URL.Path, ", http_status: ", c.Writer.Status(), ", response_body", body)
+                        }</span>
+                }
+        }
+}
+
+func (s *HTTPServer) load(h *handler.Handlers, m *middleware.Middleware) <span class="cov0" title="0">{
+        registerRouter(s.gin, h, m)
+}</span>
+
+func ProvideHTTPServer(cfg *config.AppConfig, h *handler.Handlers, m *middleware.Middleware) *HTTPServer <span class="cov0" title="0">{
+        sv := &amp;HTTPServer{
+                cfg: cfg,
+                gin: gin.New(),
+                srv: &amp;http.Server{},
+        }
+        sv.gin.Use(WithRequestLoggerServer())
+        sv.gin.Use(WithResponseLoggerServer())
+        sv.gin.Use(gin.Recovery())
+
+        sv.load(h, m)
+
+        return sv
+}</span>
+</pre>
+		
+		<pre class="file" id="file15" style="display: none">package main
+
+import (
+        "log"
+
+        "github.com/nuea/backend-golang-test/cmd/http/di"
+)
+
+func main() <span class="cov0" title="0">{
+        ctn, stop, err := di.InitContainer()
+        if err != nil </span><span class="cov0" title="0">{
+                log.Panicf("Unable to start service. Error: %s", err)
+        }</span>
+        <span class="cov0" title="0">defer stop()
+        ctn.Run()</span>
+}
+</pre>
+		
+		<pre class="file" id="file16" style="display: none">package backendgolangtest
+
+import (
+        "context"
+        "log"
+        "math"
+        "time"
+
+        "github.com/nuea/backend-golang-test/internal/config"
+        userv1 "github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1"
+        "google.golang.org/grpc"
+        "google.golang.org/grpc/credentials/insecure"
+)
+
+type BackendGolangTestGRPCService struct {
+        userv1.UserServiceClient
+        userv1.AuthServiceClient
+}
+
+type APIClient struct {
+        conn *grpc.ClientConn
+}
+
+func NewDefaultGRPCClient(target string, du time.Duration, opts ...grpc.DialOption) (*grpc.ClientConn, error) <span class="cov0" title="0">{
+        if opts == nil </span><span class="cov0" title="0">{
+                opts = make([]grpc.DialOption, 0)
+        }</span>
+
+        <span class="cov0" title="0">baseOpts := []grpc.DialOption{
+                grpc.WithTransportCredentials(insecure.NewCredentials()),
+                grpc.WithChainStreamInterceptor(),
+                grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(math.MaxInt32)),
+                grpc.WithIdleTimeout(du),
+                grpc.WithChainUnaryInterceptor(func(ctx context.Context, method string, req, reply interface{}, cc *grpc.ClientConn, invoker grpc.UnaryInvoker, opts ...grpc.CallOption) error </span><span class="cov0" title="0">{
+                        ctxWithTimeout, cancelFunc := context.WithTimeout(ctx, du)
+                        defer cancelFunc()
+                        return invoker(ctxWithTimeout, method, req, reply, cc, opts...)
+                }</span>),
+        }
+
+        <span class="cov0" title="0">return grpc.NewClient(target, append(baseOpts, opts...)...)</span>
+}
+
+func WithRequestLoggerUnaryClient() grpc.DialOption <span class="cov0" title="0">{
+        return grpc.WithChainUnaryInterceptor(func(ctx context.Context, method string, req, reply any, cc *grpc.ClientConn, invoker grpc.UnaryInvoker, opts ...grpc.CallOption) error </span><span class="cov0" title="0">{
+                log.Println("GRPC request client - ", "request:", req, "method:", method)
+                return invoker(ctx, method, req, reply, cc, opts...)
+        }</span>)
+}
+
+func ProvideBackendGolangTestServiceGRPC(cfg *config.AppConfig) *APIClient <span class="cov0" title="0">{
+        conn, err := NewDefaultGRPCClient(cfg.BackendGoTest.GRPCTarget, cfg.BackendGoTest.RequestTimeout, WithRequestLoggerUnaryClient())
+        if err != nil </span><span class="cov0" title="0">{
+                panic(err)</span>
+        }
+
+        <span class="cov0" title="0">return &amp;APIClient{
+                conn: conn,
+        }</span>
+}
+
+func ProvideUserServiceClient(client *APIClient) userv1.UserServiceClient <span class="cov0" title="0">{
+        return userv1.NewUserServiceClient(client.conn)
+}</span>
+
+func ProvideAuthServiceClient(client *APIClient) userv1.AuthServiceClient <span class="cov0" title="0">{
+        return userv1.NewAuthServiceClient(client.conn)
+}</span>
+</pre>
+		
+		<pre class="file" id="file17" style="display: none">package mongodb
+
+import (
+        "context"
+        "log"
+
+        "github.com/nuea/backend-golang-test/internal/config"
+        "go.mongodb.org/mongo-driver/mongo"
+        "go.mongodb.org/mongo-driver/mongo/options"
+        "go.mongodb.org/mongo-driver/mongo/readpref"
+)
+
+type MongoDB interface {
+        GetCollection(name string) *mongo.Collection
+}
+
+type mongoDB struct {
+        client  *mongo.Client
+        mongodb *mongo.Database
+        cfg     *config.MongoDBConfig
+}
+
+func (m *mongoDB) GetCollection(name string) *mongo.Collection <span class="cov0" title="0">{
+        if m.mongodb == nil </span><span class="cov0" title="0">{
+                return nil
+        }</span>
+
+        <span class="cov0" title="0">if m.mongodb.Collection(name) == nil </span><span class="cov0" title="0">{
+                if err := m.mongodb.CreateCollection(context.Background(), name); err != nil </span><span class="cov0" title="0">{
+                        log.Println("Unable to create the collection: ", err)
+                        return nil
+                }</span>
+        }
+        <span class="cov0" title="0">return m.mongodb.Collection(name)</span>
+}
+
+func ProvideMongoDBClient(cfg *config.AppConfig) (MongoDB, func(), error) <span class="cov0" title="0">{
+        opt := options.Client().ApplyURI(cfg.MongoDB.Host).
+                SetAuth(options.Credential{
+                        Username: cfg.MongoDB.User,
+                        Password: cfg.MongoDB.Password,
+                }).
+                SetReadPreference(readpref.SecondaryPreferred()).
+                SetMaxPoolSize(cfg.MongoDB.MaxPoolSize).
+                SetMinPoolSize(cfg.MongoDB.MinPoolSize).
+                SetHeartbeatInterval(cfg.MongoDB.HeartbeatInterval)
+        client, err := mongo.Connect(context.Background(), opt)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, func() </span>{<span class="cov0" title="0">}</span>, err
+        }
+
+        <span class="cov0" title="0">var mongodb *mongo.Database
+        if cfg.MongoDB.DatabaseName != "-" </span><span class="cov0" title="0">{
+                mongodb = client.Database(cfg.MongoDB.DatabaseName)
+        }</span>
+
+        <span class="cov0" title="0">log.Println("Start connecting to MongoDB:", cfg.MongoDB.DatabaseName)
+
+        return &amp;mongoDB{
+                        cfg:     &amp;cfg.MongoDB,
+                        client:  client,
+                        mongodb: mongodb,
+                }, func() </span><span class="cov0" title="0">{
+                        _ = client.Disconnect(context.Background())
+                }</span>, nil
+}
+</pre>
+		
+		<pre class="file" id="file18" style="display: none">package config
+
+import (
+        "fmt"
+        "os"
+        "path/filepath"
+        "runtime"
+        "time"
+
+        "github.com/joho/godotenv"
+        "github.com/kelseyhightower/envconfig"
+)
+
+type SystemConfig struct {
+        HTTPPort    string `envconfig:"APP_HTTP_PORT" default:"8080"`
+        GRPCPort    string `envconfig:"APP_GRPC_PORT" default:"8980"`
+        ServiceName string `envconfig:"SERVICE_NAME" default:"backend-golang-test"`
+}
+
+type AuthConfig struct {
+        SecretKey            string        `envconfig:"AUTH_SECRET_KEY"`
+        AccessTokenExpireTTL time.Duration `envconfig:"AUTH_ACCESS_TOKEN_EXPIRE_TTL" default:"5m"`
+}
+
+type MongoDBConfig struct {
+        Host              string        `envconfig:"MONGODB_HOST"`
+        User              string        `envconfig:"MONGODB_USER"`
+        Password          string        `envconfig:"MONGODB_PASSWORD"`
+        DatabaseName      string        `envconfig:"MONGODB_DATABASE_NAME" default:"-"`
+        HeartbeatInterval time.Duration `envconfig:"MONGODB_HEARTBEAT_INTERVAL" default:"10s"`
+        MaxPoolSize       uint64        `envconfig:"MONGODB_MAX_CONNECTION_POOL_SIZE" default:"20"`
+        MinPoolSize       uint64        `envconfig:"MONGODB_MIN_CONNECTION_POOL_SIZE" default:"10"`
+}
+
+type BackendGolangTestGRPCConfig struct {
+        GRPCTarget     string        `envconfig:"BACKEND_GOLANG_TEST_GRPC_TARGET" default:"localhost:8980"`
+        RequestTimeout time.Duration `envconfig:"BACKEND_GOLANG_TEST_REQUEST_TIMEOUT" default:"10s"`
+}
+
+type AppConfig struct {
+        System        SystemConfig
+        MongoDB       MongoDBConfig
+        BackendGoTest BackendGolangTestGRPCConfig
+        Auth          AuthConfig
+}
+
+func (cfg *AppConfig) load() <span class="cov0" title="0">{
+        envconfig.MustProcess("", &amp;cfg.System)
+        envconfig.MustProcess("", &amp;cfg.Auth)
+        envconfig.MustProcess("", &amp;cfg.MongoDB)
+        envconfig.MustProcess("", &amp;cfg.BackendGoTest)
+}</span>
+
+func ProvideCofig() *AppConfig <span class="cov0" title="0">{
+        env, ok := os.LookupEnv("ENV")
+        if ok &amp;&amp; env != "" </span><span class="cov0" title="0">{
+                _, b, _, _ := runtime.Caller(0)
+                basePath := filepath.Dir(b)
+                err := godotenv.Load(fmt.Sprintf("%v/../../.env.%v", basePath, env))
+                if err != nil </span><span class="cov0" title="0">{
+                        err = godotenv.Load()
+                        if err != nil </span><span class="cov0" title="0">{
+                                panic(err)</span>
+                        }
+                }
+        }
+        <span class="cov0" title="0">cfg := &amp;AppConfig{}
+        cfg.load()
+        return cfg</span>
+}
+</pre>
+		
+		<pre class="file" id="file19" style="display: none">package auth
+
+import (
+        "errors"
+        "net/http"
+        "strings"
+        "time"
+
+        "github.com/gin-gonic/gin"
+        "github.com/nuea/backend-golang-test/internal/service"
+        "github.com/nuea/backend-golang-test/internal/service/auth"
+)
+
+type AuthMiddleware interface {
+        Middleware() gin.HandlerFunc
+}
+
+type authMiddleware struct {
+        authsv auth.AuthService
+}
+
+func ProvideAuthMiddleware(sv *service.Service) AuthMiddleware <span class="cov0" title="0">{
+        return &amp;authMiddleware{
+                authsv: sv.AuthService,
+        }
+}</span>
+
+func (m *authMiddleware) Middleware() gin.HandlerFunc <span class="cov0" title="0">{
+        return func(ctx *gin.Context) </span><span class="cov0" title="0">{
+                if err := m.authentication(ctx); err != nil </span><span class="cov0" title="0">{
+                        ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
+                                "error": err.Error(),
+                        })
+                        return
+                }</span>
+                <span class="cov0" title="0">ctx.Next()</span>
+        }
+}
+
+func (m *authMiddleware) authentication(ctx *gin.Context) error <span class="cov0" title="0">{
+        var ac string
+        if acs := strings.Fields(ctx.GetHeader("Authorization")); len(acs) &gt; 1 &amp;&amp; acs[0] == "Bearer" </span><span class="cov0" title="0">{
+                ac = acs[1]
+        }</span> else<span class="cov0" title="0"> {
+                return errors.New("Unauthorized.")
+        }</span>
+
+        <span class="cov0" title="0">claims, err := m.authsv.VerifyAccessToken(ac)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">if claims.ExpiresAt &lt; time.Now().Local().UnixMilli() </span><span class="cov0" title="0">{
+                return errors.New("Unauthorized.")
+        }</span>
+        <span class="cov0" title="0">return nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file20" style="display: none">package user
+
+import (
+        "time"
+
+        "github.com/nuea/backend-golang-test/internal/types"
+        "go.mongodb.org/mongo-driver/bson"
+        "go.mongodb.org/mongo-driver/bson/primitive"
+)
+
+type User struct {
+        ID        primitive.ObjectID `bson:"_id,omitempty"`
+        Name      string             `bson:"name"`
+        Email     types.Email        `bson:"email"`
+        Password  string             `bson:"password"`
+        CreatedBy *string            `bson:"created_by,omitempty"`
+        CreatedAt time.Time          `bson:"created_at"`
+        UpdatedAt time.Time          `bson:"updated_at"`
+        DeletedAt *time.Time         `bson:"deleted_at,omitempty"`
+}
+
+func NewUser() *User <span class="cov0" title="0">{
+        return &amp;User{
+                CreatedBy: nil,
+                CreatedAt: time.Now().UTC(),
+                UpdatedAt: time.Now().UTC(),
+        }
+}</span>
+
+type UserFilter struct {
+        User
+}
+
+func (f *UserFilter) Filter() bson.D <span class="cov8" title="1">{
+        filter := bson.D{
+                {Key: "deleted_at", Value: nil},
+        }
+        if f.ID != primitive.NilObjectID </span><span class="cov0" title="0">{
+                filter = append(filter, bson.E{Key: "_id", Value: f.ID})
+        }</span>
+        <span class="cov8" title="1">if f.Name != "" </span><span class="cov0" title="0">{
+                filter = append(filter, bson.E{Key: "name", Value: f.Name})
+        }</span>
+        <span class="cov8" title="1">if f.Email != "" </span><span class="cov8" title="1">{
+                filter = append(filter, bson.E{Key: "email", Value: f.Email})
+        }</span>
+        <span class="cov8" title="1">return filter</span>
+}
+</pre>
+		
+		<pre class="file" id="file21" style="display: none">package user
+
+import (
+        "context"
+        "errors"
+        "strings"
+
+        "github.com/nuea/backend-golang-test/internal/client"
+        "github.com/nuea/backend-golang-test/internal/types"
+        "go.mongodb.org/mongo-driver/bson"
+        "go.mongodb.org/mongo-driver/bson/primitive"
+        "go.mongodb.org/mongo-driver/mongo"
+        "go.mongodb.org/mongo-driver/mongo/options"
+)
+
+type UserRepository interface {
+        InsertOne(ctx context.Context, user *User) error
+        FindByID(ctx context.Context, id string) (user *User, err error)
+        FindByEmail(ctx context.Context, email types.Email) (user *User, err error)
+        Find(ctx context.Context, filter *UserFilter) (users []*User, err error)
+        ReplaceOne(ctx context.Context, id string, user *User) error
+        Count(ctx context.Context) (int64, error)
+}
+
+type repository struct {
+        collection *mongo.Collection
+}
+
+func ProvideUserRepository(c *client.Clients) UserRepository <span class="cov8" title="1">{
+        collection := c.MongoDB.GetCollection("user")
+        collection.Indexes().CreateOne(
+                context.Background(),
+                mongo.IndexModel{
+                        Keys:    bson.D{{Key: "email", Value: 1}},
+                        Options: options.Index().SetUnique(true),
+                },
+        )
+
+        return &amp;repository{
+                collection: collection,
+        }
+}</span>
+
+func (r *repository) InsertOne(ctx context.Context, user *User) error <span class="cov8" title="1">{
+        if _, err := r.collection.InsertOne(ctx, user); err != nil </span><span class="cov8" title="1">{
+                if mongo.IsDuplicateKeyError(err) &amp;&amp; strings.Contains(err.Error(), "email") </span><span class="cov8" title="1">{
+                        return errors.New("email already exists")
+                }</span>
+                <span class="cov8" title="1">return err</span>
+        }
+        <span class="cov8" title="1">return nil</span>
+}
+
+func (r *repository) FindByID(ctx context.Context, id string) (user *User, err error) <span class="cov8" title="1">{
+        objid, err := primitive.ObjectIDFromHex(id)
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">err = r.collection.FindOne(ctx, bson.M{"_id": objid}).Decode(&amp;user)
+        if err != nil </span><span class="cov8" title="1">{
+                if errors.Is(err, mongo.ErrNoDocuments) </span><span class="cov8" title="1">{
+                        return nil, errors.New("user not found")
+                }</span>
+                <span class="cov8" title="1">return nil, err</span>
+        }
+        <span class="cov8" title="1">return user, err</span>
+}
+
+func (r *repository) FindByEmail(ctx context.Context, email types.Email) (user *User, err error) <span class="cov8" title="1">{
+        err = r.collection.FindOne(ctx, bson.M{"email": email}).Decode(&amp;user)
+        if err != nil </span><span class="cov8" title="1">{
+                if errors.Is(err, mongo.ErrNoDocuments) </span><span class="cov8" title="1">{
+                        return nil, errors.New("user not found")
+                }</span>
+                <span class="cov8" title="1">return nil, err</span>
+        }
+        <span class="cov8" title="1">return user, err</span>
+}
+
+func (r *repository) Find(ctx context.Context, filter *UserFilter) (users []*User, err error) <span class="cov8" title="1">{
+        cur, err := r.collection.Find(ctx, filter.Filter())
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+        <span class="cov8" title="1">defer cur.Close(ctx)
+
+        if err = cur.All(ctx, &amp;users); err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">return users, nil</span>
+}
+
+func (r *repository) ReplaceOne(ctx context.Context, id string, user *User) error <span class="cov8" title="1">{
+        objid, err := primitive.ObjectIDFromHex(id)
+        if err != nil </span><span class="cov8" title="1">{
+                return err
+        }</span>
+
+        <span class="cov8" title="1">if _, err = r.collection.ReplaceOne(ctx, bson.M{"_id": objid}, user); err != nil </span><span class="cov8" title="1">{
+                return err
+        }</span>
+        <span class="cov8" title="1">return nil</span>
+}
+
+func (r *repository) Count(ctx context.Context) (int64, error) <span class="cov8" title="1">{
+        return r.collection.CountDocuments(ctx, bson.M{"deleted_at": nil})
+}</span>
+</pre>
+		
+		<pre class="file" id="file22" style="display: none">package auth
+
+import (
+        "context"
+        "errors"
+        "net/http"
+        "time"
+
+        "github.com/gin-gonic/gin"
+        "github.com/golang-jwt/jwt"
+        "github.com/nuea/backend-golang-test/internal/client"
+        "github.com/nuea/backend-golang-test/internal/config"
+        userv1 "github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1"
+)
+
+type AuthService interface {
+        Login(ctx context.Context, req *userv1.LoginRequest) (accessToken string, err error)
+        GenerateAccessToken(userID string) (string, error)
+        VerifyAccessToken(accessToken string) (*JwtToken, error)
+}
+
+type authService struct {
+        cfg        *config.AuthConfig
+        authclient userv1.AuthServiceClient
+}
+
+func ProvideAuthenticationService(cfg *config.AppConfig, c *client.GRPCClients) AuthService <span class="cov0" title="0">{
+        return &amp;authService{
+                cfg:        &amp;cfg.Auth,
+                authclient: c.BackendGolangTestGRPCService.AuthServiceClient,
+        }
+}</span>
+
+type JwtToken struct {
+        jwt.StandardClaims
+        UserID string `json:"uid,omitempty"`
+}
+
+func (s *authService) Login(ctx context.Context, req *userv1.LoginRequest) (accessToken string, err error) <span class="cov0" title="0">{
+        res, err := s.authclient.Login(ctx, req)
+        if err != nil </span><span class="cov0" title="0">{
+                return "", err
+        }</span>
+
+        <span class="cov0" title="0">accessToken, err = s.GenerateAccessToken(res.UserId)
+        if err != nil </span><span class="cov0" title="0">{
+                return "", err
+        }</span>
+
+        <span class="cov0" title="0">if accessToken != "" </span><span class="cov0" title="0">{
+                s.setCookies(ctx, accessToken)
+        }</span>
+
+        <span class="cov0" title="0">return accessToken, nil</span>
+}
+
+func (s *authService) GenerateAccessToken(userID string) (string, error) <span class="cov0" title="0">{
+        return jwt.NewWithClaims(jwt.SigningMethodHS256, &amp;JwtToken{
+                UserID: userID,
+                StandardClaims: jwt.StandardClaims{
+                        ExpiresAt: time.Now().Local().Add(s.cfg.AccessTokenExpireTTL).UnixMilli(),
+                },
+        }).SignedString([]byte(s.cfg.SecretKey))
+}</span>
+
+func (s *authService) VerifyAccessToken(accessToken string) (*JwtToken, error) <span class="cov0" title="0">{
+        if accessToken == "" </span><span class="cov0" title="0">{
+                return nil, errors.New("Access token is empty.")
+        }</span>
+
+        <span class="cov0" title="0">token, err := jwt.ParseWithClaims(accessToken, &amp;JwtToken{},
+                func(t *jwt.Token) (interface{}, error) </span><span class="cov0" title="0">{
+                        return []byte(s.cfg.SecretKey), nil
+                }</span>,
+        )
+        <span class="cov0" title="0">if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">claims, ok := token.Claims.(*JwtToken)
+        if !ok </span><span class="cov0" title="0">{
+                return nil, errors.New("Access token is invalid.")
+        }</span>
+        <span class="cov0" title="0">return claims, nil</span>
+}
+
+func (s *authService) setCookies(ctx context.Context, accessToken string) <span class="cov0" title="0">{
+        gCtx := ctx.(*gin.Context)
+        gCtx.SetSameSite(http.SameSiteDefaultMode)
+        gCtx.SetCookie("_uac", accessToken, int(s.cfg.AccessTokenExpireTTL/time.Second), "/", "localhost", false, true)
+        gCtx.SetCookie("_uac_s", accessToken, int(s.cfg.AccessTokenExpireTTL/time.Second), "/", "localhost", true, true)
+
+}</span>
+</pre>
+		
+		<pre class="file" id="file23" style="display: none">package types
+
+import (
+        "errors"
+        "net/mail"
+
+        "golang.org/x/crypto/bcrypt"
+)
+
+type HashString struct {
+        str  string
+        hash bool
+}
+
+func NewHashString(str string) *HashString <span class="cov0" title="0">{
+        return &amp;HashString{
+                str:  str,
+                hash: true,
+        }
+}</span>
+
+func (hs *HashString) Hash() (string, error) <span class="cov0" title="0">{
+        if hs == nil </span><span class="cov0" title="0">{
+                return "", nil
+        }</span>
+
+        <span class="cov0" title="0">if hs.str == "" </span><span class="cov0" title="0">{
+                return "", nil
+        }</span>
+
+        <span class="cov0" title="0">bytes, err := bcrypt.GenerateFromPassword([]byte(hs.str), 14)
+        return string(bytes), err</span>
+}
+
+func (hs *HashString) Equal(pwd string) bool <span class="cov0" title="0">{
+        if hs == nil </span><span class="cov0" title="0">{
+                return false
+        }</span>
+
+        <span class="cov0" title="0">if hs.hash </span><span class="cov0" title="0">{
+                err := bcrypt.CompareHashAndPassword([]byte(hs.str), []byte(pwd))
+                return err == nil
+        }</span>
+        <span class="cov0" title="0">return hs.str == pwd</span>
+}
+
+func (hs *HashString) String() string <span class="cov0" title="0">{
+        if hs == nil </span><span class="cov0" title="0">{
+                return ""
+        }</span>
+        <span class="cov0" title="0">return hs.str</span>
+}
+
+type Email string
+
+func NewEmail(s string) (Email, error) <span class="cov0" title="0">{
+        if s == "" </span><span class="cov0" title="0">{
+                return "", errors.New("email is required")
+        }</span>
+        <span class="cov0" title="0">addr, err := mail.ParseAddress(s)
+        if err != nil </span><span class="cov0" title="0">{
+                return "", errors.New(err.Error())
+        }</span>
+        <span class="cov0" title="0">return Email(addr.Address), nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file24" style="display: none">package util
+
+import (
+        "errors"
+        "fmt"
+        "reflect"
+
+        "github.com/go-playground/validator/v10"
+)
+
+func MapToSlice[I, O any](mapper func(I) (O, error), input []I) ([]O, error) <span class="cov0" title="0">{
+        output := make([]O, 0)
+        for _, i := range input </span><span class="cov0" title="0">{
+                o, err := mapper(i)
+                if err != nil </span><span class="cov0" title="0">{
+                        return nil, err
+                }</span>
+                <span class="cov0" title="0">output = append(output, o)</span>
+        }
+        <span class="cov0" title="0">return output, nil</span>
+}
+
+func ValidateStruct(s interface{}) error <span class="cov0" title="0">{
+        validate := validator.New(
+                validator.WithRequiredStructEnabled(),
+                validator.WithPrivateFieldValidation(),
+        )
+        if err := validate.Struct(s); err != nil </span><span class="cov0" title="0">{
+                validationErr := err.(validator.ValidationErrors)[0]
+                fieldName := validationErr.Field()
+                if field, ok := reflect.TypeOf(s).Elem().FieldByName(fieldName); ok </span><span class="cov0" title="0">{
+                        fieldJSONName, ok := field.Tag.Lookup("json")
+                        if ok </span><span class="cov0" title="0">{
+                                fieldName = fieldJSONName
+                        }</span>
+                }
+
+                <span class="cov0" title="0">return errors.New(fmt.Sprintf("%s is required.", fieldName))</span>
+        }
+
+        <span class="cov0" title="0">return nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file25" style="display: none">// Code generated by protoc-gen-go. DO NOT EDIT.
+// versions:
+//         protoc-gen-go v1.36.6
+//         protoc        (unknown)
+// source: backend_golang_test/user/v1/auth.proto
+
+package userv1
+
+import (
+        protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+        protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+        reflect "reflect"
+        sync "sync"
+        unsafe "unsafe"
+)
+
+const (
+        // Verify that this generated code is sufficiently up-to-date.
+        _ = protoimpl.EnforceVersion(20 - protoimpl.MinVersion)
+        // Verify that runtime/protoimpl is sufficiently up-to-date.
+        _ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
+)
+
+type LoginRequest struct {
+        state         protoimpl.MessageState `protogen:"open.v1"`
+        Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+        Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+        unknownFields protoimpl.UnknownFields
+        sizeCache     protoimpl.SizeCache
+}
+
+func (x *LoginRequest) Reset() <span class="cov0" title="0">{
+        *x = LoginRequest{}
+        mi := &amp;file_backend_golang_test_user_v1_auth_proto_msgTypes[0]
+        ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+        ms.StoreMessageInfo(mi)
+}</span>
+
+func (x *LoginRequest) String() string <span class="cov0" title="0">{
+        return protoimpl.X.MessageStringOf(x)
+}</span>
+
+func (*LoginRequest) ProtoMessage() {<span class="cov0" title="0">}</span>
+
+func (x *LoginRequest) ProtoReflect() protoreflect.Message <span class="cov0" title="0">{
+        mi := &amp;file_backend_golang_test_user_v1_auth_proto_msgTypes[0]
+        if x != nil </span><span class="cov0" title="0">{
+                ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+                if ms.LoadMessageInfo() == nil </span><span class="cov0" title="0">{
+                        ms.StoreMessageInfo(mi)
+                }</span>
+                <span class="cov0" title="0">return ms</span>
+        }
+        <span class="cov0" title="0">return mi.MessageOf(x)</span>
+}
+
+// Deprecated: Use LoginRequest.ProtoReflect.Descriptor instead.
+func (*LoginRequest) Descriptor() ([]byte, []int) <span class="cov0" title="0">{
+        return file_backend_golang_test_user_v1_auth_proto_rawDescGZIP(), []int{0}
+}</span>
+
+func (x *LoginRequest) GetEmail() string <span class="cov0" title="0">{
+        if x != nil </span><span class="cov0" title="0">{
+                return x.Email
+        }</span>
+        <span class="cov0" title="0">return ""</span>
+}
+
+func (x *LoginRequest) GetPassword() string <span class="cov0" title="0">{
+        if x != nil </span><span class="cov0" title="0">{
+                return x.Password
+        }</span>
+        <span class="cov0" title="0">return ""</span>
+}
+
+type LoginResponse struct {
+        state         protoimpl.MessageState `protogen:"open.v1"`
+        UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+        unknownFields protoimpl.UnknownFields
+        sizeCache     protoimpl.SizeCache
+}
+
+func (x *LoginResponse) Reset() <span class="cov0" title="0">{
+        *x = LoginResponse{}
+        mi := &amp;file_backend_golang_test_user_v1_auth_proto_msgTypes[1]
+        ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+        ms.StoreMessageInfo(mi)
+}</span>
+
+func (x *LoginResponse) String() string <span class="cov0" title="0">{
+        return protoimpl.X.MessageStringOf(x)
+}</span>
+
+func (*LoginResponse) ProtoMessage() {<span class="cov0" title="0">}</span>
+
+func (x *LoginResponse) ProtoReflect() protoreflect.Message <span class="cov0" title="0">{
+        mi := &amp;file_backend_golang_test_user_v1_auth_proto_msgTypes[1]
+        if x != nil </span><span class="cov0" title="0">{
+                ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+                if ms.LoadMessageInfo() == nil </span><span class="cov0" title="0">{
+                        ms.StoreMessageInfo(mi)
+                }</span>
+                <span class="cov0" title="0">return ms</span>
+        }
+        <span class="cov0" title="0">return mi.MessageOf(x)</span>
+}
+
+// Deprecated: Use LoginResponse.ProtoReflect.Descriptor instead.
+func (*LoginResponse) Descriptor() ([]byte, []int) <span class="cov0" title="0">{
+        return file_backend_golang_test_user_v1_auth_proto_rawDescGZIP(), []int{1}
+}</span>
+
+func (x *LoginResponse) GetUserId() string <span class="cov0" title="0">{
+        if x != nil </span><span class="cov0" title="0">{
+                return x.UserId
+        }</span>
+        <span class="cov0" title="0">return ""</span>
+}
+
+var File_backend_golang_test_user_v1_auth_proto protoreflect.FileDescriptor
+
+const file_backend_golang_test_user_v1_auth_proto_rawDesc = "" +
+        "\n" +
+        "&amp;backend_golang_test/user/v1/auth.proto\x12\x1bbackend_golang_test.user.v1\"@\n" +
+        "\fLoginRequest\x12\x14\n" +
+        "\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
+        "\bpassword\x18\x02 \x01(\tR\bpassword\"(\n" +
+        "\rLoginResponse\x12\x17\n" +
+        "\auser_id\x18\x01 \x01(\tR\x06userId2m\n" +
+        "\vAuthService\x12^\n" +
+        "\x05Login\x12).backend_golang_test.user.v1.LoginRequest\x1a*.backend_golang_test.user.v1.LoginResponseB\x84\x02\n" +
+        "\x1fcom.backend_golang_test.user.v1B\tAuthProtoP\x01ZPgithub.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1;userv1\xa2\x02\x03BUX\xaa\x02\x19BackendGolangTest.User.V1\xca\x02\x19BackendGolangTest\\User\\V1\xe2\x02%BackendGolangTest\\User\\V1\\GPBMetadata\xea\x02\x1bBackendGolangTest::User::V1b\x06proto3"
+
+var (
+        file_backend_golang_test_user_v1_auth_proto_rawDescOnce sync.Once
+        file_backend_golang_test_user_v1_auth_proto_rawDescData []byte
+)
+
+func file_backend_golang_test_user_v1_auth_proto_rawDescGZIP() []byte <span class="cov0" title="0">{
+        file_backend_golang_test_user_v1_auth_proto_rawDescOnce.Do(func() </span><span class="cov0" title="0">{
+                file_backend_golang_test_user_v1_auth_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_backend_golang_test_user_v1_auth_proto_rawDesc), len(file_backend_golang_test_user_v1_auth_proto_rawDesc)))
+        }</span>)
+        <span class="cov0" title="0">return file_backend_golang_test_user_v1_auth_proto_rawDescData</span>
+}
+
+var file_backend_golang_test_user_v1_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_backend_golang_test_user_v1_auth_proto_goTypes = []any{
+        (*LoginRequest)(nil),  // 0: backend_golang_test.user.v1.LoginRequest
+        (*LoginResponse)(nil), // 1: backend_golang_test.user.v1.LoginResponse
+}
+var file_backend_golang_test_user_v1_auth_proto_depIdxs = []int32{
+        0, // 0: backend_golang_test.user.v1.AuthService.Login:input_type -&gt; backend_golang_test.user.v1.LoginRequest
+        1, // 1: backend_golang_test.user.v1.AuthService.Login:output_type -&gt; backend_golang_test.user.v1.LoginResponse
+        1, // [1:2] is the sub-list for method output_type
+        0, // [0:1] is the sub-list for method input_type
+        0, // [0:0] is the sub-list for extension type_name
+        0, // [0:0] is the sub-list for extension extendee
+        0, // [0:0] is the sub-list for field type_name
+}
+
+func init() <span class="cov0" title="0">{ file_backend_golang_test_user_v1_auth_proto_init() }</span>
+func file_backend_golang_test_user_v1_auth_proto_init() <span class="cov0" title="0">{
+        if File_backend_golang_test_user_v1_auth_proto != nil </span><span class="cov0" title="0">{
+                return
+        }</span>
+        <span class="cov0" title="0">type x struct{}
+        out := protoimpl.TypeBuilder{
+                File: protoimpl.DescBuilder{
+                        GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
+                        RawDescriptor: unsafe.Slice(unsafe.StringData(file_backend_golang_test_user_v1_auth_proto_rawDesc), len(file_backend_golang_test_user_v1_auth_proto_rawDesc)),
+                        NumEnums:      0,
+                        NumMessages:   2,
+                        NumExtensions: 0,
+                        NumServices:   1,
+                },
+                GoTypes:           file_backend_golang_test_user_v1_auth_proto_goTypes,
+                DependencyIndexes: file_backend_golang_test_user_v1_auth_proto_depIdxs,
+                MessageInfos:      file_backend_golang_test_user_v1_auth_proto_msgTypes,
+        }.Build()
+        File_backend_golang_test_user_v1_auth_proto = out.File
+        file_backend_golang_test_user_v1_auth_proto_goTypes = nil
+        file_backend_golang_test_user_v1_auth_proto_depIdxs = nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file26" style="display: none">// Code generated by protoc-gen-go-grpc. DO NOT EDIT.
+// versions:
+// - protoc-gen-go-grpc v1.5.1
+// - protoc             (unknown)
+// source: backend_golang_test/user/v1/auth.proto
+
+package userv1
+
+import (
+        context "context"
+        grpc "google.golang.org/grpc"
+        codes "google.golang.org/grpc/codes"
+        status "google.golang.org/grpc/status"
+)
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+// Requires gRPC-Go v1.64.0 or later.
+const _ = grpc.SupportPackageIsVersion9
+
+const (
+        AuthService_Login_FullMethodName = "/backend_golang_test.user.v1.AuthService/Login"
+)
+
+// AuthServiceClient is the client API for AuthService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type AuthServiceClient interface {
+        Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
+}
+
+type authServiceClient struct {
+        cc grpc.ClientConnInterface
+}
+
+func NewAuthServiceClient(cc grpc.ClientConnInterface) AuthServiceClient <span class="cov0" title="0">{
+        return &amp;authServiceClient{cc}
+}</span>
+
+func (c *authServiceClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) <span class="cov0" title="0">{
+        cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+        out := new(LoginResponse)
+        err := c.cc.Invoke(ctx, AuthService_Login_FullMethodName, in, out, cOpts...)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">return out, nil</span>
+}
+
+// AuthServiceServer is the server API for AuthService service.
+// All implementations must embed UnimplementedAuthServiceServer
+// for forward compatibility.
+type AuthServiceServer interface {
+        Login(context.Context, *LoginRequest) (*LoginResponse, error)
+        mustEmbedUnimplementedAuthServiceServer()
+}
+
+// UnimplementedAuthServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedAuthServiceServer struct{}
+
+func (UnimplementedAuthServiceServer) Login(context.Context, *LoginRequest) (*LoginResponse, error) <span class="cov0" title="0">{
+        return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
+}</span>
+func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {<span class="cov0" title="0">}</span>
+func (UnimplementedAuthServiceServer) testEmbeddedByValue()                     {<span class="cov0" title="0">}</span>
+
+// UnsafeAuthServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to AuthServiceServer will
+// result in compilation errors.
+type UnsafeAuthServiceServer interface {
+        mustEmbedUnimplementedAuthServiceServer()
+}
+
+func RegisterAuthServiceServer(s grpc.ServiceRegistrar, srv AuthServiceServer) <span class="cov0" title="0">{
+        // If the following call pancis, it indicates UnimplementedAuthServiceServer was
+        // embedded by pointer and is nil.  This will cause panics if an
+        // unimplemented method is ever invoked, so we test this at initialization
+        // time to prevent it from happening at runtime later due to I/O.
+        if t, ok := srv.(interface{ testEmbeddedByValue() }); ok </span><span class="cov0" title="0">{
+                t.testEmbeddedByValue()
+        }</span>
+        <span class="cov0" title="0">s.RegisterService(&amp;AuthService_ServiceDesc, srv)</span>
+}
+
+func _AuthService_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) <span class="cov0" title="0">{
+        in := new(LoginRequest)
+        if err := dec(in); err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">if interceptor == nil </span><span class="cov0" title="0">{
+                return srv.(AuthServiceServer).Login(ctx, in)
+        }</span>
+        <span class="cov0" title="0">info := &amp;grpc.UnaryServerInfo{
+                Server:     srv,
+                FullMethod: AuthService_Login_FullMethodName,
+        }
+        handler := func(ctx context.Context, req interface{}) (interface{}, error) </span><span class="cov0" title="0">{
+                return srv.(AuthServiceServer).Login(ctx, req.(*LoginRequest))
+        }</span>
+        <span class="cov0" title="0">return interceptor(ctx, in, info, handler)</span>
+}
+
+// AuthService_ServiceDesc is the grpc.ServiceDesc for AuthService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var AuthService_ServiceDesc = grpc.ServiceDesc{
+        ServiceName: "backend_golang_test.user.v1.AuthService",
+        HandlerType: (*AuthServiceServer)(nil),
+        Methods: []grpc.MethodDesc{
+                {
+                        MethodName: "Login",
+                        Handler:    _AuthService_Login_Handler,
+                },
+        },
+        Streams:  []grpc.StreamDesc{},
+        Metadata: "backend_golang_test/user/v1/auth.proto",
+}
+</pre>
+		
+		<pre class="file" id="file27" style="display: none">// Code generated by protoc-gen-go. DO NOT EDIT.
+// versions:
+//         protoc-gen-go v1.36.6
+//         protoc        (unknown)
+// source: backend_golang_test/user/v1/user.proto
+
+package userv1
+
+import (
+        protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+        protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+        timestamppb "google.golang.org/protobuf/types/known/timestamppb"
+        reflect "reflect"
+        sync "sync"
+        unsafe "unsafe"
+)
+
+const (
+        // Verify that this generated code is sufficiently up-to-date.
+        _ = protoimpl.EnforceVersion(20 - protoimpl.MinVersion)
+        // Verify that runtime/protoimpl is sufficiently up-to-date.
+        _ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
+)
+
+type CreateUserRequest struct {
+        state         protoimpl.MessageState `protogen:"open.v1"`
+        Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+        Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+        Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+        CreatedBy     *string                `protobuf:"bytes,4,opt,name=created_by,json=createdBy,proto3,oneof" json:"created_by,omitempty"`
+        unknownFields protoimpl.UnknownFields
+        sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateUserRequest) Reset() <span class="cov0" title="0">{
+        *x = CreateUserRequest{}
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[0]
+        ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+        ms.StoreMessageInfo(mi)
+}</span>
+
+func (x *CreateUserRequest) String() string <span class="cov0" title="0">{
+        return protoimpl.X.MessageStringOf(x)
+}</span>
+
+func (*CreateUserRequest) ProtoMessage() {<span class="cov0" title="0">}</span>
+
+func (x *CreateUserRequest) ProtoReflect() protoreflect.Message <span class="cov0" title="0">{
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[0]
+        if x != nil </span><span class="cov0" title="0">{
+                ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+                if ms.LoadMessageInfo() == nil </span><span class="cov0" title="0">{
+                        ms.StoreMessageInfo(mi)
+                }</span>
+                <span class="cov0" title="0">return ms</span>
+        }
+        <span class="cov0" title="0">return mi.MessageOf(x)</span>
+}
+
+// Deprecated: Use CreateUserRequest.ProtoReflect.Descriptor instead.
+func (*CreateUserRequest) Descriptor() ([]byte, []int) <span class="cov0" title="0">{
+        return file_backend_golang_test_user_v1_user_proto_rawDescGZIP(), []int{0}
+}</span>
+
+func (x *CreateUserRequest) GetName() string <span class="cov0" title="0">{
+        if x != nil </span><span class="cov0" title="0">{
+                return x.Name
+        }</span>
+        <span class="cov0" title="0">return ""</span>
+}
+
+func (x *CreateUserRequest) GetPassword() string <span class="cov0" title="0">{
+        if x != nil </span><span class="cov0" title="0">{
+                return x.Password
+        }</span>
+        <span class="cov0" title="0">return ""</span>
+}
+
+func (x *CreateUserRequest) GetEmail() string <span class="cov0" title="0">{
+        if x != nil </span><span class="cov0" title="0">{
+                return x.Email
+        }</span>
+        <span class="cov0" title="0">return ""</span>
+}
+
+func (x *CreateUserRequest) GetCreatedBy() string <span class="cov0" title="0">{
+        if x != nil &amp;&amp; x.CreatedBy != nil </span><span class="cov0" title="0">{
+                return *x.CreatedBy
+        }</span>
+        <span class="cov0" title="0">return ""</span>
+}
+
+type CreateUserResponse struct {
+        state         protoimpl.MessageState `protogen:"open.v1"`
+        unknownFields protoimpl.UnknownFields
+        sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateUserResponse) Reset() <span class="cov0" title="0">{
+        *x = CreateUserResponse{}
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[1]
+        ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+        ms.StoreMessageInfo(mi)
+}</span>
+
+func (x *CreateUserResponse) String() string <span class="cov0" title="0">{
+        return protoimpl.X.MessageStringOf(x)
+}</span>
+
+func (*CreateUserResponse) ProtoMessage() {<span class="cov0" title="0">}</span>
+
+func (x *CreateUserResponse) ProtoReflect() protoreflect.Message <span class="cov0" title="0">{
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[1]
+        if x != nil </span><span class="cov0" title="0">{
+                ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+                if ms.LoadMessageInfo() == nil </span><span class="cov0" title="0">{
+                        ms.StoreMessageInfo(mi)
+                }</span>
+                <span class="cov0" title="0">return ms</span>
+        }
+        <span class="cov0" title="0">return mi.MessageOf(x)</span>
+}
+
+// Deprecated: Use CreateUserResponse.ProtoReflect.Descriptor instead.
+func (*CreateUserResponse) Descriptor() ([]byte, []int) <span class="cov0" title="0">{
+        return file_backend_golang_test_user_v1_user_proto_rawDescGZIP(), []int{1}
+}</span>
+
+type GetUserRequest struct {
+        state         protoimpl.MessageState `protogen:"open.v1"`
+        Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+        unknownFields protoimpl.UnknownFields
+        sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUserRequest) Reset() <span class="cov0" title="0">{
+        *x = GetUserRequest{}
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[2]
+        ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+        ms.StoreMessageInfo(mi)
+}</span>
+
+func (x *GetUserRequest) String() string <span class="cov0" title="0">{
+        return protoimpl.X.MessageStringOf(x)
+}</span>
+
+func (*GetUserRequest) ProtoMessage() {<span class="cov0" title="0">}</span>
+
+func (x *GetUserRequest) ProtoReflect() protoreflect.Message <span class="cov0" title="0">{
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[2]
+        if x != nil </span><span class="cov0" title="0">{
+                ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+                if ms.LoadMessageInfo() == nil </span><span class="cov0" title="0">{
+                        ms.StoreMessageInfo(mi)
+                }</span>
+                <span class="cov0" title="0">return ms</span>
+        }
+        <span class="cov0" title="0">return mi.MessageOf(x)</span>
+}
+
+// Deprecated: Use GetUserRequest.ProtoReflect.Descriptor instead.
+func (*GetUserRequest) Descriptor() ([]byte, []int) <span class="cov0" title="0">{
+        return file_backend_golang_test_user_v1_user_proto_rawDescGZIP(), []int{2}
+}</span>
+
+func (x *GetUserRequest) GetId() string <span class="cov0" title="0">{
+        if x != nil </span><span class="cov0" title="0">{
+                return x.Id
+        }</span>
+        <span class="cov0" title="0">return ""</span>
+}
+
+type GetUserResponse struct {
+        state         protoimpl.MessageState `protogen:"open.v1"`
+        User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+        unknownFields protoimpl.UnknownFields
+        sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUserResponse) Reset() <span class="cov0" title="0">{
+        *x = GetUserResponse{}
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[3]
+        ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+        ms.StoreMessageInfo(mi)
+}</span>
+
+func (x *GetUserResponse) String() string <span class="cov0" title="0">{
+        return protoimpl.X.MessageStringOf(x)
+}</span>
+
+func (*GetUserResponse) ProtoMessage() {<span class="cov0" title="0">}</span>
+
+func (x *GetUserResponse) ProtoReflect() protoreflect.Message <span class="cov0" title="0">{
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[3]
+        if x != nil </span><span class="cov0" title="0">{
+                ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+                if ms.LoadMessageInfo() == nil </span><span class="cov0" title="0">{
+                        ms.StoreMessageInfo(mi)
+                }</span>
+                <span class="cov0" title="0">return ms</span>
+        }
+        <span class="cov0" title="0">return mi.MessageOf(x)</span>
+}
+
+// Deprecated: Use GetUserResponse.ProtoReflect.Descriptor instead.
+func (*GetUserResponse) Descriptor() ([]byte, []int) <span class="cov0" title="0">{
+        return file_backend_golang_test_user_v1_user_proto_rawDescGZIP(), []int{3}
+}</span>
+
+func (x *GetUserResponse) GetUser() *User <span class="cov0" title="0">{
+        if x != nil </span><span class="cov0" title="0">{
+                return x.User
+        }</span>
+        <span class="cov0" title="0">return nil</span>
+}
+
+type GetUsersRequest struct {
+        state         protoimpl.MessageState `protogen:"open.v1"`
+        Name          *string                `protobuf:"bytes,1,opt,name=name,proto3,oneof" json:"name,omitempty"`
+        Email         *string                `protobuf:"bytes,2,opt,name=email,proto3,oneof" json:"email,omitempty"`
+        unknownFields protoimpl.UnknownFields
+        sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUsersRequest) Reset() <span class="cov0" title="0">{
+        *x = GetUsersRequest{}
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[4]
+        ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+        ms.StoreMessageInfo(mi)
+}</span>
+
+func (x *GetUsersRequest) String() string <span class="cov0" title="0">{
+        return protoimpl.X.MessageStringOf(x)
+}</span>
+
+func (*GetUsersRequest) ProtoMessage() {<span class="cov0" title="0">}</span>
+
+func (x *GetUsersRequest) ProtoReflect() protoreflect.Message <span class="cov0" title="0">{
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[4]
+        if x != nil </span><span class="cov0" title="0">{
+                ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+                if ms.LoadMessageInfo() == nil </span><span class="cov0" title="0">{
+                        ms.StoreMessageInfo(mi)
+                }</span>
+                <span class="cov0" title="0">return ms</span>
+        }
+        <span class="cov0" title="0">return mi.MessageOf(x)</span>
+}
+
+// Deprecated: Use GetUsersRequest.ProtoReflect.Descriptor instead.
+func (*GetUsersRequest) Descriptor() ([]byte, []int) <span class="cov0" title="0">{
+        return file_backend_golang_test_user_v1_user_proto_rawDescGZIP(), []int{4}
+}</span>
+
+func (x *GetUsersRequest) GetName() string <span class="cov0" title="0">{
+        if x != nil &amp;&amp; x.Name != nil </span><span class="cov0" title="0">{
+                return *x.Name
+        }</span>
+        <span class="cov0" title="0">return ""</span>
+}
+
+func (x *GetUsersRequest) GetEmail() string <span class="cov0" title="0">{
+        if x != nil &amp;&amp; x.Email != nil </span><span class="cov0" title="0">{
+                return *x.Email
+        }</span>
+        <span class="cov0" title="0">return ""</span>
+}
+
+type GetUsersResponse struct {
+        state         protoimpl.MessageState `protogen:"open.v1"`
+        Data          []*User                `protobuf:"bytes,2,rep,name=data,proto3" json:"data,omitempty"`
+        unknownFields protoimpl.UnknownFields
+        sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUsersResponse) Reset() <span class="cov0" title="0">{
+        *x = GetUsersResponse{}
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[5]
+        ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+        ms.StoreMessageInfo(mi)
+}</span>
+
+func (x *GetUsersResponse) String() string <span class="cov0" title="0">{
+        return protoimpl.X.MessageStringOf(x)
+}</span>
+
+func (*GetUsersResponse) ProtoMessage() {<span class="cov0" title="0">}</span>
+
+func (x *GetUsersResponse) ProtoReflect() protoreflect.Message <span class="cov0" title="0">{
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[5]
+        if x != nil </span><span class="cov0" title="0">{
+                ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+                if ms.LoadMessageInfo() == nil </span><span class="cov0" title="0">{
+                        ms.StoreMessageInfo(mi)
+                }</span>
+                <span class="cov0" title="0">return ms</span>
+        }
+        <span class="cov0" title="0">return mi.MessageOf(x)</span>
+}
+
+// Deprecated: Use GetUsersResponse.ProtoReflect.Descriptor instead.
+func (*GetUsersResponse) Descriptor() ([]byte, []int) <span class="cov0" title="0">{
+        return file_backend_golang_test_user_v1_user_proto_rawDescGZIP(), []int{5}
+}</span>
+
+func (x *GetUsersResponse) GetData() []*User <span class="cov0" title="0">{
+        if x != nil </span><span class="cov0" title="0">{
+                return x.Data
+        }</span>
+        <span class="cov0" title="0">return nil</span>
+}
+
+type UpdateUserRequest struct {
+        state         protoimpl.MessageState `protogen:"open.v1"`
+        Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+        Name          *string                `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
+        Email         *string                `protobuf:"bytes,3,opt,name=email,proto3,oneof" json:"email,omitempty"`
+        unknownFields protoimpl.UnknownFields
+        sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateUserRequest) Reset() <span class="cov0" title="0">{
+        *x = UpdateUserRequest{}
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[6]
+        ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+        ms.StoreMessageInfo(mi)
+}</span>
+
+func (x *UpdateUserRequest) String() string <span class="cov0" title="0">{
+        return protoimpl.X.MessageStringOf(x)
+}</span>
+
+func (*UpdateUserRequest) ProtoMessage() {<span class="cov0" title="0">}</span>
+
+func (x *UpdateUserRequest) ProtoReflect() protoreflect.Message <span class="cov0" title="0">{
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[6]
+        if x != nil </span><span class="cov0" title="0">{
+                ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+                if ms.LoadMessageInfo() == nil </span><span class="cov0" title="0">{
+                        ms.StoreMessageInfo(mi)
+                }</span>
+                <span class="cov0" title="0">return ms</span>
+        }
+        <span class="cov0" title="0">return mi.MessageOf(x)</span>
+}
+
+// Deprecated: Use UpdateUserRequest.ProtoReflect.Descriptor instead.
+func (*UpdateUserRequest) Descriptor() ([]byte, []int) <span class="cov0" title="0">{
+        return file_backend_golang_test_user_v1_user_proto_rawDescGZIP(), []int{6}
+}</span>
+
+func (x *UpdateUserRequest) GetId() string <span class="cov0" title="0">{
+        if x != nil </span><span class="cov0" title="0">{
+                return x.Id
+        }</span>
+        <span class="cov0" title="0">return ""</span>
+}
+
+func (x *UpdateUserRequest) GetName() string <span class="cov0" title="0">{
+        if x != nil &amp;&amp; x.Name != nil </span><span class="cov0" title="0">{
+                return *x.Name
+        }</span>
+        <span class="cov0" title="0">return ""</span>
+}
+
+func (x *UpdateUserRequest) GetEmail() string <span class="cov0" title="0">{
+        if x != nil &amp;&amp; x.Email != nil </span><span class="cov0" title="0">{
+                return *x.Email
+        }</span>
+        <span class="cov0" title="0">return ""</span>
+}
+
+type UpdateUserResponse struct {
+        state         protoimpl.MessageState `protogen:"open.v1"`
+        unknownFields protoimpl.UnknownFields
+        sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateUserResponse) Reset() <span class="cov0" title="0">{
+        *x = UpdateUserResponse{}
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[7]
+        ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+        ms.StoreMessageInfo(mi)
+}</span>
+
+func (x *UpdateUserResponse) String() string <span class="cov0" title="0">{
+        return protoimpl.X.MessageStringOf(x)
+}</span>
+
+func (*UpdateUserResponse) ProtoMessage() {<span class="cov0" title="0">}</span>
+
+func (x *UpdateUserResponse) ProtoReflect() protoreflect.Message <span class="cov0" title="0">{
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[7]
+        if x != nil </span><span class="cov0" title="0">{
+                ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+                if ms.LoadMessageInfo() == nil </span><span class="cov0" title="0">{
+                        ms.StoreMessageInfo(mi)
+                }</span>
+                <span class="cov0" title="0">return ms</span>
+        }
+        <span class="cov0" title="0">return mi.MessageOf(x)</span>
+}
+
+// Deprecated: Use UpdateUserResponse.ProtoReflect.Descriptor instead.
+func (*UpdateUserResponse) Descriptor() ([]byte, []int) <span class="cov0" title="0">{
+        return file_backend_golang_test_user_v1_user_proto_rawDescGZIP(), []int{7}
+}</span>
+
+type DeleteUserRequest struct {
+        state         protoimpl.MessageState `protogen:"open.v1"`
+        Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+        unknownFields protoimpl.UnknownFields
+        sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteUserRequest) Reset() <span class="cov0" title="0">{
+        *x = DeleteUserRequest{}
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[8]
+        ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+        ms.StoreMessageInfo(mi)
+}</span>
+
+func (x *DeleteUserRequest) String() string <span class="cov0" title="0">{
+        return protoimpl.X.MessageStringOf(x)
+}</span>
+
+func (*DeleteUserRequest) ProtoMessage() {<span class="cov0" title="0">}</span>
+
+func (x *DeleteUserRequest) ProtoReflect() protoreflect.Message <span class="cov0" title="0">{
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[8]
+        if x != nil </span><span class="cov0" title="0">{
+                ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+                if ms.LoadMessageInfo() == nil </span><span class="cov0" title="0">{
+                        ms.StoreMessageInfo(mi)
+                }</span>
+                <span class="cov0" title="0">return ms</span>
+        }
+        <span class="cov0" title="0">return mi.MessageOf(x)</span>
+}
+
+// Deprecated: Use DeleteUserRequest.ProtoReflect.Descriptor instead.
+func (*DeleteUserRequest) Descriptor() ([]byte, []int) <span class="cov0" title="0">{
+        return file_backend_golang_test_user_v1_user_proto_rawDescGZIP(), []int{8}
+}</span>
+
+func (x *DeleteUserRequest) GetId() string <span class="cov0" title="0">{
+        if x != nil </span><span class="cov0" title="0">{
+                return x.Id
+        }</span>
+        <span class="cov0" title="0">return ""</span>
+}
+
+type DeleteUserResponse struct {
+        state         protoimpl.MessageState `protogen:"open.v1"`
+        unknownFields protoimpl.UnknownFields
+        sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteUserResponse) Reset() <span class="cov0" title="0">{
+        *x = DeleteUserResponse{}
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[9]
+        ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+        ms.StoreMessageInfo(mi)
+}</span>
+
+func (x *DeleteUserResponse) String() string <span class="cov0" title="0">{
+        return protoimpl.X.MessageStringOf(x)
+}</span>
+
+func (*DeleteUserResponse) ProtoMessage() {<span class="cov0" title="0">}</span>
+
+func (x *DeleteUserResponse) ProtoReflect() protoreflect.Message <span class="cov0" title="0">{
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[9]
+        if x != nil </span><span class="cov0" title="0">{
+                ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+                if ms.LoadMessageInfo() == nil </span><span class="cov0" title="0">{
+                        ms.StoreMessageInfo(mi)
+                }</span>
+                <span class="cov0" title="0">return ms</span>
+        }
+        <span class="cov0" title="0">return mi.MessageOf(x)</span>
+}
+
+// Deprecated: Use DeleteUserResponse.ProtoReflect.Descriptor instead.
+func (*DeleteUserResponse) Descriptor() ([]byte, []int) <span class="cov0" title="0">{
+        return file_backend_golang_test_user_v1_user_proto_rawDescGZIP(), []int{9}
+}</span>
+
+type User struct {
+        state         protoimpl.MessageState `protogen:"open.v1"`
+        Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+        Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+        Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+        CreatedBy     *string                `protobuf:"bytes,4,opt,name=created_by,json=createdBy,proto3,oneof" json:"created_by,omitempty"`
+        CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+        UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+        DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=deleted_at,json=deletedAt,proto3,oneof" json:"deleted_at,omitempty"`
+        unknownFields protoimpl.UnknownFields
+        sizeCache     protoimpl.SizeCache
+}
+
+func (x *User) Reset() <span class="cov0" title="0">{
+        *x = User{}
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[10]
+        ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+        ms.StoreMessageInfo(mi)
+}</span>
+
+func (x *User) String() string <span class="cov0" title="0">{
+        return protoimpl.X.MessageStringOf(x)
+}</span>
+
+func (*User) ProtoMessage() {<span class="cov0" title="0">}</span>
+
+func (x *User) ProtoReflect() protoreflect.Message <span class="cov0" title="0">{
+        mi := &amp;file_backend_golang_test_user_v1_user_proto_msgTypes[10]
+        if x != nil </span><span class="cov0" title="0">{
+                ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+                if ms.LoadMessageInfo() == nil </span><span class="cov0" title="0">{
+                        ms.StoreMessageInfo(mi)
+                }</span>
+                <span class="cov0" title="0">return ms</span>
+        }
+        <span class="cov0" title="0">return mi.MessageOf(x)</span>
+}
+
+// Deprecated: Use User.ProtoReflect.Descriptor instead.
+func (*User) Descriptor() ([]byte, []int) <span class="cov0" title="0">{
+        return file_backend_golang_test_user_v1_user_proto_rawDescGZIP(), []int{10}
+}</span>
+
+func (x *User) GetId() string <span class="cov0" title="0">{
+        if x != nil </span><span class="cov0" title="0">{
+                return x.Id
+        }</span>
+        <span class="cov0" title="0">return ""</span>
+}
+
+func (x *User) GetName() string <span class="cov0" title="0">{
+        if x != nil </span><span class="cov0" title="0">{
+                return x.Name
+        }</span>
+        <span class="cov0" title="0">return ""</span>
+}
+
+func (x *User) GetEmail() string <span class="cov0" title="0">{
+        if x != nil </span><span class="cov0" title="0">{
+                return x.Email
+        }</span>
+        <span class="cov0" title="0">return ""</span>
+}
+
+func (x *User) GetCreatedBy() string <span class="cov0" title="0">{
+        if x != nil &amp;&amp; x.CreatedBy != nil </span><span class="cov0" title="0">{
+                return *x.CreatedBy
+        }</span>
+        <span class="cov0" title="0">return ""</span>
+}
+
+func (x *User) GetCreatedAt() *timestamppb.Timestamp <span class="cov0" title="0">{
+        if x != nil </span><span class="cov0" title="0">{
+                return x.CreatedAt
+        }</span>
+        <span class="cov0" title="0">return nil</span>
+}
+
+func (x *User) GetUpdatedAt() *timestamppb.Timestamp <span class="cov0" title="0">{
+        if x != nil </span><span class="cov0" title="0">{
+                return x.UpdatedAt
+        }</span>
+        <span class="cov0" title="0">return nil</span>
+}
+
+func (x *User) GetDeletedAt() *timestamppb.Timestamp <span class="cov0" title="0">{
+        if x != nil </span><span class="cov0" title="0">{
+                return x.DeletedAt
+        }</span>
+        <span class="cov0" title="0">return nil</span>
+}
+
+var File_backend_golang_test_user_v1_user_proto protoreflect.FileDescriptor
+
+const file_backend_golang_test_user_v1_user_proto_rawDesc = "" +
+        "\n" +
+        "&amp;backend_golang_test/user/v1/user.proto\x12\x1bbackend_golang_test.user.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8c\x01\n" +
+        "\x11CreateUserRequest\x12\x12\n" +
+        "\x04name\x18\x01 \x01(\tR\x04name\x12\x1a\n" +
+        "\bpassword\x18\x02 \x01(\tR\bpassword\x12\x14\n" +
+        "\x05email\x18\x03 \x01(\tR\x05email\x12\"\n" +
+        "\n" +
+        "created_by\x18\x04 \x01(\tH\x00R\tcreatedBy\x88\x01\x01B\r\n" +
+        "\v_created_by\"\x14\n" +
+        "\x12CreateUserResponse\" \n" +
+        "\x0eGetUserRequest\x12\x0e\n" +
+        "\x02id\x18\x01 \x01(\tR\x02id\"H\n" +
+        "\x0fGetUserResponse\x125\n" +
+        "\x04user\x18\x01 \x01(\v2!.backend_golang_test.user.v1.UserR\x04user\"X\n" +
+        "\x0fGetUsersRequest\x12\x17\n" +
+        "\x04name\x18\x01 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x19\n" +
+        "\x05email\x18\x02 \x01(\tH\x01R\x05email\x88\x01\x01B\a\n" +
+        "\x05_nameB\b\n" +
+        "\x06_email\"I\n" +
+        "\x10GetUsersResponse\x125\n" +
+        "\x04data\x18\x02 \x03(\v2!.backend_golang_test.user.v1.UserR\x04data\"j\n" +
+        "\x11UpdateUserRequest\x12\x0e\n" +
+        "\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
+        "\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x19\n" +
+        "\x05email\x18\x03 \x01(\tH\x01R\x05email\x88\x01\x01B\a\n" +
+        "\x05_nameB\b\n" +
+        "\x06_email\"\x14\n" +
+        "\x12UpdateUserResponse\"#\n" +
+        "\x11DeleteUserRequest\x12\x0e\n" +
+        "\x02id\x18\x01 \x01(\tR\x02id\"\x14\n" +
+        "\x12DeleteUserResponse\"\xb8\x02\n" +
+        "\x04User\x12\x0e\n" +
+        "\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+        "\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
+        "\x05email\x18\x03 \x01(\tR\x05email\x12\"\n" +
+        "\n" +
+        "created_by\x18\x04 \x01(\tH\x00R\tcreatedBy\x88\x01\x01\x129\n" +
+        "\n" +
+        "created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+        "\n" +
+        "updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12&gt;\n" +
+        "\n" +
+        "deleted_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampH\x01R\tdeletedAt\x88\x01\x01B\r\n" +
+        "\v_created_byB\r\n" +
+        "\v_deleted_at2\xa9\x04\n" +
+        "\vUserService\x12m\n" +
+        "\n" +
+        "CreateUser\x12..backend_golang_test.user.v1.CreateUserRequest\x1a/.backend_golang_test.user.v1.CreateUserResponse\x12d\n" +
+        "\aGetUser\x12+.backend_golang_test.user.v1.GetUserRequest\x1a,.backend_golang_test.user.v1.GetUserResponse\x12g\n" +
+        "\bGetUsers\x12,.backend_golang_test.user.v1.GetUsersRequest\x1a-.backend_golang_test.user.v1.GetUsersResponse\x12m\n" +
+        "\n" +
+        "UpdateUser\x12..backend_golang_test.user.v1.UpdateUserRequest\x1a/.backend_golang_test.user.v1.UpdateUserResponse\x12m\n" +
+        "\n" +
+        "DeleteUser\x12..backend_golang_test.user.v1.DeleteUserRequest\x1a/.backend_golang_test.user.v1.DeleteUserResponseB\x84\x02\n" +
+        "\x1fcom.backend_golang_test.user.v1B\tUserProtoP\x01ZPgithub.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1;userv1\xa2\x02\x03BUX\xaa\x02\x19BackendGolangTest.User.V1\xca\x02\x19BackendGolangTest\\User\\V1\xe2\x02%BackendGolangTest\\User\\V1\\GPBMetadata\xea\x02\x1bBackendGolangTest::User::V1b\x06proto3"
+
+var (
+        file_backend_golang_test_user_v1_user_proto_rawDescOnce sync.Once
+        file_backend_golang_test_user_v1_user_proto_rawDescData []byte
+)
+
+func file_backend_golang_test_user_v1_user_proto_rawDescGZIP() []byte <span class="cov0" title="0">{
+        file_backend_golang_test_user_v1_user_proto_rawDescOnce.Do(func() </span><span class="cov0" title="0">{
+                file_backend_golang_test_user_v1_user_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_backend_golang_test_user_v1_user_proto_rawDesc), len(file_backend_golang_test_user_v1_user_proto_rawDesc)))
+        }</span>)
+        <span class="cov0" title="0">return file_backend_golang_test_user_v1_user_proto_rawDescData</span>
+}
+
+var file_backend_golang_test_user_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_backend_golang_test_user_v1_user_proto_goTypes = []any{
+        (*CreateUserRequest)(nil),     // 0: backend_golang_test.user.v1.CreateUserRequest
+        (*CreateUserResponse)(nil),    // 1: backend_golang_test.user.v1.CreateUserResponse
+        (*GetUserRequest)(nil),        // 2: backend_golang_test.user.v1.GetUserRequest
+        (*GetUserResponse)(nil),       // 3: backend_golang_test.user.v1.GetUserResponse
+        (*GetUsersRequest)(nil),       // 4: backend_golang_test.user.v1.GetUsersRequest
+        (*GetUsersResponse)(nil),      // 5: backend_golang_test.user.v1.GetUsersResponse
+        (*UpdateUserRequest)(nil),     // 6: backend_golang_test.user.v1.UpdateUserRequest
+        (*UpdateUserResponse)(nil),    // 7: backend_golang_test.user.v1.UpdateUserResponse
+        (*DeleteUserRequest)(nil),     // 8: backend_golang_test.user.v1.DeleteUserRequest
+        (*DeleteUserResponse)(nil),    // 9: backend_golang_test.user.v1.DeleteUserResponse
+        (*User)(nil),                  // 10: backend_golang_test.user.v1.User
+        (*timestamppb.Timestamp)(nil), // 11: google.protobuf.Timestamp
+}
+var file_backend_golang_test_user_v1_user_proto_depIdxs = []int32{
+        10, // 0: backend_golang_test.user.v1.GetUserResponse.user:type_name -&gt; backend_golang_test.user.v1.User
+        10, // 1: backend_golang_test.user.v1.GetUsersResponse.data:type_name -&gt; backend_golang_test.user.v1.User
+        11, // 2: backend_golang_test.user.v1.User.created_at:type_name -&gt; google.protobuf.Timestamp
+        11, // 3: backend_golang_test.user.v1.User.updated_at:type_name -&gt; google.protobuf.Timestamp
+        11, // 4: backend_golang_test.user.v1.User.deleted_at:type_name -&gt; google.protobuf.Timestamp
+        0,  // 5: backend_golang_test.user.v1.UserService.CreateUser:input_type -&gt; backend_golang_test.user.v1.CreateUserRequest
+        2,  // 6: backend_golang_test.user.v1.UserService.GetUser:input_type -&gt; backend_golang_test.user.v1.GetUserRequest
+        4,  // 7: backend_golang_test.user.v1.UserService.GetUsers:input_type -&gt; backend_golang_test.user.v1.GetUsersRequest
+        6,  // 8: backend_golang_test.user.v1.UserService.UpdateUser:input_type -&gt; backend_golang_test.user.v1.UpdateUserRequest
+        8,  // 9: backend_golang_test.user.v1.UserService.DeleteUser:input_type -&gt; backend_golang_test.user.v1.DeleteUserRequest
+        1,  // 10: backend_golang_test.user.v1.UserService.CreateUser:output_type -&gt; backend_golang_test.user.v1.CreateUserResponse
+        3,  // 11: backend_golang_test.user.v1.UserService.GetUser:output_type -&gt; backend_golang_test.user.v1.GetUserResponse
+        5,  // 12: backend_golang_test.user.v1.UserService.GetUsers:output_type -&gt; backend_golang_test.user.v1.GetUsersResponse
+        7,  // 13: backend_golang_test.user.v1.UserService.UpdateUser:output_type -&gt; backend_golang_test.user.v1.UpdateUserResponse
+        9,  // 14: backend_golang_test.user.v1.UserService.DeleteUser:output_type -&gt; backend_golang_test.user.v1.DeleteUserResponse
+        10, // [10:15] is the sub-list for method output_type
+        5,  // [5:10] is the sub-list for method input_type
+        5,  // [5:5] is the sub-list for extension type_name
+        5,  // [5:5] is the sub-list for extension extendee
+        0,  // [0:5] is the sub-list for field type_name
+}
+
+func init() <span class="cov0" title="0">{ file_backend_golang_test_user_v1_user_proto_init() }</span>
+func file_backend_golang_test_user_v1_user_proto_init() <span class="cov0" title="0">{
+        if File_backend_golang_test_user_v1_user_proto != nil </span><span class="cov0" title="0">{
+                return
+        }</span>
+        <span class="cov0" title="0">file_backend_golang_test_user_v1_user_proto_msgTypes[0].OneofWrappers = []any{}
+        file_backend_golang_test_user_v1_user_proto_msgTypes[4].OneofWrappers = []any{}
+        file_backend_golang_test_user_v1_user_proto_msgTypes[6].OneofWrappers = []any{}
+        file_backend_golang_test_user_v1_user_proto_msgTypes[10].OneofWrappers = []any{}
+        type x struct{}
+        out := protoimpl.TypeBuilder{
+                File: protoimpl.DescBuilder{
+                        GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
+                        RawDescriptor: unsafe.Slice(unsafe.StringData(file_backend_golang_test_user_v1_user_proto_rawDesc), len(file_backend_golang_test_user_v1_user_proto_rawDesc)),
+                        NumEnums:      0,
+                        NumMessages:   11,
+                        NumExtensions: 0,
+                        NumServices:   1,
+                },
+                GoTypes:           file_backend_golang_test_user_v1_user_proto_goTypes,
+                DependencyIndexes: file_backend_golang_test_user_v1_user_proto_depIdxs,
+                MessageInfos:      file_backend_golang_test_user_v1_user_proto_msgTypes,
+        }.Build()
+        File_backend_golang_test_user_v1_user_proto = out.File
+        file_backend_golang_test_user_v1_user_proto_goTypes = nil
+        file_backend_golang_test_user_v1_user_proto_depIdxs = nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file28" style="display: none">// Code generated by protoc-gen-go-grpc. DO NOT EDIT.
+// versions:
+// - protoc-gen-go-grpc v1.5.1
+// - protoc             (unknown)
+// source: backend_golang_test/user/v1/user.proto
+
+package userv1
+
+import (
+        context "context"
+        grpc "google.golang.org/grpc"
+        codes "google.golang.org/grpc/codes"
+        status "google.golang.org/grpc/status"
+)
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+// Requires gRPC-Go v1.64.0 or later.
+const _ = grpc.SupportPackageIsVersion9
+
+const (
+        UserService_CreateUser_FullMethodName = "/backend_golang_test.user.v1.UserService/CreateUser"
+        UserService_GetUser_FullMethodName    = "/backend_golang_test.user.v1.UserService/GetUser"
+        UserService_GetUsers_FullMethodName   = "/backend_golang_test.user.v1.UserService/GetUsers"
+        UserService_UpdateUser_FullMethodName = "/backend_golang_test.user.v1.UserService/UpdateUser"
+        UserService_DeleteUser_FullMethodName = "/backend_golang_test.user.v1.UserService/DeleteUser"
+)
+
+// UserServiceClient is the client API for UserService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type UserServiceClient interface {
+        CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
+        GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
+        GetUsers(ctx context.Context, in *GetUsersRequest, opts ...grpc.CallOption) (*GetUsersResponse, error)
+        UpdateUser(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UpdateUserResponse, error)
+        DeleteUser(ctx context.Context, in *DeleteUserRequest, opts ...grpc.CallOption) (*DeleteUserResponse, error)
+}
+
+type userServiceClient struct {
+        cc grpc.ClientConnInterface
+}
+
+func NewUserServiceClient(cc grpc.ClientConnInterface) UserServiceClient <span class="cov0" title="0">{
+        return &amp;userServiceClient{cc}
+}</span>
+
+func (c *userServiceClient) CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error) <span class="cov0" title="0">{
+        cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+        out := new(CreateUserResponse)
+        err := c.cc.Invoke(ctx, UserService_CreateUser_FullMethodName, in, out, cOpts...)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">return out, nil</span>
+}
+
+func (c *userServiceClient) GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error) <span class="cov0" title="0">{
+        cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+        out := new(GetUserResponse)
+        err := c.cc.Invoke(ctx, UserService_GetUser_FullMethodName, in, out, cOpts...)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">return out, nil</span>
+}
+
+func (c *userServiceClient) GetUsers(ctx context.Context, in *GetUsersRequest, opts ...grpc.CallOption) (*GetUsersResponse, error) <span class="cov0" title="0">{
+        cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+        out := new(GetUsersResponse)
+        err := c.cc.Invoke(ctx, UserService_GetUsers_FullMethodName, in, out, cOpts...)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">return out, nil</span>
+}
+
+func (c *userServiceClient) UpdateUser(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UpdateUserResponse, error) <span class="cov0" title="0">{
+        cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+        out := new(UpdateUserResponse)
+        err := c.cc.Invoke(ctx, UserService_UpdateUser_FullMethodName, in, out, cOpts...)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">return out, nil</span>
+}
+
+func (c *userServiceClient) DeleteUser(ctx context.Context, in *DeleteUserRequest, opts ...grpc.CallOption) (*DeleteUserResponse, error) <span class="cov0" title="0">{
+        cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+        out := new(DeleteUserResponse)
+        err := c.cc.Invoke(ctx, UserService_DeleteUser_FullMethodName, in, out, cOpts...)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">return out, nil</span>
+}
+
+// UserServiceServer is the server API for UserService service.
+// All implementations must embed UnimplementedUserServiceServer
+// for forward compatibility.
+type UserServiceServer interface {
+        CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
+        GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
+        GetUsers(context.Context, *GetUsersRequest) (*GetUsersResponse, error)
+        UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error)
+        DeleteUser(context.Context, *DeleteUserRequest) (*DeleteUserResponse, error)
+        mustEmbedUnimplementedUserServiceServer()
+}
+
+// UnimplementedUserServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedUserServiceServer struct{}
+
+func (UnimplementedUserServiceServer) CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error) <span class="cov0" title="0">{
+        return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
+}</span>
+func (UnimplementedUserServiceServer) GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error) <span class="cov0" title="0">{
+        return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
+}</span>
+func (UnimplementedUserServiceServer) GetUsers(context.Context, *GetUsersRequest) (*GetUsersResponse, error) <span class="cov0" title="0">{
+        return nil, status.Errorf(codes.Unimplemented, "method GetUsers not implemented")
+}</span>
+func (UnimplementedUserServiceServer) UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error) <span class="cov0" title="0">{
+        return nil, status.Errorf(codes.Unimplemented, "method UpdateUser not implemented")
+}</span>
+func (UnimplementedUserServiceServer) DeleteUser(context.Context, *DeleteUserRequest) (*DeleteUserResponse, error) <span class="cov0" title="0">{
+        return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
+}</span>
+func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {<span class="cov0" title="0">}</span>
+func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {<span class="cov0" title="0">}</span>
+
+// UnsafeUserServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to UserServiceServer will
+// result in compilation errors.
+type UnsafeUserServiceServer interface {
+        mustEmbedUnimplementedUserServiceServer()
+}
+
+func RegisterUserServiceServer(s grpc.ServiceRegistrar, srv UserServiceServer) <span class="cov0" title="0">{
+        // If the following call pancis, it indicates UnimplementedUserServiceServer was
+        // embedded by pointer and is nil.  This will cause panics if an
+        // unimplemented method is ever invoked, so we test this at initialization
+        // time to prevent it from happening at runtime later due to I/O.
+        if t, ok := srv.(interface{ testEmbeddedByValue() }); ok </span><span class="cov0" title="0">{
+                t.testEmbeddedByValue()
+        }</span>
+        <span class="cov0" title="0">s.RegisterService(&amp;UserService_ServiceDesc, srv)</span>
+}
+
+func _UserService_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) <span class="cov0" title="0">{
+        in := new(CreateUserRequest)
+        if err := dec(in); err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">if interceptor == nil </span><span class="cov0" title="0">{
+                return srv.(UserServiceServer).CreateUser(ctx, in)
+        }</span>
+        <span class="cov0" title="0">info := &amp;grpc.UnaryServerInfo{
+                Server:     srv,
+                FullMethod: UserService_CreateUser_FullMethodName,
+        }
+        handler := func(ctx context.Context, req interface{}) (interface{}, error) </span><span class="cov0" title="0">{
+                return srv.(UserServiceServer).CreateUser(ctx, req.(*CreateUserRequest))
+        }</span>
+        <span class="cov0" title="0">return interceptor(ctx, in, info, handler)</span>
+}
+
+func _UserService_GetUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) <span class="cov0" title="0">{
+        in := new(GetUserRequest)
+        if err := dec(in); err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">if interceptor == nil </span><span class="cov0" title="0">{
+                return srv.(UserServiceServer).GetUser(ctx, in)
+        }</span>
+        <span class="cov0" title="0">info := &amp;grpc.UnaryServerInfo{
+                Server:     srv,
+                FullMethod: UserService_GetUser_FullMethodName,
+        }
+        handler := func(ctx context.Context, req interface{}) (interface{}, error) </span><span class="cov0" title="0">{
+                return srv.(UserServiceServer).GetUser(ctx, req.(*GetUserRequest))
+        }</span>
+        <span class="cov0" title="0">return interceptor(ctx, in, info, handler)</span>
+}
+
+func _UserService_GetUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) <span class="cov0" title="0">{
+        in := new(GetUsersRequest)
+        if err := dec(in); err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">if interceptor == nil </span><span class="cov0" title="0">{
+                return srv.(UserServiceServer).GetUsers(ctx, in)
+        }</span>
+        <span class="cov0" title="0">info := &amp;grpc.UnaryServerInfo{
+                Server:     srv,
+                FullMethod: UserService_GetUsers_FullMethodName,
+        }
+        handler := func(ctx context.Context, req interface{}) (interface{}, error) </span><span class="cov0" title="0">{
+                return srv.(UserServiceServer).GetUsers(ctx, req.(*GetUsersRequest))
+        }</span>
+        <span class="cov0" title="0">return interceptor(ctx, in, info, handler)</span>
+}
+
+func _UserService_UpdateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) <span class="cov0" title="0">{
+        in := new(UpdateUserRequest)
+        if err := dec(in); err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">if interceptor == nil </span><span class="cov0" title="0">{
+                return srv.(UserServiceServer).UpdateUser(ctx, in)
+        }</span>
+        <span class="cov0" title="0">info := &amp;grpc.UnaryServerInfo{
+                Server:     srv,
+                FullMethod: UserService_UpdateUser_FullMethodName,
+        }
+        handler := func(ctx context.Context, req interface{}) (interface{}, error) </span><span class="cov0" title="0">{
+                return srv.(UserServiceServer).UpdateUser(ctx, req.(*UpdateUserRequest))
+        }</span>
+        <span class="cov0" title="0">return interceptor(ctx, in, info, handler)</span>
+}
+
+func _UserService_DeleteUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) <span class="cov0" title="0">{
+        in := new(DeleteUserRequest)
+        if err := dec(in); err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">if interceptor == nil </span><span class="cov0" title="0">{
+                return srv.(UserServiceServer).DeleteUser(ctx, in)
+        }</span>
+        <span class="cov0" title="0">info := &amp;grpc.UnaryServerInfo{
+                Server:     srv,
+                FullMethod: UserService_DeleteUser_FullMethodName,
+        }
+        handler := func(ctx context.Context, req interface{}) (interface{}, error) </span><span class="cov0" title="0">{
+                return srv.(UserServiceServer).DeleteUser(ctx, req.(*DeleteUserRequest))
+        }</span>
+        <span class="cov0" title="0">return interceptor(ctx, in, info, handler)</span>
+}
+
+// UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var UserService_ServiceDesc = grpc.ServiceDesc{
+        ServiceName: "backend_golang_test.user.v1.UserService",
+        HandlerType: (*UserServiceServer)(nil),
+        Methods: []grpc.MethodDesc{
+                {
+                        MethodName: "CreateUser",
+                        Handler:    _UserService_CreateUser_Handler,
+                },
+                {
+                        MethodName: "GetUser",
+                        Handler:    _UserService_GetUser_Handler,
+                },
+                {
+                        MethodName: "GetUsers",
+                        Handler:    _UserService_GetUsers_Handler,
+                },
+                {
+                        MethodName: "UpdateUser",
+                        Handler:    _UserService_UpdateUser_Handler,
+                },
+                {
+                        MethodName: "DeleteUser",
+                        Handler:    _UserService_DeleteUser_Handler,
+                },
+        },
+        Streams:  []grpc.StreamDesc{},
+        Metadata: "backend_golang_test/user/v1/user.proto",
+}
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>

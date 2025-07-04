@@ -30,4 +30,6 @@ proto-libs: ## proto - install libs last version
 	go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 	go mod tidy
 
-	
+test:
+	go test -coverprofile=c.out ./...
+	go tool cover -html=c.out -o=coverage.html
