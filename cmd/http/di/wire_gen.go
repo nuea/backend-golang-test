@@ -40,7 +40,7 @@ func InitContainer() (*Container, func(), error) {
 	serviceService := &service.Service{
 		AuthService: authService,
 	}
-	authHandler := auth2.ProvideUserHandler(serviceService)
+	authHandler := auth2.ProvideAuthHandler(serviceService)
 	userHandler := user.ProvideUserHandler(grpcClients)
 	handlers := &handler.Handlers{
 		AuthHandler: authHandler,

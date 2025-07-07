@@ -28,6 +28,7 @@ help: ## show this help
 proto-libs: ## proto - install libs last version
 	go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 	go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+	go install github.com/golang/mock/mockgen@latest
 	go mod tidy
 
 test:

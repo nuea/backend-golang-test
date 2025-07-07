@@ -75,43 +75,47 @@
 				
 				<option value="file9">github.com/nuea/backend-golang-test/cmd/http/di/wire_gen.go (0.0%)</option>
 				
-				<option value="file10">github.com/nuea/backend-golang-test/cmd/http/internal/handler/auth/auth.go (0.0%)</option>
+				<option value="file10">github.com/nuea/backend-golang-test/cmd/http/internal/docs/docs.go (0.0%)</option>
 				
-				<option value="file11">github.com/nuea/backend-golang-test/cmd/http/internal/handler/user/mapper.go (0.0%)</option>
+				<option value="file11">github.com/nuea/backend-golang-test/cmd/http/internal/handler/auth/auth.go (100.0%)</option>
 				
-				<option value="file12">github.com/nuea/backend-golang-test/cmd/http/internal/handler/user/user.go (0.0%)</option>
+				<option value="file12">github.com/nuea/backend-golang-test/cmd/http/internal/handler/user/mapper.go (75.0%)</option>
 				
-				<option value="file13">github.com/nuea/backend-golang-test/cmd/http/internal/server/router.go (0.0%)</option>
+				<option value="file13">github.com/nuea/backend-golang-test/cmd/http/internal/handler/user/user.go (93.1%)</option>
 				
-				<option value="file14">github.com/nuea/backend-golang-test/cmd/http/internal/server/server.go (0.0%)</option>
+				<option value="file14">github.com/nuea/backend-golang-test/cmd/http/internal/server/router.go (0.0%)</option>
 				
-				<option value="file15">github.com/nuea/backend-golang-test/cmd/http/main.go (0.0%)</option>
+				<option value="file15">github.com/nuea/backend-golang-test/cmd/http/internal/server/server.go (0.0%)</option>
 				
-				<option value="file16">github.com/nuea/backend-golang-test/internal/client/backendgolangtest/backendgolangtest.go (0.0%)</option>
+				<option value="file16">github.com/nuea/backend-golang-test/cmd/http/main.go (0.0%)</option>
 				
-				<option value="file17">github.com/nuea/backend-golang-test/internal/client/mongodb/mongodb.go (0.0%)</option>
+				<option value="file17">github.com/nuea/backend-golang-test/internal/client/backendgolangtest/backendgolangtest.go (0.0%)</option>
 				
-				<option value="file18">github.com/nuea/backend-golang-test/internal/config/config.go (0.0%)</option>
+				<option value="file18">github.com/nuea/backend-golang-test/internal/client/mongodb/mongodb.go (0.0%)</option>
 				
-				<option value="file19">github.com/nuea/backend-golang-test/internal/middleware/auth/auth.go (0.0%)</option>
+				<option value="file19">github.com/nuea/backend-golang-test/internal/config/config.go (0.0%)</option>
 				
-				<option value="file20">github.com/nuea/backend-golang-test/internal/repository/user/model.go (66.7%)</option>
+				<option value="file20">github.com/nuea/backend-golang-test/internal/middleware/auth/auth.go (0.0%)</option>
 				
-				<option value="file21">github.com/nuea/backend-golang-test/internal/repository/user/user.go (100.0%)</option>
+				<option value="file21">github.com/nuea/backend-golang-test/internal/repository/user/model.go (66.7%)</option>
 				
-				<option value="file22">github.com/nuea/backend-golang-test/internal/service/auth/auth.go (0.0%)</option>
+				<option value="file22">github.com/nuea/backend-golang-test/internal/repository/user/user.go (100.0%)</option>
 				
-				<option value="file23">github.com/nuea/backend-golang-test/internal/types/types.go (0.0%)</option>
+				<option value="file23">github.com/nuea/backend-golang-test/internal/service/auth/auth.go (0.0%)</option>
 				
-				<option value="file24">github.com/nuea/backend-golang-test/internal/util/util.go (0.0%)</option>
+				<option value="file24">github.com/nuea/backend-golang-test/internal/types/types.go (0.0%)</option>
 				
-				<option value="file25">github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1/auth.pb.go (0.0%)</option>
+				<option value="file25">github.com/nuea/backend-golang-test/internal/util/util.go (0.0%)</option>
 				
-				<option value="file26">github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1/auth_grpc.pb.go (0.0%)</option>
+				<option value="file26">github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1/auth.pb.go (0.0%)</option>
 				
-				<option value="file27">github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1/user.pb.go (0.0%)</option>
+				<option value="file27">github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1/auth_grpc.pb.go (0.0%)</option>
 				
-				<option value="file28">github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1/user_grpc.pb.go (0.0%)</option>
+				<option value="file28">github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1/user.pb.go (0.0%)</option>
+				
+				<option value="file29">github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1/user_grpc.pb.go (0.0%)</option>
+				
+				<option value="file30">github.com/nuea/backend-golang-test/proto/mock/mock_user_service.go (0.0%)</option>
 				
 				</select>
 			</div>
@@ -618,7 +622,7 @@ func InitContainer() (*Container, func(), error) <span class="cov0" title="0">{
         serviceService := &amp;service.Service{
                 AuthService: authService,
         }
-        authHandler := auth2.ProvideUserHandler(serviceService)
+        authHandler := auth2.ProvideAuthHandler(serviceService)
         userHandler := user.ProvideUserHandler(grpcClients)
         handlers := &amp;handler.Handlers{
                 AuthHandler: authHandler,
@@ -641,13 +645,423 @@ func InitContainer() (*Container, func(), error) <span class="cov0" title="0">{
 var MainSet = wire.NewSet(di.InternalSet, ProviderSet, handler.HandlerSet, wire.Struct(new(Container), "*"))
 </pre>
 		
-		<pre class="file" id="file10" style="display: none">package auth
+		<pre class="file" id="file10" style="display: none">// Package docs Code generated by swaggo/swag. DO NOT EDIT
+package docs
+
+import "github.com/swaggo/swag"
+
+const docTemplate = `{
+    "schemes": {{ marshal .Schemes }},
+    "swagger": "2.0",
+    "info": {
+        "description": "{{escape .Description}}",
+        "title": "{{.Title}}",
+        "contact": {},
+        "version": "{{.Version}}"
+    },
+    "host": "{{.Host}}",
+    "basePath": "{{.BasePath}}",
+    "paths": {
+        "/admin/v1/login": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "operationId": "Login",
+                "parameters": [
+                    {
+                        "description": "req",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/auth.LoginRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/auth.LoginResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/v1/users": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "operationId": "GetUsers",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "email",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "name",
+                        "in": "formData"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/user.GetUsersResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/v1/users/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "operationId": "GetUser",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/user.GetUserResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "operationId": "DeleteUser",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/user.DeleteUserResponse"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "operationId": "UpdateUser",
+                "parameters": [
+                    {
+                        "description": "req",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/user.UpdateUserRequest"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/user.UpdateUserResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "operationId": "CreateUser",
+                "parameters": [
+                    {
+                        "description": "req",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/user.CreateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/user.CreateResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "auth.LoginRequest": {
+            "type": "object",
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "auth.LoginResponse": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "type": "string"
+                }
+            }
+        },
+        "github_com_nuea_backend-golang-test_cmd_http_internal_handler_user.User": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "created_by": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "user.CreateRequest": {
+            "type": "object",
+            "required": [
+                "email",
+                "name",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "user.CreateResponse": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "user.DeleteUserResponse": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "user.GetUserResponse": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "created_by": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "user.GetUsersResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/github_com_nuea_backend-golang-test_cmd_http_internal_handler_user.User"
+                    }
+                }
+            }
+        },
+        "user.UpdateUserRequest": {
+            "type": "object",
+            "properties": {
+                "emai": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "user.UpdateUserResponse": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        },
+        "DeviceID": {
+            "type": "apiKey",
+            "name": "X-Device-Id",
+            "in": "header"
+        }
+    }
+}`
+
+// SwaggerInfo holds exported Swagger Info so clients can modify it
+var SwaggerInfo = &amp;swag.Spec{
+        Version:          "1.0",
+        Host:             "localhost:8080",
+        BasePath:         "/",
+        Schemes:          []string{},
+        Title:            "Admin Gateway",
+        Description:      "API for http gateway",
+        InfoInstanceName: "swagger",
+        SwaggerTemplate:  docTemplate,
+        LeftDelim:        "{{",
+        RightDelim:       "}}",
+}
+
+func init() <span class="cov0" title="0">{
+        swag.Register(SwaggerInfo.InstanceName(), SwaggerInfo)
+}</span>
+</pre>
+		
+		<pre class="file" id="file11" style="display: none">package auth
 
 import (
         "net/http"
 
         "github.com/gin-gonic/gin"
-        "github.com/kurzgesagtz/xgo/xlog"
         "github.com/nuea/backend-golang-test/internal/service"
         "github.com/nuea/backend-golang-test/internal/service/auth"
         "github.com/nuea/backend-golang-test/internal/util"
@@ -658,56 +1072,62 @@ type Handler struct {
         authsv auth.AuthService
 }
 
-func ProvideUserHandler(sv *service.Service) *Handler <span class="cov0" title="0">{
+func ProvideAuthHandler(sv *service.Service) *Handler <span class="cov8" title="1">{
         return &amp;Handler{
                 authsv: sv.AuthService,
         }
 }</span>
 
-func (h *Handler) Login(ctx *gin.Context) <span class="cov0" title="0">{
+// @id Login
+// @accept  json
+// @produce  json
+// @tags Auth
+// @param req body LoginRequest true "req"
+// @success 200 {object} LoginResponse
+// @router /admin/v1/login [POST]
+func (h *Handler) Login(ctx *gin.Context) <span class="cov8" title="1">{
         var req *LoginRequest
-        if err := ctx.ShouldBindBodyWithJSON(&amp;req); err != nil </span><span class="cov0" title="0">{
+        if err := ctx.ShouldBindBodyWithJSON(&amp;req); err != nil </span><span class="cov8" title="1">{
                 ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
                         "error": err.Error(),
                 })
                 return
         }</span>
 
-        <span class="cov0" title="0">if err := util.ValidateStruct(req); err != nil </span><span class="cov0" title="0">{
+        <span class="cov8" title="1">if err := util.ValidateStruct(req); err != nil </span><span class="cov8" title="1">{
                 ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
                         "error": err.Error(),
                 })
                 return
         }</span>
 
-        <span class="cov0" title="0">gReq := &amp;userv1.LoginRequest{
+        <span class="cov8" title="1">gReq := &amp;userv1.LoginRequest{
                 Email:    req.Email,
                 Password: req.Password,
         }
 
         ac, err := h.authsv.Login(ctx, gReq)
-        if err != nil </span><span class="cov0" title="0">{
-                xlog.PrettyPrint(err)
+        if err != nil </span><span class="cov8" title="1">{
                 ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
                         "error": err.Error(),
                 })
                 return
         }</span>
 
-        <span class="cov0" title="0">ctx.JSON(http.StatusOK, &amp;LoginResponse{
+        <span class="cov8" title="1">ctx.JSON(http.StatusOK, &amp;LoginResponse{
                 AccessToken: ac,
         })</span>
 }
 </pre>
 		
-		<pre class="file" id="file11" style="display: none">package user
+		<pre class="file" id="file12" style="display: none">package user
 
 import (
         "github.com/gotidy/ptr"
         userv1 "github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1"
 )
 
-func mapToUser(user *userv1.User) (*User, error) <span class="cov0" title="0">{
+func mapToUser(user *userv1.User) (*User, error) <span class="cov8" title="1">{
         response := &amp;User{
                 ID:        user.Id,
                 Name:      user.Name,
@@ -721,11 +1141,11 @@ func mapToUser(user *userv1.User) (*User, error) <span class="cov0" title="0">{
                 response.DeletedAt = ptr.Of(user.DeletedAt.AsTime())
         }</span>
 
-        <span class="cov0" title="0">return response, nil</span>
+        <span class="cov8" title="1">return response, nil</span>
 }
 </pre>
 		
-		<pre class="file" id="file12" style="display: none">package user
+		<pre class="file" id="file13" style="display: none">package user
 
 import (
         "net/http"
@@ -740,58 +1160,81 @@ type Handler struct {
         begotc userv1.UserServiceClient
 }
 
-func ProvideUserHandler(c *client.GRPCClients) *Handler <span class="cov0" title="0">{
+func ProvideUserHandler(c *client.GRPCClients) *Handler <span class="cov8" title="1">{
         return &amp;Handler{
                 begotc: c.BackendGolangTestGRPCService.UserServiceClient,
         }
 }</span>
 
-func (h *Handler) Register(ctx *gin.Context) <span class="cov0" title="0">{
-        var req *RegisterRequest
-        if err := ctx.ShouldBindBodyWithJSON(&amp;req); err != nil </span><span class="cov0" title="0">{
+// @id CreateUser
+// @accept  json
+// @produce  json
+// @tags User
+// @param req body CreateRequest true "req"
+// @success 200 {object} CreateResponse
+// @router /api/v1/users [POST]
+func (h *Handler) CreateUser(ctx *gin.Context) <span class="cov8" title="1">{
+        var req *CreateRequest
+        if err := ctx.ShouldBindBodyWithJSON(&amp;req); err != nil </span><span class="cov8" title="1">{
                 ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
                         "error": err.Error(),
                 })
                 return
         }</span>
 
-        <span class="cov0" title="0">if err := util.ValidateStruct(req); err != nil </span><span class="cov0" title="0">{
+        <span class="cov8" title="1">if err := util.ValidateStruct(req); err != nil </span><span class="cov8" title="1">{
                 ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
                         "error": err.Error(),
                 })
                 return
         }</span>
 
-        <span class="cov0" title="0">if _, err := h.begotc.CreateUser(ctx, &amp;userv1.CreateUserRequest{
+        <span class="cov8" title="1">if _, err := h.begotc.CreateUser(ctx, &amp;userv1.CreateUserRequest{
                 Name:     req.Name,
                 Email:    req.Email,
                 Password: req.Password,
-        }); err != nil </span><span class="cov0" title="0">{
+        }); err != nil </span><span class="cov8" title="1">{
                 ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
                         "error": err.Error(),
                 })
                 return
         }</span>
 
-        <span class="cov0" title="0">ctx.JSON(http.StatusOK, &amp;RegisterResponse{
-                Message: "Register success",
+        <span class="cov8" title="1">ctx.JSON(http.StatusOK, &amp;CreateResponse{
+                Message: "Completed successfully",
         })</span>
 }
 
-func (h *Handler) GetUsers(ctx *gin.Context) <span class="cov0" title="0">{
+// @id GetUsers
+// @accept  json
+// @produce  json
+// @security BearerAuth
+// @tags User
+// @param req formData GetUsersRequest true "req"
+// @success 200 {object} GetUsersResponse
+// @router /admin/v1/users [GET]
+func (h *Handler) GetUsers(ctx *gin.Context) <span class="cov8" title="1">{
         var req GetUsersRequest
 
-        if err := ctx.ShouldBind(&amp;req); err != nil </span><span class="cov0" title="0">{
+        if err := ctx.ShouldBind(&amp;req); err != nil </span><span class="cov8" title="1">{
                 ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
                         "error": err.Error(),
                 })
                 return
         }</span>
 
-        <span class="cov0" title="0">users, err := h.begotc.GetUsers(ctx, &amp;userv1.GetUsersRequest{
+        <span class="cov8" title="1">users, err := h.begotc.GetUsers(ctx, &amp;userv1.GetUsersRequest{
                 Name:  req.Name,
                 Email: req.Email,
         })
+        if err != nil </span><span class="cov8" title="1">{
+                ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
+                        "error": err.Error(),
+                })
+                return
+        }</span>
+
+        <span class="cov8" title="1">datas, err := util.MapToSlice(mapToUser, users.Data)
         if err != nil </span><span class="cov0" title="0">{
                 ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
                         "error": err.Error(),
@@ -799,31 +1242,39 @@ func (h *Handler) GetUsers(ctx *gin.Context) <span class="cov0" title="0">{
                 return
         }</span>
 
-        <span class="cov0" title="0">datas, err := util.MapToSlice(mapToUser, users.Data)
-        if err != nil </span><span class="cov0" title="0">{
-                ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
-                        "error": err.Error(),
-                })
-                return
-        }</span>
-
-        <span class="cov0" title="0">ctx.JSON(http.StatusOK, &amp;GetUsersResponse{
+        <span class="cov8" title="1">ctx.JSON(http.StatusOK, &amp;GetUsersResponse{
                 Data: datas,
         })</span>
 }
 
-func (h *Handler) GetUser(ctx *gin.Context) <span class="cov0" title="0">{
+// @id GetUser
+// @accept  json
+// @produce  json
+// @security BearerAuth
+// @tags User
+// @param id path string true "id"
+// @success 200 {object} GetUserResponse
+// @router /admin/v1/users/{id} [GET]
+func (h *Handler) GetUser(ctx *gin.Context) <span class="cov8" title="1">{
         id := ctx.Param("id")
-        if id == "" </span><span class="cov0" title="0">{
+        if id == "" </span><span class="cov8" title="1">{
                 ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
                         "error": "path parameter is missing.",
                 })
                 return
         }</span>
 
-        <span class="cov0" title="0">gRes, err := h.begotc.GetUser(ctx, &amp;userv1.GetUserRequest{
+        <span class="cov8" title="1">gRes, err := h.begotc.GetUser(ctx, &amp;userv1.GetUserRequest{
                 Id: id,
         })
+        if err != nil </span><span class="cov8" title="1">{
+                ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
+                        "error": err.Error(),
+                })
+                return
+        }</span>
+
+        <span class="cov8" title="1">user, err := mapToUser(gRes.User)
         if err != nil </span><span class="cov0" title="0">{
                 ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
                         "error": err.Error(),
@@ -831,89 +1282,104 @@ func (h *Handler) GetUser(ctx *gin.Context) <span class="cov0" title="0">{
                 return
         }</span>
 
-        <span class="cov0" title="0">user, err := mapToUser(gRes.User)
-        if err != nil </span><span class="cov0" title="0">{
-                ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
-                        "error": err.Error(),
-                })
-                return
-        }</span>
-
-        <span class="cov0" title="0">ctx.JSON(http.StatusOK, &amp;GetUserResponse{
+        <span class="cov8" title="1">ctx.JSON(http.StatusOK, &amp;GetUserResponse{
                 User: *user,
         })</span>
 }
 
-func (h *Handler) UpdateUser(ctx *gin.Context) <span class="cov0" title="0">{
+// @id UpdateUser
+// @accept  json
+// @produce  json
+// @security BearerAuth
+// @tags User
+// @param req body UpdateUserRequest true "req"
+// @param id path string true "id"
+// @success 200 {object} UpdateUserResponse
+// @router /admin/v1/users/{id} [PATCH]
+func (h *Handler) UpdateUser(ctx *gin.Context) <span class="cov8" title="1">{
         id := ctx.Param("id")
-        if id == "" </span><span class="cov0" title="0">{
+        if id == "" </span><span class="cov8" title="1">{
                 ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
                         "error": "path parameter is missing.",
                 })
                 return
         }</span>
 
-        <span class="cov0" title="0">var req *UpdateUserRequest
-        if err := ctx.ShouldBindBodyWithJSON(&amp;req); err != nil </span><span class="cov0" title="0">{
+        <span class="cov8" title="1">var req *UpdateUserRequest
+        if err := ctx.ShouldBindBodyWithJSON(&amp;req); err != nil </span><span class="cov8" title="1">{
                 ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
                         "error": err.Error(),
                 })
                 return
         }</span>
 
-        <span class="cov0" title="0">if _, err := h.begotc.UpdateUser(ctx, &amp;userv1.UpdateUserRequest{
+        <span class="cov8" title="1">if _, err := h.begotc.UpdateUser(ctx, &amp;userv1.UpdateUserRequest{
                 Id:    id,
                 Name:  req.Name,
                 Email: req.Email,
-        }); err != nil </span><span class="cov0" title="0">{
+        }); err != nil </span><span class="cov8" title="1">{
                 ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
                         "error": err.Error(),
                 })
                 return
         }</span>
 
-        <span class="cov0" title="0">ctx.JSON(http.StatusOK, &amp;UpdateUserResponse{
-                Message: "Update success",
+        <span class="cov8" title="1">ctx.JSON(http.StatusOK, &amp;UpdateUserResponse{
+                Message: "Updated successfully",
         })</span>
 }
 
-func (h *Handler) DeleteUser(ctx *gin.Context) <span class="cov0" title="0">{
+// @id DeleteUser
+// @accept  json
+// @produce  json
+// @security BearerAuth
+// @tags User
+// @param id path string true "id"
+// @success 200 {object} DeleteUserResponse
+// @router /admin/v1/users/{id} [DELETE]
+func (h *Handler) DeleteUser(ctx *gin.Context) <span class="cov8" title="1">{
         id := ctx.Param("id")
-        if id == "" </span><span class="cov0" title="0">{
+        if id == "" </span><span class="cov8" title="1">{
                 ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
                         "error": "path parameter is missing.",
                 })
                 return
         }</span>
 
-        <span class="cov0" title="0">if _, err := h.begotc.DeleteUser(ctx, &amp;userv1.DeleteUserRequest{
+        <span class="cov8" title="1">if _, err := h.begotc.DeleteUser(ctx, &amp;userv1.DeleteUserRequest{
                 Id: id,
-        }); err != nil </span><span class="cov0" title="0">{
+        }); err != nil </span><span class="cov8" title="1">{
                 ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
                         "error": err.Error(),
                 })
                 return
         }</span>
 
-        <span class="cov0" title="0">ctx.JSON(http.StatusOK, &amp;DeleteUserResponse{
-                Message: "Delete success",
+        <span class="cov8" title="1">ctx.JSON(http.StatusOK, &amp;DeleteUserResponse{
+                Message: "Deleted successfully",
         })</span>
 }
 </pre>
 		
-		<pre class="file" id="file13" style="display: none">package server
+		<pre class="file" id="file14" style="display: none">package server
 
 import (
         "github.com/gin-gonic/gin"
         "github.com/nuea/backend-golang-test/cmd/http/internal/handler"
         "github.com/nuea/backend-golang-test/internal/middleware"
+
+        _ "github.com/nuea/backend-golang-test/cmd/http/internal/docs"
+        swaggerFiles "github.com/swaggo/files"
+        ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func registerRouter(gin *gin.Engine, h *handler.Handlers, m *middleware.Middleware) <span class="cov0" title="0">{
+        gin.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
         router := *gin.Group("/api/v1")
         </span><span class="cov0" title="0">{
                 router.POST("/login", h.AuthHandler.Login)
-                router.POST("/register", h.UserHandler.Register)
+                router.POST("/register", h.UserHandler.CreateUser)
 
                 router.Use(m.Auth.Middleware())
                 router.GET("/users", h.UserHandler.GetUsers)
@@ -924,7 +1390,7 @@ func registerRouter(gin *gin.Engine, h *handler.Handlers, m *middleware.Middlewa
 }
 </pre>
 		
-		<pre class="file" id="file14" style="display: none">package server
+		<pre class="file" id="file15" style="display: none">package server
 
 import (
         "bytes"
@@ -1020,7 +1486,7 @@ func ProvideHTTPServer(cfg *config.AppConfig, h *handler.Handlers, m *middleware
 }</span>
 </pre>
 		
-		<pre class="file" id="file15" style="display: none">package main
+		<pre class="file" id="file16" style="display: none">package main
 
 import (
         "log"
@@ -1028,6 +1494,23 @@ import (
         "github.com/nuea/backend-golang-test/cmd/http/di"
 )
 
+//go:generate go run github.com/swaggo/swag/cmd/swag init --parseDependency --parseInternal --parseDepth 1 -o internal/docs
+
+// @title Admin Gateway
+// @version 1.0
+// @description API for http gateway
+//
+// @host localhost:8080
+// @BasePath /
+//
+// @securityDefinitions.apikey BearerAuth
+// @in header
+// @name Authorization
+// @securityDefinitions.apikey DeviceID
+// @in header
+// @name X-Device-Id
+//
+// @query.collection.format multi
 func main() <span class="cov0" title="0">{
         ctn, stop, err := di.InitContainer()
         if err != nil </span><span class="cov0" title="0">{
@@ -1038,7 +1521,7 @@ func main() <span class="cov0" title="0">{
 }
 </pre>
 		
-		<pre class="file" id="file16" style="display: none">package backendgolangtest
+		<pre class="file" id="file17" style="display: none">package backendgolangtest
 
 import (
         "context"
@@ -1108,7 +1591,7 @@ func ProvideAuthServiceClient(client *APIClient) userv1.AuthServiceClient <span 
 }</span>
 </pre>
 		
-		<pre class="file" id="file17" style="display: none">package mongodb
+		<pre class="file" id="file18" style="display: none">package mongodb
 
 import (
         "context"
@@ -1176,7 +1659,7 @@ func ProvideMongoDBClient(cfg *config.AppConfig) (MongoDB, func(), error) <span 
 }
 </pre>
 		
-		<pre class="file" id="file18" style="display: none">package config
+		<pre class="file" id="file19" style="display: none">package config
 
 import (
         "fmt"
@@ -1248,7 +1731,7 @@ func ProvideCofig() *AppConfig <span class="cov0" title="0">{
 }
 </pre>
 		
-		<pre class="file" id="file19" style="display: none">package auth
+		<pre class="file" id="file20" style="display: none">package auth
 
 import (
         "errors"
@@ -1307,7 +1790,7 @@ func (m *authMiddleware) authentication(ctx *gin.Context) error <span class="cov
 }
 </pre>
 		
-		<pre class="file" id="file20" style="display: none">package user
+		<pre class="file" id="file21" style="display: none">package user
 
 import (
         "time"
@@ -1357,7 +1840,7 @@ func (f *UserFilter) Filter() bson.D <span class="cov8" title="1">{
 }
 </pre>
 		
-		<pre class="file" id="file21" style="display: none">package user
+		<pre class="file" id="file22" style="display: none">package user
 
 import (
         "context"
@@ -1468,7 +1951,7 @@ func (r *repository) Count(ctx context.Context) (int64, error) <span class="cov8
 }</span>
 </pre>
 		
-		<pre class="file" id="file22" style="display: none">package auth
+		<pre class="file" id="file23" style="display: none">package auth
 
 import (
         "context"
@@ -1563,7 +2046,7 @@ func (s *authService) setCookies(ctx context.Context, accessToken string) <span 
 }</span>
 </pre>
 		
-		<pre class="file" id="file23" style="display: none">package types
+		<pre class="file" id="file24" style="display: none">package types
 
 import (
         "errors"
@@ -1630,7 +2113,7 @@ func NewEmail(s string) (Email, error) <span class="cov0" title="0">{
 }
 </pre>
 		
-		<pre class="file" id="file24" style="display: none">package util
+		<pre class="file" id="file25" style="display: none">package util
 
 import (
         "errors"
@@ -1674,7 +2157,7 @@ func ValidateStruct(s interface{}) error <span class="cov0" title="0">{
 }
 </pre>
 		
-		<pre class="file" id="file25" style="display: none">// Code generated by protoc-gen-go. DO NOT EDIT.
+		<pre class="file" id="file26" style="display: none">// Code generated by protoc-gen-go. DO NOT EDIT.
 // versions:
 //         protoc-gen-go v1.36.6
 //         protoc        (unknown)
@@ -1859,7 +2342,7 @@ func file_backend_golang_test_user_v1_auth_proto_init() <span class="cov0" title
 }
 </pre>
 		
-		<pre class="file" id="file26" style="display: none">// Code generated by protoc-gen-go-grpc. DO NOT EDIT.
+		<pre class="file" id="file27" style="display: none">// Code generated by protoc-gen-go-grpc. DO NOT EDIT.
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             (unknown)
@@ -1982,7 +2465,7 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 }
 </pre>
 		
-		<pre class="file" id="file27" style="display: none">// Code generated by protoc-gen-go. DO NOT EDIT.
+		<pre class="file" id="file28" style="display: none">// Code generated by protoc-gen-go. DO NOT EDIT.
 // versions:
 //         protoc-gen-go v1.36.6
 //         protoc        (unknown)
@@ -2700,7 +3183,7 @@ func file_backend_golang_test_user_v1_user_proto_init() <span class="cov0" title
 }
 </pre>
 		
-		<pre class="file" id="file28" style="display: none">// Code generated by protoc-gen-go-grpc. DO NOT EDIT.
+		<pre class="file" id="file29" style="display: none">// Code generated by protoc-gen-go-grpc. DO NOT EDIT.
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             (unknown)
@@ -2973,6 +3456,290 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
         Streams:  []grpc.StreamDesc{},
         Metadata: "backend_golang_test/user/v1/user.proto",
 }
+</pre>
+		
+		<pre class="file" id="file30" style="display: none">// Code generated by MockGen. DO NOT EDIT.
+// Source: proto/gen/backend_golang_test/user/v1/user_grpc.pb.go
+
+// Package mock is a generated GoMock package.
+package mock
+
+import (
+        context "context"
+        reflect "reflect"
+
+        gomock "github.com/golang/mock/gomock"
+        userv1 "github.com/nuea/backend-golang-test/proto/gen/backend_golang_test/user/v1"
+        grpc "google.golang.org/grpc"
+)
+
+// MockUserServiceClient is a mock of UserServiceClient interface.
+type MockUserServiceClient struct {
+        ctrl     *gomock.Controller
+        recorder *MockUserServiceClientMockRecorder
+}
+
+// MockUserServiceClientMockRecorder is the mock recorder for MockUserServiceClient.
+type MockUserServiceClientMockRecorder struct {
+        mock *MockUserServiceClient
+}
+
+// NewMockUserServiceClient creates a new mock instance.
+func NewMockUserServiceClient(ctrl *gomock.Controller) *MockUserServiceClient <span class="cov0" title="0">{
+        mock := &amp;MockUserServiceClient{ctrl: ctrl}
+        mock.recorder = &amp;MockUserServiceClientMockRecorder{mock}
+        return mock
+}</span>
+
+// EXPECT returns an object that allows the caller to indicate expected use.
+func (m *MockUserServiceClient) EXPECT() *MockUserServiceClientMockRecorder <span class="cov0" title="0">{
+        return m.recorder
+}</span>
+
+// CreateUser mocks base method.
+func (m *MockUserServiceClient) CreateUser(ctx context.Context, in *userv1.CreateUserRequest, opts ...grpc.CallOption) (*userv1.CreateUserResponse, error) <span class="cov0" title="0">{
+        m.ctrl.T.Helper()
+        varargs := []interface{}{ctx, in}
+        for _, a := range opts </span><span class="cov0" title="0">{
+                varargs = append(varargs, a)
+        }</span>
+        <span class="cov0" title="0">ret := m.ctrl.Call(m, "CreateUser", varargs...)
+        ret0, _ := ret[0].(*userv1.CreateUserResponse)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1</span>
+}
+
+// CreateUser indicates an expected call of CreateUser.
+func (mr *MockUserServiceClientMockRecorder) CreateUser(ctx, in interface{}, opts ...interface{}) *gomock.Call <span class="cov0" title="0">{
+        mr.mock.ctrl.T.Helper()
+        varargs := append([]interface{}{ctx, in}, opts...)
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateUser", reflect.TypeOf((*MockUserServiceClient)(nil).CreateUser), varargs...)
+}</span>
+
+// DeleteUser mocks base method.
+func (m *MockUserServiceClient) DeleteUser(ctx context.Context, in *userv1.DeleteUserRequest, opts ...grpc.CallOption) (*userv1.DeleteUserResponse, error) <span class="cov0" title="0">{
+        m.ctrl.T.Helper()
+        varargs := []interface{}{ctx, in}
+        for _, a := range opts </span><span class="cov0" title="0">{
+                varargs = append(varargs, a)
+        }</span>
+        <span class="cov0" title="0">ret := m.ctrl.Call(m, "DeleteUser", varargs...)
+        ret0, _ := ret[0].(*userv1.DeleteUserResponse)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1</span>
+}
+
+// DeleteUser indicates an expected call of DeleteUser.
+func (mr *MockUserServiceClientMockRecorder) DeleteUser(ctx, in interface{}, opts ...interface{}) *gomock.Call <span class="cov0" title="0">{
+        mr.mock.ctrl.T.Helper()
+        varargs := append([]interface{}{ctx, in}, opts...)
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteUser", reflect.TypeOf((*MockUserServiceClient)(nil).DeleteUser), varargs...)
+}</span>
+
+// GetUser mocks base method.
+func (m *MockUserServiceClient) GetUser(ctx context.Context, in *userv1.GetUserRequest, opts ...grpc.CallOption) (*userv1.GetUserResponse, error) <span class="cov0" title="0">{
+        m.ctrl.T.Helper()
+        varargs := []interface{}{ctx, in}
+        for _, a := range opts </span><span class="cov0" title="0">{
+                varargs = append(varargs, a)
+        }</span>
+        <span class="cov0" title="0">ret := m.ctrl.Call(m, "GetUser", varargs...)
+        ret0, _ := ret[0].(*userv1.GetUserResponse)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1</span>
+}
+
+// GetUser indicates an expected call of GetUser.
+func (mr *MockUserServiceClientMockRecorder) GetUser(ctx, in interface{}, opts ...interface{}) *gomock.Call <span class="cov0" title="0">{
+        mr.mock.ctrl.T.Helper()
+        varargs := append([]interface{}{ctx, in}, opts...)
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUser", reflect.TypeOf((*MockUserServiceClient)(nil).GetUser), varargs...)
+}</span>
+
+// GetUsers mocks base method.
+func (m *MockUserServiceClient) GetUsers(ctx context.Context, in *userv1.GetUsersRequest, opts ...grpc.CallOption) (*userv1.GetUsersResponse, error) <span class="cov0" title="0">{
+        m.ctrl.T.Helper()
+        varargs := []interface{}{ctx, in}
+        for _, a := range opts </span><span class="cov0" title="0">{
+                varargs = append(varargs, a)
+        }</span>
+        <span class="cov0" title="0">ret := m.ctrl.Call(m, "GetUsers", varargs...)
+        ret0, _ := ret[0].(*userv1.GetUsersResponse)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1</span>
+}
+
+// GetUsers indicates an expected call of GetUsers.
+func (mr *MockUserServiceClientMockRecorder) GetUsers(ctx, in interface{}, opts ...interface{}) *gomock.Call <span class="cov0" title="0">{
+        mr.mock.ctrl.T.Helper()
+        varargs := append([]interface{}{ctx, in}, opts...)
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUsers", reflect.TypeOf((*MockUserServiceClient)(nil).GetUsers), varargs...)
+}</span>
+
+// UpdateUser mocks base method.
+func (m *MockUserServiceClient) UpdateUser(ctx context.Context, in *userv1.UpdateUserRequest, opts ...grpc.CallOption) (*userv1.UpdateUserResponse, error) <span class="cov0" title="0">{
+        m.ctrl.T.Helper()
+        varargs := []interface{}{ctx, in}
+        for _, a := range opts </span><span class="cov0" title="0">{
+                varargs = append(varargs, a)
+        }</span>
+        <span class="cov0" title="0">ret := m.ctrl.Call(m, "UpdateUser", varargs...)
+        ret0, _ := ret[0].(*userv1.UpdateUserResponse)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1</span>
+}
+
+// UpdateUser indicates an expected call of UpdateUser.
+func (mr *MockUserServiceClientMockRecorder) UpdateUser(ctx, in interface{}, opts ...interface{}) *gomock.Call <span class="cov0" title="0">{
+        mr.mock.ctrl.T.Helper()
+        varargs := append([]interface{}{ctx, in}, opts...)
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateUser", reflect.TypeOf((*MockUserServiceClient)(nil).UpdateUser), varargs...)
+}</span>
+
+// MockUserServiceServer is a mock of UserServiceServer interface.
+type MockUserServiceServer struct {
+        ctrl     *gomock.Controller
+        recorder *MockUserServiceServerMockRecorder
+}
+
+// MockUserServiceServerMockRecorder is the mock recorder for MockUserServiceServer.
+type MockUserServiceServerMockRecorder struct {
+        mock *MockUserServiceServer
+}
+
+// NewMockUserServiceServer creates a new mock instance.
+func NewMockUserServiceServer(ctrl *gomock.Controller) *MockUserServiceServer <span class="cov0" title="0">{
+        mock := &amp;MockUserServiceServer{ctrl: ctrl}
+        mock.recorder = &amp;MockUserServiceServerMockRecorder{mock}
+        return mock
+}</span>
+
+// EXPECT returns an object that allows the caller to indicate expected use.
+func (m *MockUserServiceServer) EXPECT() *MockUserServiceServerMockRecorder <span class="cov0" title="0">{
+        return m.recorder
+}</span>
+
+// CreateUser mocks base method.
+func (m *MockUserServiceServer) CreateUser(arg0 context.Context, arg1 *userv1.CreateUserRequest) (*userv1.CreateUserResponse, error) <span class="cov0" title="0">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "CreateUser", arg0, arg1)
+        ret0, _ := ret[0].(*userv1.CreateUserResponse)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1
+}</span>
+
+// CreateUser indicates an expected call of CreateUser.
+func (mr *MockUserServiceServerMockRecorder) CreateUser(arg0, arg1 interface{}) *gomock.Call <span class="cov0" title="0">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateUser", reflect.TypeOf((*MockUserServiceServer)(nil).CreateUser), arg0, arg1)
+}</span>
+
+// DeleteUser mocks base method.
+func (m *MockUserServiceServer) DeleteUser(arg0 context.Context, arg1 *userv1.DeleteUserRequest) (*userv1.DeleteUserResponse, error) <span class="cov0" title="0">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "DeleteUser", arg0, arg1)
+        ret0, _ := ret[0].(*userv1.DeleteUserResponse)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1
+}</span>
+
+// DeleteUser indicates an expected call of DeleteUser.
+func (mr *MockUserServiceServerMockRecorder) DeleteUser(arg0, arg1 interface{}) *gomock.Call <span class="cov0" title="0">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteUser", reflect.TypeOf((*MockUserServiceServer)(nil).DeleteUser), arg0, arg1)
+}</span>
+
+// GetUser mocks base method.
+func (m *MockUserServiceServer) GetUser(arg0 context.Context, arg1 *userv1.GetUserRequest) (*userv1.GetUserResponse, error) <span class="cov0" title="0">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "GetUser", arg0, arg1)
+        ret0, _ := ret[0].(*userv1.GetUserResponse)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1
+}</span>
+
+// GetUser indicates an expected call of GetUser.
+func (mr *MockUserServiceServerMockRecorder) GetUser(arg0, arg1 interface{}) *gomock.Call <span class="cov0" title="0">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUser", reflect.TypeOf((*MockUserServiceServer)(nil).GetUser), arg0, arg1)
+}</span>
+
+// GetUsers mocks base method.
+func (m *MockUserServiceServer) GetUsers(arg0 context.Context, arg1 *userv1.GetUsersRequest) (*userv1.GetUsersResponse, error) <span class="cov0" title="0">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "GetUsers", arg0, arg1)
+        ret0, _ := ret[0].(*userv1.GetUsersResponse)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1
+}</span>
+
+// GetUsers indicates an expected call of GetUsers.
+func (mr *MockUserServiceServerMockRecorder) GetUsers(arg0, arg1 interface{}) *gomock.Call <span class="cov0" title="0">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUsers", reflect.TypeOf((*MockUserServiceServer)(nil).GetUsers), arg0, arg1)
+}</span>
+
+// UpdateUser mocks base method.
+func (m *MockUserServiceServer) UpdateUser(arg0 context.Context, arg1 *userv1.UpdateUserRequest) (*userv1.UpdateUserResponse, error) <span class="cov0" title="0">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "UpdateUser", arg0, arg1)
+        ret0, _ := ret[0].(*userv1.UpdateUserResponse)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1
+}</span>
+
+// UpdateUser indicates an expected call of UpdateUser.
+func (mr *MockUserServiceServerMockRecorder) UpdateUser(arg0, arg1 interface{}) *gomock.Call <span class="cov0" title="0">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateUser", reflect.TypeOf((*MockUserServiceServer)(nil).UpdateUser), arg0, arg1)
+}</span>
+
+// mustEmbedUnimplementedUserServiceServer mocks base method.
+func (m *MockUserServiceServer) mustEmbedUnimplementedUserServiceServer() <span class="cov0" title="0">{
+        m.ctrl.T.Helper()
+        m.ctrl.Call(m, "mustEmbedUnimplementedUserServiceServer")
+}</span>
+
+// mustEmbedUnimplementedUserServiceServer indicates an expected call of mustEmbedUnimplementedUserServiceServer.
+func (mr *MockUserServiceServerMockRecorder) mustEmbedUnimplementedUserServiceServer() *gomock.Call <span class="cov0" title="0">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "mustEmbedUnimplementedUserServiceServer", reflect.TypeOf((*MockUserServiceServer)(nil).mustEmbedUnimplementedUserServiceServer))
+}</span>
+
+// MockUnsafeUserServiceServer is a mock of UnsafeUserServiceServer interface.
+type MockUnsafeUserServiceServer struct {
+        ctrl     *gomock.Controller
+        recorder *MockUnsafeUserServiceServerMockRecorder
+}
+
+// MockUnsafeUserServiceServerMockRecorder is the mock recorder for MockUnsafeUserServiceServer.
+type MockUnsafeUserServiceServerMockRecorder struct {
+        mock *MockUnsafeUserServiceServer
+}
+
+// NewMockUnsafeUserServiceServer creates a new mock instance.
+func NewMockUnsafeUserServiceServer(ctrl *gomock.Controller) *MockUnsafeUserServiceServer <span class="cov0" title="0">{
+        mock := &amp;MockUnsafeUserServiceServer{ctrl: ctrl}
+        mock.recorder = &amp;MockUnsafeUserServiceServerMockRecorder{mock}
+        return mock
+}</span>
+
+// EXPECT returns an object that allows the caller to indicate expected use.
+func (m *MockUnsafeUserServiceServer) EXPECT() *MockUnsafeUserServiceServerMockRecorder <span class="cov0" title="0">{
+        return m.recorder
+}</span>
+
+// mustEmbedUnimplementedUserServiceServer mocks base method.
+func (m *MockUnsafeUserServiceServer) mustEmbedUnimplementedUserServiceServer() <span class="cov0" title="0">{
+        m.ctrl.T.Helper()
+        m.ctrl.Call(m, "mustEmbedUnimplementedUserServiceServer")
+}</span>
+
+// mustEmbedUnimplementedUserServiceServer indicates an expected call of mustEmbedUnimplementedUserServiceServer.
+func (mr *MockUnsafeUserServiceServerMockRecorder) mustEmbedUnimplementedUserServiceServer() *gomock.Call <span class="cov0" title="0">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "mustEmbedUnimplementedUserServiceServer", reflect.TypeOf((*MockUnsafeUserServiceServer)(nil).mustEmbedUnimplementedUserServiceServer))
+}</span>
 </pre>
 		
 		</div>

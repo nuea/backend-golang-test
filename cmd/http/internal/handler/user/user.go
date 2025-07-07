@@ -54,7 +54,7 @@ func (h *Handler) CreateUser(ctx *gin.Context) {
 	}
 
 	ctx.JSON(http.StatusOK, &CreateResponse{
-		Message: "Register success",
+		Message: "Completed successfully",
 	})
 }
 
@@ -178,7 +178,7 @@ func (h *Handler) UpdateUser(ctx *gin.Context) {
 	}
 
 	ctx.JSON(http.StatusOK, &UpdateUserResponse{
-		Message: "Update success",
+		Message: "Updated successfully",
 	})
 }
 
@@ -209,6 +209,6 @@ func (h *Handler) DeleteUser(ctx *gin.Context) {
 	}
 
 	ctx.JSON(http.StatusOK, &DeleteUserResponse{
-		Message: "Delete success",
+		Message: "Deleted successfully",
 	})
 }

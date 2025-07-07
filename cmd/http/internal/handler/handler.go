@@ -12,7 +12,7 @@ type Handlers struct {
 }
 
 var HandlerSet = wire.NewSet(
-	auth.ProvideUserHandler,
+	auth.ProvideAuthHandler,
 	user.ProvideUserHandler,
 
 	wire.Struct(new(Handlers), "*"),
