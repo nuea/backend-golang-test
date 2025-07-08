@@ -32,7 +32,7 @@ func (s *HTTPServer) Serve() {
 	g := &run.Group{}
 	g.Add(func() error {
 		s.srv = &http.Server{
-			Addr:    fmt.Sprintf(":%s", s.cfg.System.HTTPPort),
+			Addr:    fmt.Sprintf(":%s", s.cfg.HTTPConfig.HTTPPort),
 			Handler: s.gin.Handler(),
 		}
 		log.Println("HTTP Server - started at ip address", s.srv.Addr)

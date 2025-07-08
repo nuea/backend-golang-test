@@ -65,7 +65,7 @@ func setupTestRequest(t *testing.T, method, path string, payload interface{}) (*
 
 func TestLogin(t *testing.T) {
 	gin.SetMode(gin.TestMode)
-	path := "/admin/v1/login"
+	path := "/api/v1/login"
 
 	t.Run("success", func(t *testing.T) {
 		sv := new(mockAuthService)

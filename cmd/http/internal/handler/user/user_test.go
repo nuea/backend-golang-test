@@ -65,7 +65,7 @@ func TestCreateUser(t *testing.T) {
 	h := &Handler{
 		begotc: musc,
 	}
-	path := "/admin/v1/users"
+	path := "/api/v1/users"
 
 	t.Run("success", func(t *testing.T) {
 		req := &CreateRequest{
@@ -143,7 +143,7 @@ func TestGetUsers(t *testing.T) {
 	h := &Handler{
 		begotc: musc,
 	}
-	path := "/admin/v1/users"
+	path := "/api/v1/users"
 
 	t.Run("success - without query params", func(t *testing.T) {
 		req := &GetUsersRequest{
@@ -240,7 +240,7 @@ func TestGetUser(t *testing.T) {
 		begotc: musc,
 	}
 
-	path := "/admin/v1/users"
+	path := "/api/v1/users"
 	uid := "686b6ce8dbf72bfc4d0fef95"
 
 	t.Run("success", func(t *testing.T) {
@@ -300,7 +300,7 @@ func TestUpdateUser(t *testing.T) {
 		begotc: musc,
 	}
 
-	path := "/admin/v1/users"
+	path := "/api/v1/users"
 	uid := "686b6ce8dbf72bfc4d0fef95"
 
 	t.Run("success", func(t *testing.T) {
@@ -376,7 +376,7 @@ func TestDeleteUser(t *testing.T) {
 		begotc: musc,
 	}
 
-	path := "/admin/v1/users"
+	path := "/api/v1/users"
 	uid := "686b6ce8dbf72bfc4d0fef95"
 
 	t.Run("success", func(t *testing.T) {

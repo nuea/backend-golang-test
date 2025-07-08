@@ -26,6 +26,7 @@ services:
       MONGODB_DATABASE_NAME: backend-golang-test
       MONGODB_USER: rootadmin
       MONGODB_PASSWORD: rootadmin
+      APP_GRPC_REFLECTION_ENABLED: true
 
   go-http:
     image: backend-golang-test:latest

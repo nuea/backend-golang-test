@@ -481,7 +481,7 @@ type GRPCServer struct {
 func (s *GRPCServer) Serve() <span class="cov0" title="0">{
         g := &amp;run.Group{}
         g.Add(func() error </span><span class="cov0" title="0">{
-                ipaddr := fmt.Sprintf(":%s", s.cfg.System.GRPCPort)
+                ipaddr := fmt.Sprintf(":%s", s.cfg.GRPCConfig.GRPCPort)
                 lis, err := net.Listen("tcp", ipaddr)
                 if err != nil </span><span class="cov0" title="0">{
                         panic(err)</span>
@@ -540,11 +540,16 @@ func ProvideGRPCServer(cfg *config.AppConfig, h *handler.GrpcServices, r *reposi
         }
 
         handler.RegisterGrpcServices(s.srv, h)
-        healthgrpc.RegisterHealthServer(s.srv, health.NewServer())
-        reflection.Register(s.srv)
+        if !cfg.GRPCConfig.GRPCHealthcheckDisabled </span><span class="cov0" title="0">{
+                healthgrpc.RegisterHealthServer(s.srv, health.NewServer())
+        }</span>
 
-        return s
-}</span>
+        <span class="cov0" title="0">if cfg.GRPCConfig.GRPCReflectionEnabled </span><span class="cov0" title="0">{
+                reflection.Register(s.srv)
+        }</span>
+
+        <span class="cov0" title="0">return s</span>
+}
 </pre>
 		
 		<pre class="file" id="file7" style="display: none">package main
@@ -662,7 +667,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/admin/v1/login": {
+        "/api/v1/login": {
             "post": {
                 "consumes": [
                     "application/json"
@@ -695,7 +700,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/admin/v1/users": {
+        "/api/v1/users": {
             "get": {
                 "security": [
                     {
@@ -732,9 +737,40 @@ const docTemplate = `{
                         }
                     }
                 }
+            },
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "operationId": "CreateUser",
+                "parameters": [
+                    {
+                        "description": "req",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/user.CreateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/user.CreateResponse"
+                        }
+                    }
+                }
             }
         },
-        "/admin/v1/users/{id}": {
+        "/api/v1/users/{id}": {
             "get": {
                 "security": [
                     {
@@ -842,39 +878,6 @@ const docTemplate = `{
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/user.UpdateUserResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/users": {
-            "post": {
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "User"
-                ],
-                "operationId": "CreateUser",
-                "parameters": [
-                    {
-                        "description": "req",
-                        "name": "req",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/user.CreateRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/user.CreateResponse"
                         }
                     }
                 }
@@ -1043,7 +1046,7 @@ var SwaggerInfo = &amp;swag.Spec{
         Host:             "localhost:8080",
         BasePath:         "/",
         Schemes:          []string{},
-        Title:            "Admin Gateway",
+        Title:            "Backend Golang Test",
         Description:      "API for http gateway",
         InfoInstanceName: "swagger",
         SwaggerTemplate:  docTemplate,
@@ -1084,7 +1087,7 @@ func ProvideAuthHandler(sv *service.Service) *Handler <span class="cov8" title="
 // @tags Auth
 // @param req body LoginRequest true "req"
 // @success 200 {object} LoginResponse
-// @router /admin/v1/login [POST]
+// @router /api/v1/login [POST]
 func (h *Handler) Login(ctx *gin.Context) <span class="cov8" title="1">{
         var req *LoginRequest
         if err := ctx.ShouldBindBodyWithJSON(&amp;req); err != nil </span><span class="cov8" title="1">{
@@ -1212,7 +1215,7 @@ func (h *Handler) CreateUser(ctx *gin.Context) <span class="cov8" title="1">{
 // @tags User
 // @param req formData GetUsersRequest true "req"
 // @success 200 {object} GetUsersResponse
-// @router /admin/v1/users [GET]
+// @router /api/v1/users [GET]
 func (h *Handler) GetUsers(ctx *gin.Context) <span class="cov8" title="1">{
         var req GetUsersRequest
 
@@ -1254,7 +1257,7 @@ func (h *Handler) GetUsers(ctx *gin.Context) <span class="cov8" title="1">{
 // @tags User
 // @param id path string true "id"
 // @success 200 {object} GetUserResponse
-// @router /admin/v1/users/{id} [GET]
+// @router /api/v1/users/{id} [GET]
 func (h *Handler) GetUser(ctx *gin.Context) <span class="cov8" title="1">{
         id := ctx.Param("id")
         if id == "" </span><span class="cov8" title="1">{
@@ -1295,7 +1298,7 @@ func (h *Handler) GetUser(ctx *gin.Context) <span class="cov8" title="1">{
 // @param req body UpdateUserRequest true "req"
 // @param id path string true "id"
 // @success 200 {object} UpdateUserResponse
-// @router /admin/v1/users/{id} [PATCH]
+// @router /api/v1/users/{id} [PATCH]
 func (h *Handler) UpdateUser(ctx *gin.Context) <span class="cov8" title="1">{
         id := ctx.Param("id")
         if id == "" </span><span class="cov8" title="1">{
@@ -1336,7 +1339,7 @@ func (h *Handler) UpdateUser(ctx *gin.Context) <span class="cov8" title="1">{
 // @tags User
 // @param id path string true "id"
 // @success 200 {object} DeleteUserResponse
-// @router /admin/v1/users/{id} [DELETE]
+// @router /api/v1/users/{id} [DELETE]
 func (h *Handler) DeleteUser(ctx *gin.Context) <span class="cov8" title="1">{
         id := ctx.Param("id")
         if id == "" </span><span class="cov8" title="1">{
@@ -1379,7 +1382,7 @@ func registerRouter(gin *gin.Engine, h *handler.Handlers, m *middleware.Middlewa
         router := *gin.Group("/api/v1")
         </span><span class="cov0" title="0">{
                 router.POST("/login", h.AuthHandler.Login)
-                router.POST("/register", h.UserHandler.CreateUser)
+                router.POST("/users", h.UserHandler.CreateUser)
 
                 router.Use(m.Auth.Middleware())
                 router.GET("/users", h.UserHandler.GetUsers)
@@ -1424,7 +1427,7 @@ func (s *HTTPServer) Serve() <span class="cov0" title="0">{
         g := &amp;run.Group{}
         g.Add(func() error </span><span class="cov0" title="0">{
                 s.srv = &amp;http.Server{
-                        Addr:    fmt.Sprintf(":%s", s.cfg.System.HTTPPort),
+                        Addr:    fmt.Sprintf(":%s", s.cfg.HTTPConfig.HTTPPort),
                         Handler: s.gin.Handler(),
                 }
                 log.Println("HTTP Server - started at ip address", s.srv.Addr)
@@ -1496,7 +1499,7 @@ import (
 
 //go:generate go run github.com/swaggo/swag/cmd/swag init --parseDependency --parseInternal --parseDepth 1 -o internal/docs
 
-// @title Admin Gateway
+// @title Backend Golang Test
 // @version 1.0
 // @description API for http gateway
 //
@@ -1672,10 +1675,16 @@ import (
         "github.com/kelseyhightower/envconfig"
 )
 
-type SystemConfig struct {
+type HTTPConfig struct {
         HTTPPort    string `envconfig:"APP_HTTP_PORT" default:"8080"`
-        GRPCPort    string `envconfig:"APP_GRPC_PORT" default:"8980"`
         ServiceName string `envconfig:"SERVICE_NAME" default:"backend-golang-test"`
+}
+
+type GRPCConfig struct {
+        GRPCPort                string `envconfig:"APP_GRPC_PORT" default:"8980"`
+        GRPCReflectionEnabled   bool   `envconfig:"APP_GRPC_REFLECTION_ENABLED" default:"false"`
+        GRPCHealthcheckDisabled bool   `envconfig:"APP_GRPC_HEALTHCHECK_DISABLED" default:"false"`
+        ServiceName             string `envconfig:"SERVICE_NAME" default:"backend-golang-test"`
 }
 
 type AuthConfig struct {
@@ -1699,14 +1708,16 @@ type BackendGolangTestGRPCConfig struct {
 }
 
 type AppConfig struct {
-        System        SystemConfig
+        HTTPConfig    HTTPConfig
+        GRPCConfig    GRPCConfig
         MongoDB       MongoDBConfig
         BackendGoTest BackendGolangTestGRPCConfig
         Auth          AuthConfig
 }
 
 func (cfg *AppConfig) load() <span class="cov0" title="0">{
-        envconfig.MustProcess("", &amp;cfg.System)
+        envconfig.MustProcess("", &amp;cfg.HTTPConfig)
+        envconfig.MustProcess("", &amp;cfg.GRPCConfig)
         envconfig.MustProcess("", &amp;cfg.Auth)
         envconfig.MustProcess("", &amp;cfg.MongoDB)
         envconfig.MustProcess("", &amp;cfg.BackendGoTest)

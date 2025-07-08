@@ -15,7 +15,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/admin/v1/login": {
+        "/api/v1/login": {
             "post": {
                 "consumes": [
                     "application/json"
@@ -48,7 +48,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/admin/v1/users": {
+        "/api/v1/users": {
             "get": {
                 "security": [
                     {
@@ -85,9 +85,40 @@ const docTemplate = `{
                         }
                     }
                 }
+            },
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "operationId": "CreateUser",
+                "parameters": [
+                    {
+                        "description": "req",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/user.CreateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/user.CreateResponse"
+                        }
+                    }
+                }
             }
         },
-        "/admin/v1/users/{id}": {
+        "/api/v1/users/{id}": {
             "get": {
                 "security": [
                     {
@@ -195,39 +226,6 @@ const docTemplate = `{
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/user.UpdateUserResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/users": {
-            "post": {
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "User"
-                ],
-                "operationId": "CreateUser",
-                "parameters": [
-                    {
-                        "description": "req",
-                        "name": "req",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/user.CreateRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/user.CreateResponse"
                         }
                     }
                 }
@@ -396,7 +394,7 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "localhost:8080",
 	BasePath:         "/",
 	Schemes:          []string{},
-	Title:            "Admin Gateway",
+	Title:            "Backend Golang Test",
 	Description:      "API for http gateway",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,

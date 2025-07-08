@@ -11,6 +11,7 @@ wire: ## genarate google wire
 	go run github.com/google/wire/cmd/wire ./...
 
 generate: ## go generate
+	go mod tidy
 	go generate ./...
 
 lint: ## lint

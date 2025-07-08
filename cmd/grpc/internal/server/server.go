@@ -31,7 +31,7 @@ type GRPCServer struct {
 func (s *GRPCServer) Serve() {
 	g := &run.Group{}
 	g.Add(func() error {
-		ipaddr := fmt.Sprintf(":%s", s.cfg.System.GRPCPort)
+		ipaddr := fmt.Sprintf(":%s", s.cfg.GRPCConfig.GRPCPort)
 		lis, err := net.Listen("tcp", ipaddr)
 		if err != nil {
 			panic(err)
@@ -90,8 +90,13 @@ func ProvideGRPCServer(cfg *config.AppConfig, h *handler.GrpcServices, r *reposi
 	}
 
 	handler.RegisterGrpcServices(s.srv, h)
-	healthgrpc.RegisterHealthServer(s.srv, health.NewServer())
-	reflection.Register(s.srv)
+	if !cfg.GRPCConfig.GRPCHealthcheckDisabled {
+		healthgrpc.RegisterHealthServer(s.srv, health.NewServer())
+	}
+
+	if cfg.GRPCConfig.GRPCReflectionEnabled {
+		reflection.Register(s.srv)
+	}
 
 	return s
 }

@@ -11,10 +11,16 @@ import (
 	"github.com/kelseyhightower/envconfig"
 )
 
-type SystemConfig struct {
+type HTTPConfig struct {
 	HTTPPort    string `envconfig:"APP_HTTP_PORT" default:"8080"`
-	GRPCPort    string `envconfig:"APP_GRPC_PORT" default:"8980"`
 	ServiceName string `envconfig:"SERVICE_NAME" default:"backend-golang-test"`
+}
+
+type GRPCConfig struct {
+	GRPCPort                string `envconfig:"APP_GRPC_PORT" default:"8980"`
+	GRPCReflectionEnabled   bool   `envconfig:"APP_GRPC_REFLECTION_ENABLED" default:"false"`
+	GRPCHealthcheckDisabled bool   `envconfig:"APP_GRPC_HEALTHCHECK_DISABLED" default:"false"`
+	ServiceName             string `envconfig:"SERVICE_NAME" default:"backend-golang-test"`
 }
 
 type AuthConfig struct {
@@ -38,14 +44,16 @@ type BackendGolangTestGRPCConfig struct {
 }
 
 type AppConfig struct {
-	System        SystemConfig
+	HTTPConfig    HTTPConfig
+	GRPCConfig    GRPCConfig
 	MongoDB       MongoDBConfig
 	BackendGoTest BackendGolangTestGRPCConfig
 	Auth          AuthConfig
 }
 
 func (cfg *AppConfig) load() {
-	envconfig.MustProcess("", &cfg.System)
+	envconfig.MustProcess("", &cfg.HTTPConfig)
+	envconfig.MustProcess("", &cfg.GRPCConfig)
 	envconfig.MustProcess("", &cfg.Auth)
 	envconfig.MustProcess("", &cfg.MongoDB)
 	envconfig.MustProcess("", &cfg.BackendGoTest)

@@ -16,7 +16,7 @@ func registerRouter(gin *gin.Engine, h *handler.Handlers, m *middleware.Middlewa
 	router := *gin.Group("/api/v1")
 	{
 		router.POST("/login", h.AuthHandler.Login)
-		router.POST("/register", h.UserHandler.CreateUser)
+		router.POST("/users", h.UserHandler.CreateUser)
 
 		router.Use(m.Auth.Middleware())
 		router.GET("/users", h.UserHandler.GetUsers)

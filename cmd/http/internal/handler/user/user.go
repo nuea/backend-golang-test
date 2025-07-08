@@ -65,7 +65,7 @@ func (h *Handler) CreateUser(ctx *gin.Context) {
 // @tags User
 // @param req formData GetUsersRequest true "req"
 // @success 200 {object} GetUsersResponse
-// @router /admin/v1/users [GET]
+// @router /api/v1/users [GET]
 func (h *Handler) GetUsers(ctx *gin.Context) {
 	var req GetUsersRequest
 
@@ -107,7 +107,7 @@ func (h *Handler) GetUsers(ctx *gin.Context) {
 // @tags User
 // @param id path string true "id"
 // @success 200 {object} GetUserResponse
-// @router /admin/v1/users/{id} [GET]
+// @router /api/v1/users/{id} [GET]
 func (h *Handler) GetUser(ctx *gin.Context) {
 	id := ctx.Param("id")
 	if id == "" {
@@ -148,7 +148,7 @@ func (h *Handler) GetUser(ctx *gin.Context) {
 // @param req body UpdateUserRequest true "req"
 // @param id path string true "id"
 // @success 200 {object} UpdateUserResponse
-// @router /admin/v1/users/{id} [PATCH]
+// @router /api/v1/users/{id} [PATCH]
 func (h *Handler) UpdateUser(ctx *gin.Context) {
 	id := ctx.Param("id")
 	if id == "" {
@@ -189,7 +189,7 @@ func (h *Handler) UpdateUser(ctx *gin.Context) {
 // @tags User
 // @param id path string true "id"
 // @success 200 {object} DeleteUserResponse
-// @router /admin/v1/users/{id} [DELETE]
+// @router /api/v1/users/{id} [DELETE]
 func (h *Handler) DeleteUser(ctx *gin.Context) {
 	id := ctx.Param("id")
 	if id == "" {

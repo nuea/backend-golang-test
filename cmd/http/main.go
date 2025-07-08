@@ -8,7 +8,7 @@ import (
 
 //go:generate go run github.com/swaggo/swag/cmd/swag init --parseDependency --parseInternal --parseDepth 1 -o internal/docs
 
-// @title Admin Gateway
+// @title Backend Golang Test
 // @version 1.0
 // @description API for http gateway
 //
